@@ -1,9 +1,12 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
+import 'package:gestures/models/gesture.dart';
 import 'package:video_player/video_player.dart';
 
 class GesturePlayer extends StatefulWidget {
-  const GesturePlayer({Key? key}) : super(key: key);
+  final Gesture gesture;
+
+  const GesturePlayer({Key? key, required this.gesture}) : super(key: key);
 
   @override
   _GesturePlayerState createState() => _GesturePlayerState();
@@ -15,7 +18,8 @@ class _GesturePlayerState extends State<GesturePlayer> {
   @override
   void initState() {
     super.initState();
-    final controller = VideoPlayerController.asset('assets/video.mov')
+    final controller = VideoPlayerController.asset(
+        'assets/gestures/${widget.gesture.filename}')
       ..initialize();
 
     _chewieController = ChewieController(
@@ -38,7 +42,7 @@ class _GesturePlayerState extends State<GesturePlayer> {
         ),
         ListTile(
           title: Text(
-            'Lautzeichen A',
+            widget.gesture.title,
             style: Theme.of(context).textTheme.headline5,
           ),
         ),

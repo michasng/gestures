@@ -1,20 +1,20 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:gestures/app_router.gr.dart';
+import 'package:gestures/models/app_content.dart';
+import 'package:gestures/screens/home/components/package_list_tile.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  final AppContent appContent;
+
+  const HomeScreen({Key? key, required this.appContent}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Gebärde wählen')),
+      appBar: AppBar(title: const Text('Paket wählen')),
       body: ListView(
         children: [
-          ListTile(
-            title: const Text('Lautzeichen A'),
-            onTap: () => AutoRouter.of(context).push(const GestureRoute()),
-          ),
+          for (final package in appContent.packages)
+            PackageListTile(package: package),
         ],
       ),
     );

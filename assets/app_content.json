@@ -1,0 +1,21 @@
+{
+  "packages": [
+    {
+      "title": "Alphabet",
+      "gestures": [
+        {
+          "title": "Lautzeichen A",
+          "filename": "lautzeichen_a.mov"
+        },
+        {
+          "title": "Lautzeichen B",
+          "filename": "lautzeichen_a.mov"
+        },
+        {
+          "title": "Lautzeichen C",
+          "filename": "lautzeichen_a.mov"
+        }
+      ]
+    }
+  ]
+}
