@@ -18,16 +18,30 @@ class _GesturePlayerState extends State<GesturePlayer> {
   @override
   void initState() {
     super.initState();
-    final controller = VideoPlayerController.asset(
-        'assets/gestures/${widget.gesture.filename}')
-      ..initialize();
+    final filepath = 'assets/gestures/${widget.gesture.filename}';
+    final _controller = VideoPlayerController.asset(filepath);
 
     _chewieController = ChewieController(
-      videoPlayerController: controller,
+      videoPlayerController: _controller,
       aspectRatio: 1 / 1, // stretch and squash the video to force-fit the frame
       autoPlay: true,
       showOptions: false,
     );
+  }
+
+  @override
+  void deactivate() {
+    // prevent building inside of a build-cycle
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      _chewieController.pause();
+    });
+    super.deactivate();
+  }
+
+  @override
+  void dispose() {
+    _chewieController.dispose();
+    super.dispose();
   }
 
   @override
