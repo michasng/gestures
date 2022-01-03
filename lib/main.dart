@@ -28,7 +28,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Ursberger Gebärden',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
       ),
       home: FutureBuilder<AppContent>(
         future: _load(context),

@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Paket wählen')),
+      appBar: AppBar(title: const Text('Ursberger Gebärden - Paket wählen')),
       body: ListView(
         children: [
           for (final package in appContent.packages)
