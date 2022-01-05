@@ -1,36 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/models/gesture.dart';
 import 'package:gestures/models/package.dart';
-import 'package:gestures/screens/gesture/gesture_screen.dart';
-import 'package:gestures/screens/package/components/gesture_list_tile.dart';
+import 'package:gestures/screens/package/components/gesture_list.dart';
+import 'package:gestures/screens/package/components/search_bar.dart';
 
 class PackageScreen extends StatelessWidget {
   final Package package;
+  final _gestureListKey = GlobalKey<GestureListState>();
 
-  const PackageScreen({Key? key, required this.package}) : super(key: key);
+  PackageScreen({Key? key, required this.package}) : super(key: key);
 
-  void _navigateToGesture(BuildContext context, Gesture gesture) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => GestureScreen(
-          gestures: package.gestures,
-          initialIndex: package.gestures.indexOf(gesture),
-        ),
-      ),
-    );
+  void _search(String search) {
+    _gestureListKey.currentState!.search(search);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Gebärde wählen')),
-      body: ListView(
+      body: Column(
         children: [
-          for (final gesture in package.gestures)
-            GestureListTile(
-              gesture: gesture,
-              onTap: (gesture) => _navigateToGesture(context, gesture),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: SearchBar(
+              onSearch: _search,
             ),
+          ),
+          Expanded(
+            child: GestureList(
+              package: package,
+              key: _gestureListKey,
+            ),
+          ),
         ],
       ),
     );

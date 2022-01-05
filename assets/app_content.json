@@ -16,6 +16,47 @@
           "filename": "lautzeichen_c.mp4"
         }
       ]
+    },
+    {
+      "title": "Büro",
+      "gestures": [
+        {
+          "title": "Stift",
+          "filename": "lautzeichen_a.mp4"
+        },
+        {
+          "title": "Computer",
+          "filename": "lautzeichen_b.mp4"
+        },
+        {
+          "title": "Bleistift",
+          "filename": "lautzeichen_c.mp4"
+        },
+        {
+          "title": "Telefon",
+          "filename": "lautzeichen_a.mp4"
+        },
+        {
+          "title": "Locher",
+          "filename": "lautzeichen_b.mp4"
+        },
+        {
+          "title": "Radiergummi",
+          "filename": "lautzeichen_c.mp4"
+        },
+        {
+          "title": "Filzstift",
+          "filename": "lautzeichen_a.mp4"
+        },
+        {
+          "title": "Textmarker",
+          "filename": "lautzeichen_b.mp4"
+        },
+        {
+          "title": "Schnellhefter",
+          "filename": "lautzeichen_c.mp4"
+        }
+      ]
     }
   ]
 }
