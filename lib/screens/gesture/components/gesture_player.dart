@@ -23,7 +23,7 @@ class _GesturePlayerState extends State<GesturePlayer> {
 
     _chewieController = ChewieController(
       videoPlayerController: _controller,
-      aspectRatio: 1 / 1, // stretch and squash the video to force-fit the frame
+      // aspectRatio: 1 / 1, // stretch and squash the video to force-fit the frame
       autoPlay: true,
       showOptions: false,
     );
@@ -46,21 +46,16 @@ class _GesturePlayerState extends State<GesturePlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        AspectRatio(
-          aspectRatio: 1 / 1, // aspect ratio of the video frame
-          child: Chewie(
-            controller: _chewieController,
-          ),
-        ),
-        ListTile(
-          title: Text(
-            widget.gesture.title,
-            style: Theme.of(context).textTheme.headline5,
-          ),
-        ),
-      ],
+    /*
+    return AspectRatio(
+      aspectRatio: 1 / 1, // aspect ratio of the video frame
+      child: Chewie(
+        controller: _chewieController,
+      ),
+    );
+    */
+    return Chewie(
+      controller: _chewieController,
     );
   }
 }

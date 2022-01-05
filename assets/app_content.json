@@ -5,15 +5,15 @@
       "gestures": [
         {
           "title": "Lautzeichen A",
-          "filename": "lautzeichen_a.mov"
+          "filename": "lautzeichen_a.mp4"
         },
         {
           "title": "Lautzeichen B",
-          "filename": "lautzeichen_a.mov"
+          "filename": "lautzeichen_b.mp4"
         },
         {
           "title": "Lautzeichen C",
-          "filename": "lautzeichen_a.mov"
+          "filename": "lautzeichen_c.mp4"
         }
       ]
     }
