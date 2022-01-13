@@ -3,6 +3,8 @@ import 'package:gestures/models/gesture.dart';
 import 'package:gestures/models/package.dart';
 import 'package:gestures/screens/gesture/gesture_screen.dart';
 import 'package:gestures/screens/package/components/gesture_list_tile.dart';
+import 'package:gestures/services/search_service.dart';
+import 'package:get_it/get_it.dart';
 
 class GestureList extends StatefulWidget {
   final Package package;
@@ -34,18 +36,10 @@ class GestureListState extends State<GestureList> {
   }
 
   void search(String search) {
-    final caseInsensitiveLeadingTextSearch = widget.package.gestures
-        .where((gesture) =>
-            gesture.title.toLowerCase().startsWith(search.toLowerCase()))
-        .toList();
-    final caseSensitiveFullTextSearch = widget.package.gestures
-        .where((gesture) => gesture.title.contains(search))
-        .toList();
-    final combinedWithoutDuplicates =
-        (caseInsensitiveLeadingTextSearch + caseSensitiveFullTextSearch)
-            .toSet();
+    final searchService = GetIt.I<SearchService>();
+    final results = searchService.search(widget.package.gestures, search);
     setState(() {
-      gestures = combinedWithoutDuplicates.toList();
+      gestures = results;
     });
   }
 

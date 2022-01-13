@@ -5,10 +5,10 @@ part 'package.g.dart';
 
 @JsonSerializable()
 class Package {
-  String title;
-  List<Gesture> gestures;
+  final String title;
+  final List<Gesture> gestures;
 
-  Package({
+  const Package({
     required this.title,
     required this.gestures,
   });

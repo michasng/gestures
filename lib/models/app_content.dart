@@ -5,9 +5,9 @@ part 'app_content.g.dart';
 
 @JsonSerializable()
 class AppContent {
-  List<Package> packages;
+  final List<Package> packages;
 
-  AppContent({
+  const AppContent({
     required this.packages,
   });
 
