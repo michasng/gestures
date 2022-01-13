@@ -6,13 +6,17 @@ part 'gesture.g.dart';
 class Gesture implements Comparable<Gesture> {
   final String title;
   final String filename;
+  final String? sharingLink;
   final List<String> synonyms;
 
   const Gesture({
     required this.title,
     required this.filename,
+    this.sharingLink,
     this.synonyms = const [],
   });
+
+  String get assetFilePath => 'assets/gestures/$filename';
 
   List<String> get searchTerms => [title, ...synonyms];
 
