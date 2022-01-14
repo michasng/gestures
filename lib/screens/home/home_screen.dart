@@ -24,6 +24,7 @@ class HomeScreen extends StatelessWidget {
           filterQuality: FilterQuality.medium,
         ),
         title: const Text('Ursberger Gebärden - Paket wählen'),
+        toolbarHeight: 128,
       ),
       body: ListView(
         children: [
