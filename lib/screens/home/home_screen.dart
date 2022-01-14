@@ -18,7 +18,13 @@ class HomeScreen extends StatelessWidget {
     );
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Ursberger Gebärden - Paket wählen')),
+      appBar: AppBar(
+        leading: const Image(
+          image: AssetImage('assets/Dominikus-Ringeisen-Werk.png'),
+          filterQuality: FilterQuality.medium,
+        ),
+        title: const Text('Ursberger Gebärden - Paket wählen'),
+      ),
       body: ListView(
         children: [
           PackageListTile(package: combinedPackage),
