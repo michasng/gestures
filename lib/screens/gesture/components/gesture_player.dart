@@ -11,7 +11,7 @@ class GesturePlayer extends StatefulWidget {
   const GesturePlayer({Key? key, required this.gesture}) : super(key: key);
 
   @override
-  _GesturePlayerState createState() => _GesturePlayerState();
+  State<GesturePlayer> createState() => _GesturePlayerState();
 }
 
 class _GesturePlayerState extends State<GesturePlayer> {
@@ -37,9 +37,9 @@ class _GesturePlayerState extends State<GesturePlayer> {
 
     print('Now playing: $directLink');
     setState(() {
-      final _controller = VideoPlayerController.network(directLink);
+      final controller = VideoPlayerController.network(directLink);
       _chewieController = ChewieController(
-        videoPlayerController: _controller,
+        videoPlayerController: controller,
         // aspectRatio: 1 / 1, // stretch and squash the video to force-fit the frame
         autoPlay: true,
         showOptions: false,
@@ -50,7 +50,7 @@ class _GesturePlayerState extends State<GesturePlayer> {
   @override
   void deactivate() {
     // prevent building inside of a build-cycle
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       _chewieController?.pause();
     });
     super.deactivate();

@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.18.2 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -30,8 +30,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-  json_annotation: ^4.4.0 # defines annotations for JSON (de)serialization.
-  chewie: ^1.2.2 # adds a widget to play videos with controls
+  json_annotation: ^4.7.0 # defines annotations for JSON (de)serialization.
+  chewie: ^1.3.5 # adds a widget to play videos with controls
+  video_player: ^2.4.7 # used for lower-level access with chewie
   get_it: ^7.2.0 # dependency injection, basically provider without the need for context
 
 dev_dependencies:
@@ -43,9 +44,9 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^1.0.0
-  build_runner: ^2.1.7 # a concrete way of generating files using Dart code.
-  json_serializable: ^6.1.3 # Dart Build System builders for handling JSON.
+  flutter_lints: ^2.0.1
+  build_runner: ^2.3.2 # a concrete way of generating files using Dart code.
+  json_serializable: ^6.5.4 # Dart Build System builders for handling JSON.
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

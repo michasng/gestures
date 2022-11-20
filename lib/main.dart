@@ -24,7 +24,6 @@ class App extends StatelessWidget {
   }) : super(key: key);
 
   Future<AppContent> _load(BuildContext context) async {
-    await Future.delayed(const Duration(seconds: 1));
     String data = await DefaultAssetBundle.of(context)
         .loadString('assets/app_content.json');
     final json = jsonDecode(data);
