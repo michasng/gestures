@@ -1,15 +1,15 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:gestures/models/app_content.dart';
 import 'package:gestures/screens/error/error_screen.dart';
 import 'package:gestures/screens/home/home_screen.dart';
 import 'package:gestures/screens/loading/loading_screen.dart';
+import 'package:gestures/services/app_service.dart';
 import 'package:gestures/services/google_drive_service.dart';
 import 'package:gestures/services/search_service.dart';
 import 'package:get_it/get_it.dart';
 
 void main() {
+  GetIt.I.registerSingleton<AppService>(AppService());
   GetIt.I.registerSingleton<SearchService>(SearchService());
   GetIt.I.registerSingleton<GoogleDriveService>(GoogleDriveService(
     apiKey: 'AIzaSyBVjAU58Izq4tLrpUCxbqyyt2iOFroJc88',
@@ -22,13 +22,6 @@ class App extends StatelessWidget {
   const App({
     Key? key,
   }) : super(key: key);
-
-  Future<AppContent> _load(BuildContext context) async {
-    String data = await DefaultAssetBundle.of(context)
-        .loadString('assets/app_content.json');
-    final json = jsonDecode(data);
-    return AppContent.fromJson(json);
-  }
 
   MaterialColor _createMaterialColor(Color color) {
     List strengths = <double>[.05];
@@ -60,7 +53,7 @@ class App extends StatelessWidget {
         primarySwatch: _createMaterialColor(backgroundColor),
       ),
       home: FutureBuilder<AppContent>(
-        future: _load(context),
+        future: GetIt.I<AppService>().load(context),
         builder: (context, snapshot) {
           if (snapshot.hasError) return ErrorScreen(error: snapshot.error!);
 

@@ -1,0 +1,448 @@
+{
+  "synonyms": [
+    {
+      "title": "Fingeralphabet A",
+      "synonyms": ["A", "Graphembestimmtes Manualsystem A", "GMS A"]
+    },
+    {
+      "title": "Fingeralphabet Ä",
+      "synonyms": ["Ä", "Graphembestimmtes Manualsystem Ä", "GMS Ä"]
+    },
+    {
+      "title": "Fingeralphabet B",
+      "synonyms": ["B", "Graphembestimmtes Manualsystem B", "GMS B"]
+    },
+    {
+      "title": "Fingeralphabet C",
+      "synonyms": ["C", "Graphembestimmtes Manualsystem C", "GMS C"]
+    },
+    {
+      "title": "Fingeralphabet D",
+      "synonyms": ["D", "Graphembestimmtes Manualsystem D", "GMS D"]
+    },
+    {
+      "title": "Fingeralphabet E",
+      "synonyms": ["E", "Graphembestimmtes Manualsystem E", "GMS E"]
+    },
+    {
+      "title": "Fingeralphabet F",
+      "synonyms": ["F", "Graphembestimmtes Manualsystem F", "GMS F"]
+    },
+    {
+      "title": "Fingeralphabet G",
+      "synonyms": ["G", "Graphembestimmtes Manualsystem G", "GMS G"]
+    },
+    {
+      "title": "Fingeralphabet H",
+      "synonyms": ["H", "Graphembestimmtes Manualsystem H", "GMS H"]
+    },
+    {
+      "title": "Fingeralphabet I",
+      "synonyms": ["I", "Graphembestimmtes Manualsystem I", "GMS I"]
+    },
+    {
+      "title": "Fingeralphabet J",
+      "synonyms": ["J", "Graphembestimmtes Manualsystem J", "GMS J"]
+    },
+    {
+      "title": "Fingeralphabet K",
+      "synonyms": ["K", "Graphembestimmtes Manualsystem K", "GMS K"]
+    },
+    {
+      "title": "Fingeralphabet L",
+      "synonyms": ["L", "Graphembestimmtes Manualsystem L", "GMS L"]
+    },
+    {
+      "title": "Fingeralphabet M",
+      "synonyms": ["M", "Graphembestimmtes Manualsystem M", "GMS M"]
+    },
+    {
+      "title": "Fingeralphabet N",
+      "synonyms": ["N", "Graphembestimmtes Manualsystem N", "GMS N"]
+    },
+    {
+      "title": "Fingeralphabet O",
+      "synonyms": ["O", "Graphembestimmtes Manualsystem O", "GMS O"]
+    },
+    {
+      "title": "Fingeralphabet Ö",
+      "synonyms": ["Ö", "Graphembestimmtes Manualsystem Ö", "GMS Ö"]
+    },
+    {
+      "title": "Fingeralphabet P",
+      "synonyms": ["P", "Graphembestimmtes Manualsystem P", "GMS P"]
+    },
+    {
+      "title": "Fingeralphabet Q",
+      "synonyms": ["Q", "Graphembestimmtes Manualsystem Q", "GMS Q"]
+    },
+    {
+      "title": "Fingeralphabet R",
+      "synonyms": ["R", "Graphembestimmtes Manualsystem R", "GMS R"]
+    },
+    {
+      "title": "Fingeralphabet S",
+      "synonyms": ["S", "Graphembestimmtes Manualsystem S", "GMS S"]
+    },
+    {
+      "title": "Fingeralphabet SCH",
+      "synonyms": ["SCH", "Graphembestimmtes Manualsystem SCH", "GMS SCH"]
+    },
+    {
+      "title": "Fingeralphabet T",
+      "synonyms": ["T", "Graphembestimmtes Manualsystem T", "GMS T"]
+    },
+    {
+      "title": "Fingeralphabet U",
+      "synonyms": ["U", "Graphembestimmtes Manualsystem U", "GMS U"]
+    },
+    {
+      "title": "Fingeralphabet Ü",
+      "synonyms": ["Ü", "Graphembestimmtes Manualsystem Ü", "GMS Ü"]
+    },
+    {
+      "title": "Fingeralphabet V",
+      "synonyms": ["V", "Graphembestimmtes Manualsystem V", "GMS V"]
+    },
+    {
+      "title": "Fingeralphabet W",
+      "synonyms": ["W", "Graphembestimmtes Manualsystem W", "GMS W"]
+    },
+    {
+      "title": "Fingeralphabet X",
+      "synonyms": ["X", "Graphembestimmtes Manualsystem X", "GMS X"]
+    },
+    {
+      "title": "Fingeralphabet Y",
+      "synonyms": ["Y", "Graphembestimmtes Manualsystem Y", "GMS Y"]
+    },
+    {
+      "title": "Fingeralphabet Z",
+      "synonyms": ["Z", "Graphembestimmtes Manualsystem Z", "GMS Z"]
+    },
+    {
+      "title": "Fingeralphabet (alle)",
+      "synonyms": [
+        "Fingeralphabet alle",
+        "alle",
+        "Graphembestimmtes Manualsystem alle",
+        "GMS alle"
+      ]
+    },
+    {
+      "title": "Fingeralphabet (alle Umlaute)",
+      "synonyms": [
+        "Fingeralphabet alle Umlaute",
+        "alle Umlaute",
+        "Graphembestimmtes Manualsystem alle Umlaute",
+        "GMS alle Umlaute"
+      ]
+    },
+    {
+      "title": "Lautzeichen A",
+      "synonyms": ["A"]
+    },
+    {
+      "title": "Lautzeichen B",
+      "synonyms": ["B"]
+    },
+    {
+      "title": "Lautzeichen CH",
+      "synonyms": ["CH", "C", "H"]
+    },
+    {
+      "title": "Lautzeichen D",
+      "synonyms": ["D"]
+    },
+    {
+      "title": "Lautzeichen E",
+      "synonyms": ["E"]
+    },
+    {
+      "title": "Lautzeichen F",
+      "synonyms": ["F"]
+    },
+    {
+      "title": "Lautzeichen G",
+      "synonyms": ["G"]
+    },
+    {
+      "title": "Lautzeichen H",
+      "synonyms": ["H"]
+    },
+    {
+      "title": "Lautzeichen I",
+      "synonyms": ["I"]
+    },
+    {
+      "title": "Lautzeichen K",
+      "synonyms": ["K"]
+    },
+    {
+      "title": "Lautzeichen L",
+      "synonyms": ["L"]
+    },
+    {
+      "title": "Lautzeichen M",
+      "synonyms": ["M"]
+    },
+    {
+      "title": "Lautzeichen N",
+      "synonyms": ["N"]
+    },
+    {
+      "title": "Lautzeichen NG",
+      "synonyms": ["NG", "N", "G"]
+    },
+    {
+      "title": "Lautzeichen O",
+      "synonyms": ["O"]
+    },
+    {
+      "title": "Lautzeichen P",
+      "synonyms": ["P"]
+    },
+    {
+      "title": "Lautzeichen R",
+      "synonyms": ["R"]
+    },
+    {
+      "title": "Lautzeichen S",
+      "synonyms": ["S"]
+    },
+    {
+      "title": "Lautzeichen SCH",
+      "synonyms": ["SCH", "S"]
+    },
+    {
+      "title": "Lautzeichen T",
+      "synonyms": ["T"]
+    },
+    {
+      "title": "Lautzeichen U",
+      "synonyms": ["U"]
+    },
+    {
+      "title": "Lautzeichen W",
+      "synonyms": ["W"]
+    },
+    {
+      "title": "Lautzeichen (alle)",
+      "synonyms": ["Lautzeichen alle", "alle"]
+    },
+    {
+      "title": "1",
+      "synonyms": ["Eins"]
+    },
+    {
+      "title": "2",
+      "synonyms": ["Zwei"]
+    },
+    {
+      "title": "3",
+      "synonyms": ["Drei"]
+    },
+    {
+      "title": "4",
+      "synonyms": ["Vier"]
+    },
+    {
+      "title": "5",
+      "synonyms": ["Fünf"]
+    },
+    {
+      "title": "6",
+      "synonyms": ["Sechs"]
+    },
+    {
+      "title": "7",
+      "synonyms": ["Sieben"]
+    },
+    {
+      "title": "8",
+      "synonyms": ["Acht"]
+    },
+    {
+      "title": "9",
+      "synonyms": ["Neun"]
+    },
+    {
+      "title": "10",
+      "synonyms": ["Zehn"]
+    },
+    {
+      "title": "11",
+      "synonyms": ["Elf"]
+    },
+    {
+      "title": "12",
+      "synonyms": ["Zwölf"]
+    },
+    {
+      "title": "13",
+      "synonyms": ["Dreizehn"]
+    },
+    {
+      "title": "14",
+      "synonyms": ["Vierzehn"]
+    },
+    {
+      "title": "15",
+      "synonyms": ["Fünfzehn"]
+    },
+    {
+      "title": "16",
+      "synonyms": ["Sechzehn"]
+    },
+    {
+      "title": "17",
+      "synonyms": ["Siebzehnter"]
+    },
+    {
+      "title": "18",
+      "synonyms": ["Achzehn"]
+    },
+    {
+      "title": "19",
+      "synonyms": ["Neunzehn"]
+    },
+    {
+      "title": "20",
+      "synonyms": ["Zwanzig"]
+    },
+    {
+      "title": "30",
+      "synonyms": ["Dreizig"]
+    },
+    {
+      "title": "40",
+      "synonyms": ["Vierzig"]
+    },
+    {
+      "title": "50",
+      "synonyms": ["Fünfzig"]
+    },
+    {
+      "title": "60",
+      "synonyms": ["Sechzig"]
+    },
+    {
+      "title": "70",
+      "synonyms": ["Siebzig"]
+    },
+    {
+      "title": "80",
+      "synonyms": ["Achzig"]
+    },
+    {
+      "title": "90",
+      "synonyms": ["Neunzig"]
+    },
+    {
+      "title": "100",
+      "synonyms": ["Einhundert", "Hundert"]
+    },
+    {
+      "title": "200",
+      "synonyms": ["Zweihundert"]
+    },
+    {
+      "title": "300",
+      "synonyms": ["Dreihundert"]
+    },
+    {
+      "title": "400",
+      "synonyms": ["Vierhundert"]
+    },
+    {
+      "title": "500",
+      "synonyms": ["Fünfhundert"]
+    },
+    {
+      "title": "600",
+      "synonyms": ["Sechshundert"]
+    },
+    {
+      "title": "700",
+      "synonyms": ["Siebenhundert"]
+    },
+    {
+      "title": "800",
+      "synonyms": ["Achthundert"]
+    },
+    {
+      "title": "900",
+      "synonyms": ["Neunhundert"]
+    },
+    {
+      "title": "1000",
+      "synonyms": ["Eintausend", "Tausend"]
+    },
+    {
+      "title": "2000",
+      "synonyms": ["Zweitausend"]
+    },
+    {
+      "title": "3000",
+      "synonyms": ["Dreitausend"]
+    },
+    {
+      "title": "4000",
+      "synonyms": ["Viertausend"]
+    },
+    {
+      "title": "5000",
+      "synonyms": ["Fünftausend"]
+    },
+    {
+      "title": "6000",
+      "synonyms": ["Sechstausend"]
+    },
+    {
+      "title": "7000",
+      "synonyms": ["Siebentausend"]
+    },
+    {
+      "title": "8000",
+      "synonyms": ["Achttausend"]
+    },
+    {
+      "title": "9000",
+      "synonyms": ["Neuntausend"]
+    },
+    {
+      "title": "Zahlen 1-20",
+      "synonyms": [
+        "1-20",
+        "1 - 20",
+        "Zahlen 1 bis 20",
+        "1 bis 20",
+        "Zahlen Eins bis Zwanzig",
+        "Eins bis Zwanzig"
+      ]
+    },
+    {
+      "title": "Zahlen 20-9000",
+      "synonyms": [
+        "20-9000",
+        "20 - 9000",
+        "Zahlen 20 bis 9000",
+        "20 bis 9000",
+        "Zahlen Zwanzig bis Neuntausend",
+        "Zwanzig bis Neuntausend"
+      ]
+    },
+    {
+      "title": "Erster",
+      "synonyms": ["1."]
+    },
+    {
+      "title": "Zweiter",
+      "synonyms": ["2."]
+    },
+    {
+      "title": "Dritter",
+      "synonyms": ["3."]
+    }
+  ]
+}

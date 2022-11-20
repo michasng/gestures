@@ -1,0 +1,180 @@
+{
+  "kind": "drive#fileList",
+  "incompleteSearch": false,
+  "files": [
+    {
+      "kind": "drive#file",
+      "id": "1LdHbDpeQBIYai_qjBO2ryt51R3nUQYWe",
+      "name": "recycling.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "19s_Aj77TwxRd9D8SLSM5tLEaW__uG3in",
+      "name": "Biomüll.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1o-HIedebf8vwQZvjtTBTjZmFdDmPeIrY",
+      "name": "besonders : Besonderheit.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1KOeZ6-DVr7qFGvNBHE1qo38YeuDp2OJf",
+      "name": "Sondermüll.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1ZQ4AuhaLb8f7ZOUyv47wZ0iptd0QWnsT",
+      "name": "Mülltonne.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1UJgF9RVtQIHx6FvuQZY-6sKqajKQNsIS",
+      "name": "Hausmüll.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1jzJFaPwXONxTyw7j4ThurwV2sAoSKtnX",
+      "name": "Müllabfuhr.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1Kp8nBqs6yxW4qmkF60AgMuHL7ZUg1d-B",
+      "name": "Biomüll.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1sqVI5uNaBoEe-sp9Llu9W6TLbGW8-BbS",
+      "name": "Restmüll.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "19spuOsXu0AYx6dQ2vWFLmWKIfI46Jfsn",
+      "name": "Tonne : Behälter.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "199RzHvJNZF1zl_iv3_mqFIN1RIL2vI12",
+      "name": "verdorbenes Essen.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1-GrQ8D3GrNoAgKoTYUKHznw0AjeLswD-",
+      "name": "verdorben (Lebensmittel).mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1i3BEzv50iBfeI4SF9UaC6J4XFmPtlyys",
+      "name": "Tetrapack.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "19ytgZ4iYSe34cQFRT91uIxK88UQjG0w9",
+      "name": "verschimmelt.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1FHeRv4NKWB8a0GczdFkR8-r0eRHDvbcR",
+      "name": "Schimmel.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1jTRiHbqrpd7_h0dVBu8kF791hVBvz9Kw",
+      "name": "Safttüte.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1HEFN4uWCcfFmH6uip56tQ3dDe-zG1ztm",
+      "name": "Plastikfolie.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1O5Ado5H7KlUcdtOhDrGg7WYGugCoOvZi",
+      "name": "Pfand.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1Dl6BOaFhdX3iJPZQ5aYfUQkqHHSvO0kS",
+      "name": "Pfandflasche.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1aDh0U1u6pHWW3jHc-YLGcp_SzId3TVWI",
+      "name": "Papier.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1KVCsIwZCaaOehMHTksYuYhpU70YYh_3c",
+      "name": "Milchtüte.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1w1sJlkoMXX4sfsPVL9SK7JLgQxxrPEM7",
+      "name": "Karton.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1Rb0EqksCimqwm19t645apgybvjGQlZ-s",
+      "name": "Glas.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "19ZrrUVooeiKSoY9VZGSzxN_tIjVZXRaL",
+      "name": "Folie.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1jBFk-XeP_l6eWVDWSIkMpTuuaetn1n2i",
+      "name": "Essensreste.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1X0ywgBzthZ01UKA4mg4QcwndwItZQ7QU",
+      "name": "Einwegflasche.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1myuslxQDHMI9Rr_azw1u7lrqZUUxm8AX",
+      "name": "Dose.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1-qWfVSzH71bJbTNWci9Y9OrczhAY-aXi",
+      "name": "Alufolie.mp4",
+      "mimeType": "video/mp4"
+    },
+    {
+      "kind": "drive#file",
+      "id": "1lGTWp-27y5h2D2m7I5OsGhRl2zUC2Kxu",
+      "name": "Abfall.mp4",
+      "mimeType": "video/mp4"
+    }
+  ]
+}
