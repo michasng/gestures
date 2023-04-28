@@ -14,7 +14,7 @@ class AppService {
   static const _scheme = 'https';
   static const _host = 'storage.googleapis.com';
   static const _bucket = 'ursberger-gebaerden.appspot.com';
-  static const _wordPattern = r'[A-Za-zÀ-ž\u0370-\u03FF\u0400-\u04FF\s\(\)]+';
+  static const _wordPattern = r'[A-Za-zÀ-ž\u0370-\u03FF\u0400-\u04FF\s\d\-\(\)]+';
   static const _mp4FileExtensionPattern = r'\.mp4';
   static const _fileSeparatorPattern = r'\/';
   static const _mp4FileNamePattern = '($_wordPattern)$_mp4FileExtensionPattern';
