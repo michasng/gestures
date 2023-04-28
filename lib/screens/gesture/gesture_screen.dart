@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/models/gesture.dart';
-import 'package:gestures/screens/gesture/components/gesture_view.dart';
+import 'package:gestures/screens/gesture/components/gestures_carousel.dart';
 
 class GestureScreen extends StatefulWidget {
   final List<Gesture> gestures;
@@ -17,50 +17,24 @@ class GestureScreen extends StatefulWidget {
 }
 
 class _GestureScreenState extends State<GestureScreen> {
-  late final PageController _controller;
-  final _transitionDuration = const Duration(milliseconds: 500);
-  final _transitionCurve = Curves.easeInOut;
-  Future<void> _pageTransition = Future.value();
+  late Gesture currentGesture;
 
   @override
   void initState() {
     super.initState();
-    _controller = PageController(initialPage: widget.initialIndex);
-  }
-
-  void _animateToPage(int index) {
-    final loopingIndex = index % widget.gestures.length;
-    setState(() {
-      _pageTransition = _controller.animateToPage(
-        loopingIndex,
-        duration: _transitionDuration,
-        curve: _transitionCurve,
-      );
-    });
+    currentGesture = widget.gestures[widget.initialIndex];
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Gebärde')),
-      body: PageView.builder(
-        controller: _controller,
-        itemCount: widget.gestures.length,
-        itemBuilder: (context, index) {
-          return FutureBuilder(
-            future: _pageTransition,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState != ConnectionState.done)
-                return Container(); // prevent playback during page transition
-
-              return GestureView(
-                gesture: widget.gestures[index],
-                onPrevious: () => _animateToPage(index - 1),
-                onNext: () => _animateToPage(index + 1),
-              );
-            },
-          );
-        },
+      appBar: AppBar(title: Text(currentGesture.title)),
+      body: GesturesCarousel(
+        gestures: widget.gestures,
+        initialIndex: widget.initialIndex,
+        onRotate: (newIndex) => setState(() {
+          currentGesture = widget.gestures[newIndex];
+        }),
       ),
     );
   }
