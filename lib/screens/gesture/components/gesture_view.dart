@@ -8,11 +8,11 @@ class GestureView extends StatelessWidget {
   final void Function()? onNext;
 
   const GestureView({
-    Key? key,
+    super.key,
     required this.gesture,
     required this.onPrevious,
     required this.onNext,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class GestureView extends StatelessWidget {
               const Spacer(),
               Text(
                 gesture.title,
-                style: Theme.of(context).textTheme.headline5,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
               const Spacer(),
               IconButton(

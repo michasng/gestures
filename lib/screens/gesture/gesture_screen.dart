@@ -7,10 +7,10 @@ class GestureScreen extends StatefulWidget {
   final int initialIndex;
 
   const GestureScreen({
-    Key? key,
+    super.key,
     required this.gestures,
     required this.initialIndex,
-  }) : super(key: key);
+  });
 
   @override
   State<GestureScreen> createState() => _GestureScreenState();

@@ -6,7 +6,7 @@ import 'package:gestures/screens/home/components/package_list_tile.dart';
 class HomeScreen extends StatelessWidget {
   final AppContent appContent;
 
-  const HomeScreen({Key? key, required this.appContent}) : super(key: key);
+  const HomeScreen({super.key, required this.appContent});
 
   @override
   Widget build(BuildContext context) {

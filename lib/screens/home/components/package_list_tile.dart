@@ -5,7 +5,7 @@ import 'package:gestures/screens/package/package_screen.dart';
 class PackageListTile extends StatelessWidget {
   final Package package;
 
-  const PackageListTile({Key? key, required this.package}) : super(key: key);
+  const PackageListTile({super.key, required this.package});
 
   @override
   Widget build(BuildContext context) {

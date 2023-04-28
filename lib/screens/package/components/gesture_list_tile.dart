@@ -6,10 +6,10 @@ class GestureListTile extends StatelessWidget {
   final void Function(Gesture gesture) onTap;
 
   const GestureListTile({
-    Key? key,
+    super.key,
     required this.gesture,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

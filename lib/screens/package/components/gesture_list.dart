@@ -9,7 +9,7 @@ import 'package:get_it/get_it.dart';
 class GestureList extends StatefulWidget {
   final Package package;
 
-  const GestureList({Key? key, required this.package}) : super(key: key);
+  const GestureList({super.key, required this.package});
 
   @override
   State<GestureList> createState() => GestureListState();

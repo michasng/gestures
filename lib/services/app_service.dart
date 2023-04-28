@@ -8,7 +8,8 @@ import 'package:gestures/models/package.dart';
 
 class AppService {
   Future<Map<String, List<String>>> _prepareSynonyms(
-      dynamic synonymsConfig) async {
+    dynamic synonymsConfig,
+  ) async {
     final Map<String, List<String>> mappedSynonyms = {};
     for (final entry in synonymsConfig) {
       mappedSynonyms[entry['title']] = (entry['synonyms'] as List<dynamic>?)
@@ -25,18 +26,21 @@ class AppService {
         jsonDecode(await assetBundle.loadString('assets/config.json'));
     final mappedSynonyms = await _prepareSynonyms(config['synonyms']);
 
-    final json = jsonDecode(await assetBundle
-        .loadString('assets/1kmmmdsYyvc9eMYy_UFLnfAu28DEUuU11.json'));
+    final json = jsonDecode(
+      await assetBundle
+          .loadString('assets/1kmmmdsYyvc9eMYy_UFLnfAu28DEUuU11.json'),
+    );
     List<Package> packages = [];
     for (final packageFileItem in json['files']) {
       String packageMimeType = packageFileItem['mimeType'];
       if (packageMimeType != 'application/vnd.google-apps.folder') continue;
       String packageId = packageFileItem['id'];
       String packageName = packageFileItem['name'];
-      final packageJson;
+      dynamic packageJson;
       try {
         packageJson = jsonDecode(
-            await assetBundle.loadString('assets/packages/$packageId.json'));
+          await assetBundle.loadString('assets/packages/$packageId.json'),
+        );
       } catch (e) {
         print(e);
         continue;
@@ -52,18 +56,22 @@ class AppService {
         String sharingLink =
             'https://drive.google.com/file/d/$id/view?usp=sharing';
 
-        gestures.add(Gesture(
-          title: title,
-          filename: filename,
-          sharingLink: sharingLink,
-          synonyms: mappedSynonyms[title] ?? [],
-        ));
+        gestures.add(
+          Gesture(
+            title: title,
+            filename: filename,
+            sharingLink: sharingLink,
+            synonyms: mappedSynonyms[title] ?? [],
+          ),
+        );
       }
 
-      packages.add(Package(
-        title: packageName,
-        gestures: gestures,
-      ));
+      packages.add(
+        Package(
+          title: packageName,
+          gestures: gestures,
+        ),
+      );
     }
 
     return AppContent(packages: packages);

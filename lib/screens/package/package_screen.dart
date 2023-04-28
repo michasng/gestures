@@ -7,7 +7,7 @@ class PackageScreen extends StatelessWidget {
   final Package package;
   final _gestureListKey = GlobalKey<GestureListState>();
 
-  PackageScreen({Key? key, required this.package}) : super(key: key);
+  PackageScreen({super.key, required this.package});
 
   void _search(String search) {
     _gestureListKey.currentState!.search(search);

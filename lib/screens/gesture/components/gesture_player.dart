@@ -8,7 +8,7 @@ import 'package:video_player/video_player.dart';
 class GesturePlayer extends StatefulWidget {
   final Gesture gesture;
 
-  const GesturePlayer({Key? key, required this.gesture}) : super(key: key);
+  const GesturePlayer({super.key, required this.gesture});
 
   @override
   State<GesturePlayer> createState() => _GesturePlayerState();

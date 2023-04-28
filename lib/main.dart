@@ -11,46 +11,38 @@ import 'package:get_it/get_it.dart';
 void main() {
   GetIt.I.registerSingleton<AppService>(AppService());
   GetIt.I.registerSingleton<SearchService>(SearchService());
-  GetIt.I.registerSingleton<GoogleDriveService>(GoogleDriveService(
-    apiKey: 'AIzaSyBVjAU58Izq4tLrpUCxbqyyt2iOFroJc88',
-  ));
+  GetIt.I.registerSingleton<GoogleDriveService>(
+    GoogleDriveService(
+      apiKey: 'AIzaSyBVjAU58Izq4tLrpUCxbqyyt2iOFroJc88',
+    ),
+  );
 
   runApp(const App());
 }
 
 class App extends StatelessWidget {
   const App({
-    Key? key,
-  }) : super(key: key);
-
-  MaterialColor _createMaterialColor(Color color) {
-    List strengths = <double>[.05];
-    final swatch = <int, Color>{};
-    final int r = color.red, g = color.green, b = color.blue;
-
-    for (int i = 1; i < 10; i++) {
-      strengths.add(0.1 * i);
-    }
-    strengths.forEach((strength) {
-      final double ds = 0.5 - strength;
-      swatch[(strength * 1000).round()] = Color.fromRGBO(
-        r + ((ds < 0 ? r : (255 - r)) * ds).round(),
-        g + ((ds < 0 ? g : (255 - g)) * ds).round(),
-        b + ((ds < 0 ? b : (255 - b)) * ds).round(),
-        1,
-      );
-    });
-    return MaterialColor(color.value, swatch);
-  }
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    const backgroundColor = Color(0xff434b56);
-
     return MaterialApp(
       title: 'Ursberger Gebärden',
-      theme: ThemeData(
-        primarySwatch: _createMaterialColor(backgroundColor),
+      theme: ThemeData.from(
+        colorScheme: ColorScheme(
+          brightness: Brightness.light,
+          primary: Color(0xff434b56),
+          onPrimary: Colors.white,
+          secondary: Color(0xfff5Cf77),
+          onSecondary: Colors.black,
+          error: Color(0xff8c403e),
+          onError: Colors.white,
+          background: Colors.white,
+          onBackground: Colors.black,
+          surface: Color(0xffd2d2d2),
+          onSurface: Colors.black,
+        ),
       ),
       home: FutureBuilder<AppContent>(
         future: GetIt.I<AppService>().load(context),

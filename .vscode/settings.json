@@ -1,0 +1,13 @@
+{
+  "editor.tabSize": 2,
+  "gitlens.currentLine.enabled": false,
+  "files.associations": {
+    "*.arb": "json"
+  },
+  "[json]": {
+    "editor.wordWrap": "on"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
+}

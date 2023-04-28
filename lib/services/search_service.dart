@@ -9,17 +9,22 @@ class SearchService {
     final searchString = toSearchString(search);
 
     final exactMatches = gestures
-        .where((gesture) =>
-            gesture.searchTerms
-                .indexWhere((term) => toSearchString(term) == searchString) !=
-            -1)
+        .where(
+          (gesture) =>
+              gesture.searchTerms
+                  .indexWhere((term) => toSearchString(term) == searchString) !=
+              -1,
+        )
         .toList();
 
     final partialMatches = gestures
-        .where((gesture) =>
-            gesture.searchTerms.indexWhere(
-                (term) => toSearchString(term).startsWith(searchString)) !=
-            -1)
+        .where(
+          (gesture) =>
+              gesture.searchTerms.indexWhere(
+                (term) => toSearchString(term).startsWith(searchString),
+              ) !=
+              -1,
+        )
         .toList();
     partialMatches.sort();
 

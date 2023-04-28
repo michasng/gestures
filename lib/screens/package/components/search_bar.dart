@@ -4,9 +4,9 @@ class SearchBar extends StatelessWidget {
   final void Function(String search)? onSearch;
 
   const SearchBar({
-    Key? key,
+    super.key,
     this.onSearch,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

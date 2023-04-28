@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "donjayamanne.git-extension-pack",
+    "dbaeumer.vscode-eslint",
+    "dart-code.flutter",
+    "nash.awesome-flutter-snippets"
+  ]
+}
