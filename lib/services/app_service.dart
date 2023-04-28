@@ -5,75 +5,82 @@ import 'package:flutter/widgets.dart';
 import 'package:gestures/models/app_content.dart';
 import 'package:gestures/models/gesture.dart';
 import 'package:gestures/models/package.dart';
+import 'package:gestures/services/responses/storage_objects_response/storage_object_item.dart';
+import 'package:gestures/services/responses/storage_objects_response/storage_objects_response.dart';
+import 'package:http/http.dart' as http;
 
 class AppService {
-  Future<Map<String, List<String>>> _prepareSynonyms(
-    dynamic synonymsConfig,
-  ) async {
-    final Map<String, List<String>> mappedSynonyms = {};
-    for (final entry in synonymsConfig) {
-      mappedSynonyms[entry['title']] = (entry['synonyms'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          [];
-    }
-    return mappedSynonyms;
-  }
+  final http.Client _client;
+  static const _scheme = 'https';
+  static const _host = 'storage.googleapis.com';
+  static const _bucket = 'ursberger-gebaerden.appspot.com';
+  static const _wordPattern = r'[A-Za-zÀ-ž\u0370-\u03FF\u0400-\u04FF\s\(\)]+';
+  static const _mp4FileExtensionPattern = r'\.mp4';
+  static const _fileSeparatorPattern = r'\/';
+  static const _mp4FileNamePattern = '($_wordPattern)$_mp4FileExtensionPattern';
+  final _packageTitleRegex =
+      RegExp('($_wordPattern)$_fileSeparatorPattern$_mp4FileNamePattern');
+  final _gestureTitleRegex = RegExp(_mp4FileNamePattern);
+
+  AppService() : _client = http.Client();
 
   Future<AppContent> load(BuildContext context) async {
-    final assetBundle = DefaultAssetBundle.of(context);
-    final config =
-        jsonDecode(await assetBundle.loadString('assets/config.json'));
-    final mappedSynonyms = await _prepareSynonyms(config['synonyms']);
+    var storageObjects = await _findStorageObjects();
+    return _mapToAppContent(storageObjects);
+  }
 
-    final json = jsonDecode(
-      await assetBundle
-          .loadString('assets/1kmmmdsYyvc9eMYy_UFLnfAu28DEUuU11.json'),
+  Future<StorageObjectsResponse> _findStorageObjects() async {
+    final rawResponse = await _client.get(
+      Uri(
+        scheme: _scheme,
+        host: _host,
+        path: 'storage/v1/b/ursberger-gebaerden.appspot.com/o',
+        queryParameters: {
+          'prefix': 'Gebärden/',
+        },
+      ),
     );
-    List<Package> packages = [];
-    for (final packageFileItem in json['files']) {
-      String packageMimeType = packageFileItem['mimeType'];
-      if (packageMimeType != 'application/vnd.google-apps.folder') continue;
-      String packageId = packageFileItem['id'];
-      String packageName = packageFileItem['name'];
-      dynamic packageJson;
-      try {
-        packageJson = jsonDecode(
-          await assetBundle.loadString('assets/packages/$packageId.json'),
-        );
-      } catch (e) {
-        print(e);
-        continue;
-      }
+    final decodedResponse =
+        jsonDecode(rawResponse.body) as Map<String, dynamic>;
+    return StorageObjectsResponse.fromJson(decodedResponse);
+  }
 
-      List<Gesture> gestures = [];
-      for (final fileItem in packageJson['files']) {
-        String mimeType = fileItem['mimeType'];
-        if (mimeType != 'video/mp4') continue;
-        String id = fileItem['id'];
-        String filename = fileItem['name'];
-        String title = filename.replaceAll(RegExp(r'\.mp4'), '');
-        String sharingLink =
-            'https://drive.google.com/file/d/$id/view?usp=sharing';
-
-        gestures.add(
-          Gesture(
-            title: title,
-            filename: filename,
-            sharingLink: sharingLink,
-            synonyms: mappedSynonyms[title] ?? [],
-          ),
-        );
-      }
-
-      packages.add(
-        Package(
-          title: packageName,
-          gestures: gestures,
-        ),
-      );
+  AppContent _mapToAppContent(StorageObjectsResponse storageObjects) {
+    final Map<String, List<Gesture>> packageTitleToGestures = {};
+    final videoFileItems =
+        storageObjects.items.where((item) => item.contentType == 'video/mp4');
+    for (var item in videoFileItems) {
+      final gesture = _mapGesture(item);
+      final packageTitle =
+          _packageTitleRegex.firstMatch(item.name)?.group(1) ?? item.name;
+      packageTitleToGestures.putIfAbsent(packageTitle, () => <Gesture>[]);
+      packageTitleToGestures[packageTitle]!.add(gesture);
     }
+    final packages = packageTitleToGestures.keys.map(
+      (packageTitle) => Package(
+        title: packageTitle,
+        gestures: packageTitleToGestures[packageTitle]!,
+      ),
+    );
+    return AppContent(packages: packages.toList());
+  }
 
-    return AppContent(packages: packages);
+  Gesture _mapGesture(StorageObjectItem item) {
+    final encodedFilePath = Uri.encodeComponent(item.name);
+    final gestureTitle =
+        _gestureTitleRegex.firstMatch(item.name)?.group(1) ?? item.name;
+    return Gesture(
+      title: gestureTitle,
+      directLink: '$_scheme://$_host/$_bucket/$encodedFilePath',
+      synonyms: _mapSynonyms(item),
+    );
+  }
+
+  List<String> _mapSynonyms(StorageObjectItem item) {
+    return item.metadata?.synonyms
+            ?.split(',')
+            .map((synonym) => synonym.trim())
+            .toList() ??
+        [];
   }
 }

@@ -4,18 +4,12 @@ import 'package:gestures/screens/error/error_screen.dart';
 import 'package:gestures/screens/home/home_screen.dart';
 import 'package:gestures/screens/loading/loading_screen.dart';
 import 'package:gestures/services/app_service.dart';
-import 'package:gestures/services/google_drive_service.dart';
 import 'package:gestures/services/search_service.dart';
 import 'package:get_it/get_it.dart';
 
 void main() {
   GetIt.I.registerSingleton<AppService>(AppService());
   GetIt.I.registerSingleton<SearchService>(SearchService());
-  GetIt.I.registerSingleton<GoogleDriveService>(
-    GoogleDriveService(
-      apiKey: 'AIzaSyBVjAU58Izq4tLrpUCxbqyyt2iOFroJc88',
-    ),
-  );
 
   runApp(const App());
 }

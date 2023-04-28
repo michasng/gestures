@@ -1,8 +1,6 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:gestures/models/gesture.dart';
-import 'package:gestures/services/google_drive_service.dart';
-import 'package:get_it/get_it.dart';
 import 'package:video_player/video_player.dart';
 
 class GesturePlayer extends StatefulWidget {
@@ -21,23 +19,10 @@ class _GesturePlayerState extends State<GesturePlayer> {
   void initState() {
     super.initState();
 
-    if (widget.gesture.sharingLink == null) {
-      print('Link missing');
-      return;
-    }
-
-    final googleDriveService = GetIt.I<GoogleDriveService>();
-    final directLink =
-        googleDriveService.toDirectLink(widget.gesture.sharingLink!);
-
-    if (directLink == null) {
-      print('Invalid link $directLink from ${widget.gesture.sharingLink}');
-      return;
-    }
-
-    print('Now playing: $directLink');
+    print('Now playing: ${widget.gesture.directLink}');
     setState(() {
-      final controller = VideoPlayerController.network(directLink);
+      final controller =
+          VideoPlayerController.network(widget.gesture.directLink);
       _chewieController = ChewieController(
         videoPlayerController: controller,
         // aspectRatio: 1 / 1, // stretch and squash the video to force-fit the frame
