@@ -5,30 +5,40 @@ class SearchService {
     return text.replaceAll(' ', '').toLowerCase();
   }
 
+  Iterable<Gesture> _searchBy(
+    List<Gesture> gestures,
+    bool Function(String term) isMatch,
+  ) {
+    return gestures.where(
+      (gesture) =>
+          gesture.searchTerms
+              .indexWhere((term) => isMatch(toSearchString(term))) !=
+          -1,
+    );
+  }
+
   List<Gesture> search(List<Gesture> gestures, String search) {
     final searchString = toSearchString(search);
 
-    final exactMatches = gestures
-        .where(
-          (gesture) =>
-              gesture.searchTerms
-                  .indexWhere((term) => toSearchString(term) == searchString) !=
-              -1,
-        )
-        .toList();
+    final exactMatches = _searchBy(
+      gestures,
+      (term) => term == searchString,
+    );
 
-    final partialMatches = gestures
-        .where(
-          (gesture) =>
-              gesture.searchTerms.indexWhere(
-                (term) => toSearchString(term).startsWith(searchString),
-              ) !=
-              -1,
-        )
-        .toList();
-    partialMatches.sort();
+    final prefixMatches = _searchBy(
+      gestures,
+      (term) => term.startsWith(searchString),
+    ).toList();
+    prefixMatches.sort();
 
-    // combine and remove duplicate entries
-    return (exactMatches + partialMatches).toSet().toList();
+    final containedMatches = _searchBy(
+      gestures,
+      (term) => term.contains(searchString),
+    ).toList();
+    containedMatches.sort();
+
+    // combine and remove duplicate entries with a set literal
+    return <Gesture>{...exactMatches, ...prefixMatches, ...containedMatches}
+        .toList();
   }
 }
