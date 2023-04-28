@@ -16,7 +16,7 @@ class PackageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Gebärde wählen')),
+      appBar: AppBar(title: Text(package.title)),
       body: Column(
         children: [
           Padding(

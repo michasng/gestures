@@ -9,12 +9,21 @@ class PackageListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(package.title),
-      subtitle: Text('${package.gestures.length} Videoclips'),
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => PackageScreen(package: package),
+    final theme = Theme.of(context);
+
+    return Card(
+      child: ListTile(
+        textColor: theme.colorScheme.onSurface,
+        title: Text(package.title),
+        subtitle: Text('${package.gestures.length} Videoclips'),
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => PackageScreen(package: package),
+          ),
+        ),
+        trailing: Icon(
+          package.icon,
+          color: theme.colorScheme.primary,
         ),
       ),
     );

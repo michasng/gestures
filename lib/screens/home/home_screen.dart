@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gestures/models/app_content.dart';
 import 'package:gestures/models/package.dart';
 import 'package:gestures/screens/home/components/package_list_tile.dart';
+import 'package:gestures/screens/package/components/logo.dart';
 
 class HomeScreen extends StatelessWidget {
   final AppContent appContent;
@@ -10,27 +11,56 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     final allGestures = [...appContent.packages.expand((p) => p.gestures)];
     allGestures.sort((g1, g2) => g1.title.compareTo(g2.title));
-    final combinedPackage = Package(
-      title: 'Alle',
-      gestures: allGestures,
-    );
 
     return Scaffold(
       appBar: AppBar(
-        leading: const Image(
-          image: AssetImage('assets/Dominikus-Ringeisen-Werk.png'),
-          filterQuality: FilterQuality.medium,
+        centerTitle: true,
+        toolbarHeight: 64,
+        leading: Logo(withText: false, color: theme.colorScheme.onPrimary),
+        backgroundColor: // Colors.transparent,
+            theme.colorScheme.primary,
+        foregroundColor:
+            // theme.colorScheme.onBackground,
+            theme.colorScheme.onPrimary,
+        shape: ContinuousRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(50),
+          ),
         ),
-        title: const Text('Ursberger Gebärden - Paket wählen'),
-        toolbarHeight: 128,
+        // elevation: 0,
+        title: Text(
+          'Ursberger Gebärden',
+          // style: theme.textTheme.headlineMedium
+          //  ?.copyWith(color: theme.colorScheme.onPrimary),
+        ),
       ),
       body: ListView(
         children: [
-          PackageListTile(package: combinedPackage),
+          PackageListTile(
+            package: Package(
+              title: 'Alle Gebärden',
+              gestures: allGestures,
+            ),
+          ),
+          Divider(),
+          ListTile(
+            title: Text(
+              'Pakete',
+              style: theme.textTheme.headlineSmall
+                  ?.copyWith(color: theme.colorScheme.onBackground),
+            ),
+          ),
           for (final package in appContent.packages)
             PackageListTile(package: package),
+          Divider(),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Logo(withText: true, color: theme.colorScheme.onBackground),
+          ),
         ],
       ),
     );
