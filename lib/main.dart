@@ -6,6 +6,7 @@ import 'package:gestures/screens/loading/loading_screen.dart';
 import 'package:gestures/services/app_service.dart';
 import 'package:gestures/services/search_service.dart';
 import 'package:get_it/get_it.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   GetIt.I.registerSingleton<AppService>(AppService());
@@ -24,6 +25,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Ursberger Gebärden',
       theme: ThemeData.from(
+        textTheme: GoogleFonts.spectralTextTheme(),
         colorScheme: ColorScheme(
           brightness: Brightness.light,
           primary: Color(0xffdab88b),

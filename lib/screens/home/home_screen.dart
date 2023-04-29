@@ -3,6 +3,7 @@ import 'package:gestures/models/app_content.dart';
 import 'package:gestures/models/package.dart';
 import 'package:gestures/screens/home/components/package_list_tile.dart';
 import 'package:gestures/screens/package/components/logo.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatelessWidget {
   final AppContent appContent;
@@ -34,8 +35,10 @@ class HomeScreen extends StatelessWidget {
         // elevation: 0,
         title: Text(
           'Ursberger Gebärden',
-          // style: theme.textTheme.headlineMedium
-          //  ?.copyWith(color: theme.colorScheme.onPrimary),
+          style: GoogleFonts.cinzelDecorative(
+            textStyle: theme.textTheme.headlineSmall,
+            color: theme.colorScheme.onPrimary,
+          ),
         ),
       ),
       body: ListView(
