@@ -74,6 +74,7 @@ class _LoginFormState extends State<LoginForm> {
           SizedBox(height: 16),
           TextFormField(
             focusNode: _passwordFocus,
+            obscureText: true,
             onFieldSubmitted: (_) => _submit(),
             validator: (value) {
               if (value?.isEmpty ?? true) return 'Bitte Passwort eingeben';
