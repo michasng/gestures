@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/models/app_content.dart';
 import 'package:gestures/models/package.dart';
+import 'package:gestures/screens/home/components/home_menu_button.dart';
 import 'package:gestures/screens/home/components/package_list_tile.dart';
 import 'package:gestures/screens/package/components/logo.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -36,6 +37,10 @@ class HomeScreen extends StatelessWidget {
             color: theme.colorScheme.onPrimary,
           ),
         ),
+        actions: [
+          HomeMenuButton(),
+          SizedBox(width: 8),
+        ],
       ),
       body: ListView(
         children: [
