@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "792547535206",
+    "project_id": "ursberger-gebaerden",
+    "storage_bucket": "ursberger-gebaerden.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792547535206:android:36964838e361256f2fc0a7",
+        "android_client_info": {
+          "package_name": "com.example.gestures"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792547535206-vgpladcuskbulbmi4ort6tg4cgbb914t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3nJdOODmkZNdJwRXxjtJAIMXReyVXPUw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792547535206-vgpladcuskbulbmi4ort6tg4cgbb914t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/models/credentials.dart';
 import 'package:gestures/screens/login/components/login_form.dart';
 import 'package:gestures/screens/package/components/logo.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatelessWidget {
-  final void Function(Credentials credentials) onLogin;
-
-  const LoginScreen({
-    super.key,
-    required this.onLogin,
-  });
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +31,7 @@ class LoginScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: SizedBox(
           width: 256,
-          child: LoginForm(onLogin: onLogin),
+          child: LoginForm(),
         ),
       ),
     );

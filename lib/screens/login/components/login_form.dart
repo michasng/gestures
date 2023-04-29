@@ -1,13 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gestures/models/credentials.dart';
 
 class LoginForm extends StatefulWidget {
-  final void Function(Credentials credentials) onLogin;
-
-  const LoginForm({
-    super.key,
-    required this.onLogin,
-  });
+  const LoginForm({super.key});
 
   @override
   State<LoginForm> createState() => _LoginFormState();
@@ -19,17 +14,35 @@ class _LoginFormState extends State<LoginForm> {
   final _passwordFocus = FocusNode();
   String? _email;
   String? _password;
+  String? _errorMessage;
 
-  void _submit() {
+  String _errorCodeToMessage(String code) {
+    switch (code) {
+      case 'invalid-email':
+        return 'Die E-Mail Adresse ist ungültig.';
+      case 'user-not-found':
+        return 'Dieser Nutzer existiert nicht.';
+      case 'wrong-password':
+        return 'Das Passwort ist falsch.';
+      default:
+        return 'Unerwarteter Fehler: $code';
+    }
+  }
+
+  void _submit() async {
     var formState = _formKey.currentState;
     if (formState?.validate() ?? false) {
       formState!.save();
-      widget.onLogin(
-        Credentials(
+      try {
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _email!,
           password: _password!,
-        ),
-      );
+        );
+      } on FirebaseAuthException catch (e) {
+        setState(() {
+          _errorMessage = _errorCodeToMessage(e.code);
+        });
+      }
     }
   }
 
@@ -94,6 +107,18 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ],
           ),
+          SizedBox(height: 16),
+          if (_errorMessage != null)
+            Row(
+              children: [
+                Spacer(),
+                Text(
+                  _errorMessage!,
+                  style: theme.textTheme.bodyMedium
+                      ?.copyWith(color: theme.colorScheme.error),
+                ),
+              ],
+            )
         ],
       ),
     );

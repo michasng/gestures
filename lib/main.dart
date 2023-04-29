@@ -1,6 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:gestures/components/auth_state_builder.dart';
+import 'package:gestures/firebase_options.dart';
 import 'package:gestures/models/app_content.dart';
-import 'package:gestures/models/credentials.dart';
 import 'package:gestures/screens/error/error_screen.dart';
 import 'package:gestures/screens/home/home_screen.dart';
 import 'package:gestures/screens/loading/loading_screen.dart';
@@ -10,7 +12,10 @@ import 'package:gestures/services/search_service.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   GetIt.I.registerSingleton<AppService>(AppService());
   GetIt.I.registerSingleton<SearchService>(SearchService());
 
@@ -27,14 +32,6 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  Credentials? _credentials;
-
-  void _login(Credentials credentials) {
-    setState(() {
-      _credentials = credentials;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -65,21 +62,24 @@ class _AppState extends State<App> {
           border: OutlineInputBorder(),
         ),
       ),
-      home: _credentials == null
-          ? LoginScreen(
-              onLogin: _login,
-            )
-          : FutureBuilder<AppContent>(
-              future: GetIt.I<AppService>().load(context),
-              builder: (context, snapshot) {
-                if (snapshot.hasError)
-                  return ErrorScreen(error: snapshot.error!);
+      home: AuthStateBuilder(
+        loadingBuilder: (_) => const LoadingScreen(),
+        errorBuilder: (_, error) => ErrorScreen(error: error),
+        unauthenticatedBuilder: (_) => LoginScreen(),
+        authenticatedBuilder: (_, user) {
+          return FutureBuilder<AppContent>(
+            future: GetIt.I<AppService>().load(context),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState != ConnectionState.done)
+                return const LoadingScreen();
 
-                if (!snapshot.hasData) return const LoadingScreen();
+              if (snapshot.hasError) return ErrorScreen(error: snapshot.error!);
 
-                return HomeScreen(appContent: snapshot.data!);
-              },
-            ),
+              return HomeScreen(appContent: snapshot.data!);
+            },
+          );
+        },
+      ),
     );
   }
 }
