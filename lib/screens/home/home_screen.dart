@@ -22,17 +22,13 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         toolbarHeight: 64,
         leading: Logo(withText: false, color: theme.colorScheme.onPrimary),
-        backgroundColor: // Colors.transparent,
-            theme.colorScheme.primary,
-        foregroundColor:
-            // theme.colorScheme.onBackground,
-            theme.colorScheme.onPrimary,
+        backgroundColor: theme.colorScheme.primary,
+        foregroundColor: theme.colorScheme.onPrimary,
         shape: ContinuousRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(50),
           ),
         ),
-        // elevation: 0,
         title: Text(
           'Ursberger Gebärden',
           style: GoogleFonts.cinzelDecorative(

@@ -12,7 +12,6 @@ class SearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: const InputDecoration(
-        border: OutlineInputBorder(),
         labelText: 'Suche',
       ),
       onChanged: onSearch,
