@@ -28,7 +28,6 @@ class _GesturePlayerState extends State<GesturePlayer> {
         // aspectRatio: 1 / 1, // stretch and squash the video to force-fit the frame
         autoPlay: true,
         showControlsOnInitialize: false,
-        showOptions: false,
       );
     });
   }
