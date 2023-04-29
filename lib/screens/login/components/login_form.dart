@@ -10,7 +10,6 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
-  final _emailFocus = FocusNode();
   final _passwordFocus = FocusNode();
   String? _email;
   String? _password;
@@ -61,8 +60,6 @@ class _LoginFormState extends State<LoginForm> {
           ),
           SizedBox(height: 16),
           TextFormField(
-            focusNode: _emailFocus,
-            autofocus: true,
             onFieldSubmitted: (_) => _passwordFocus.requestFocus(),
             validator: (value) {
               if (value?.isEmpty ?? true)
