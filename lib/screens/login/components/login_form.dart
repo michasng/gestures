@@ -60,6 +60,7 @@ class _LoginFormState extends State<LoginForm> {
           ),
           SizedBox(height: 16),
           TextFormField(
+            autofillHints: [AutofillHints.email],
             onFieldSubmitted: (_) => _passwordFocus.requestFocus(),
             validator: (value) {
               if (value?.isEmpty ?? true)
@@ -75,6 +76,7 @@ class _LoginFormState extends State<LoginForm> {
           TextFormField(
             focusNode: _passwordFocus,
             obscureText: true,
+            autofillHints: [AutofillHints.password],
             onFieldSubmitted: (_) => _submit(),
             validator: (value) {
               if (value?.isEmpty ?? true) return 'Bitte Passwort eingeben';
