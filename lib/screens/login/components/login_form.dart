@@ -34,8 +34,8 @@ class _LoginFormState extends State<LoginForm> {
       formState!.save();
       try {
         await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: _email!,
-          password: _password!,
+          email: _email!.trim(),
+          password: _password!.trim(),
         );
       } on FirebaseAuthException catch (e) {
         setState(() {
