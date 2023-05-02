@@ -30,11 +30,13 @@ class HomeScreen extends StatelessWidget {
             bottom: Radius.circular(50),
           ),
         ),
-        title: Text(
-          'Ursberger Gebärden',
-          style: GoogleFonts.cinzelDecorative(
-            textStyle: theme.textTheme.headlineSmall,
-            color: theme.colorScheme.onPrimary,
+        title: FittedBox(
+          child: Text(
+            'Ursberger Gebärden',
+            style: GoogleFonts.cinzelDecorative(
+              textStyle: theme.textTheme.headlineSmall,
+              color: theme.colorScheme.onPrimary,
+            ),
           ),
         ),
         actions: [

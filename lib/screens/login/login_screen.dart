@@ -18,11 +18,13 @@ class LoginScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         foregroundColor: theme.colorScheme.onBackground,
         elevation: 0,
-        title: Text(
-          'Ursberger Gebärden',
-          style: GoogleFonts.cinzelDecorative(
-            textStyle: theme.textTheme.headlineSmall,
-            color: theme.colorScheme.onBackground,
+        title: FittedBox(
+          child: Text(
+            'Ursberger Gebärden',
+            style: GoogleFonts.cinzelDecorative(
+              textStyle: theme.textTheme.headlineSmall,
+              color: theme.colorScheme.onBackground,
+            ),
           ),
         ),
       ),

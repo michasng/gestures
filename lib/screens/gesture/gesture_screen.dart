@@ -28,7 +28,7 @@ class _GestureScreenState extends State<GestureScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(currentGesture.title)),
+      appBar: AppBar(title: FittedBox(child: Text(currentGesture.title))),
       body: GesturesCarousel(
         gestures: widget.gestures,
         initialIndex: widget.initialIndex,

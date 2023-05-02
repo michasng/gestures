@@ -29,6 +29,7 @@ class GestureView extends StatelessWidget {
         ),
         Expanded(
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconButton(
                 onPressed: onPrevious,
@@ -36,12 +37,14 @@ class GestureView extends StatelessWidget {
                 iconSize: 32,
                 disabledColor: Colors.transparent,
               ),
-              const Spacer(),
-              Text(
-                gesture.title,
-                style: Theme.of(context).textTheme.headlineSmall,
+              Flexible(
+                child: FittedBox(
+                  child: Text(
+                    gesture.title,
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                ),
               ),
-              const Spacer(),
               IconButton(
                 onPressed: onNext,
                 icon: const Icon(Icons.skip_next_rounded),

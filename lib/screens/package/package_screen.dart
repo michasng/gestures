@@ -16,7 +16,7 @@ class PackageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(package.title)),
+      appBar: AppBar(title: FittedBox(child: Text(package.title))),
       body: Column(
         children: [
           Padding(
