@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gestures/components/app_title.dart';
 import 'package:gestures/models/app_content.dart';
 import 'package:gestures/models/package.dart';
 import 'package:gestures/screens/home/components/home_menu_button.dart';
 import 'package:gestures/screens/home/components/package_list_tile.dart';
-import 'package:gestures/screens/package/components/logo.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatelessWidget {
   final AppContent appContent;
@@ -20,25 +19,7 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        toolbarHeight: 64,
-        leading: Logo(withText: false, color: theme.colorScheme.onPrimary),
-        backgroundColor: theme.colorScheme.primary,
-        foregroundColor: theme.colorScheme.onPrimary,
-        shape: ContinuousRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(50),
-          ),
-        ),
-        title: FittedBox(
-          child: Text(
-            'Ursberger Gebärden',
-            style: GoogleFonts.cinzelDecorative(
-              textStyle: theme.textTheme.headlineSmall,
-              color: theme.colorScheme.onPrimary,
-            ),
-          ),
-        ),
+        title: AppTitle(),
         actions: [
           HomeMenuButton(),
           SizedBox(width: 8),
@@ -57,16 +38,11 @@ class HomeScreen extends StatelessWidget {
             title: Text(
               'Pakete',
               style: theme.textTheme.headlineSmall
-                  ?.copyWith(color: theme.colorScheme.onBackground),
+                  ?.copyWith(color: theme.colorScheme.onPrimary),
             ),
           ),
           for (final package in appContent.packages)
             PackageListTile(package: package),
-          Divider(),
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Logo(withText: true, color: theme.colorScheme.onBackground),
-          ),
         ],
       ),
     );

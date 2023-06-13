@@ -1,23 +1,31 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class Logo extends StatelessWidget {
-  final bool withText;
-  final Color? color;
+  final double? height;
 
   const Logo({
     super.key,
-    required this.withText,
-    this.color,
+    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
-    final fileName = withText ? 'logo_with_text.png' : 'logo.png';
-
-    return Image(
-      image: AssetImage('assets/$fileName'),
-      filterQuality: FilterQuality.medium,
-      color: color,
+    return Container(
+      color: Colors.white,
+      height: height,
+      child: Row(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(16),
+            child: Image(
+              image: AssetImage('assets/logo.png'),
+              filterQuality: FilterQuality.medium,
+              color: Color(0xffa60430),
+            ),
+          ),
+          Spacer(),
+        ],
+      ),
     );
   }
 }

@@ -34,51 +34,82 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
+    // DRW corporate design
+    final primaryColor = Color(0xffa60430);
+    final accentColor = Color(0xffedd7d5);
+    // final surfaceColor = Color(0xfff0f0ed);
+    // final surfaceColor2 = Color(0xffe1e1dd);
+    const backgroundColor = Colors.white;
+
+    // not defined in corporate design
+    const onLightColor = Color(0xff4d4d4d);
+    const onDarkColor = Colors.white;
+
     return MaterialApp(
       title: 'Ursberger Gebärden',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.from(
-        textTheme: GoogleFonts.spectralTextTheme(),
+        textTheme: GoogleFonts.firaSansTextTheme(),
         colorScheme: ColorScheme(
           brightness: Brightness.light,
-          primary: Color(0xffdab88b),
-          onPrimary: Colors.white,
-          secondary: Color(0xffaa885b),
-          onSecondary: Colors.white,
-          error: Color(0xffd45b3b),
-          onError: Colors.white,
-          background: Color(0xfff3e9dd),
-          onBackground: Color(0xff4d4d4d),
-          surface: Color(0xfffdf6ec),
-          onSurface: Color(0xff4d4d4d),
+          primary: primaryColor,
+          onPrimary: onDarkColor,
+          secondary: accentColor,
+          onSecondary: onLightColor,
+          error: primaryColor,
+          onError: onDarkColor,
+          background: backgroundColor,
+          onBackground: onLightColor,
+          // using backgroundColor as surfaceColor, because of the BG image
+          surface: backgroundColor.withAlpha(216),
+          onSurface: onLightColor,
         ),
       ).copyWith(
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            foregroundColor: Color(0xffaa885b),
-          ),
-        ),
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(),
         ),
+        scaffoldBackgroundColor: Colors.transparent,
+        appBarTheme: AppBarTheme(
+          centerTitle: true,
+          toolbarHeight: 64,
+          backgroundColor: primaryColor,
+          foregroundColor: onDarkColor,
+          shape: ContinuousRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(50),
+            ),
+          ),
+          titleTextStyle: TextStyle(
+            color: onDarkColor,
+          ),
+        ),
       ),
-      home: AuthStateBuilder(
-        loadingBuilder: (_) => const LoadingScreen(),
-        errorBuilder: (_, error) => ErrorScreen(error: error),
-        unauthenticatedBuilder: (_) => LoginScreen(),
-        authenticatedBuilder: (_, user) {
-          return FutureBuilder<AppContent>(
-            future: GetIt.I<AppService>().load(context),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState != ConnectionState.done)
-                return const LoadingScreen();
+      home: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/sprechende_haende.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: AuthStateBuilder(
+          loadingBuilder: (_) => const LoadingScreen(),
+          errorBuilder: (_, error) => ErrorScreen(error: error),
+          unauthenticatedBuilder: (_) => LoginScreen(),
+          authenticatedBuilder: (_, user) {
+            return FutureBuilder<AppContent>(
+              future: GetIt.I<AppService>().load(context),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState != ConnectionState.done)
+                  return const LoadingScreen();
 
-              if (snapshot.hasError) return ErrorScreen(error: snapshot.error!);
+                if (snapshot.hasError)
+                  return ErrorScreen(error: snapshot.error!);
 
-              return HomeScreen(appContent: snapshot.data!);
-            },
-          );
-        },
+                return HomeScreen(appContent: snapshot.data!);
+              },
+            );
+          },
+        ),
       ),
     );
   }
