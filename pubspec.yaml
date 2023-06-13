@@ -4,28 +4,28 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.18.2 <3.0.0"
+  sdk: ">=3.0.3 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  http: ^0.13.5
-  json_annotation: ^4.8.0 # defines annotations for JSON (de)serialization.
-  google_fonts: ^4.0.4
-  chewie: ^1.4.0 # adds a widget to play videos with controls
+  http: ^1.0.0
+  json_annotation: ^4.8.1 # defines annotations for JSON (de)serialization.
+  google_fonts: ^5.0.0
+  chewie: ^1.5.0 # adds a widget to play videos with controls
   video_player: ^2.6.1 # used for lower-level access with chewie
-  get_it: ^7.3.0 # dependency injection, basically provider without the need for context
-  firebase_core: ^2.10.0
-  firebase_auth: ^4.4.2
+  get_it: ^7.6.0 # dependency injection, basically provider without the need for context
+  firebase_core: ^2.14.0
+  firebase_auth: ^4.6.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.1
-  build_runner: ^2.3.3 # a concrete way of generating files using Dart code.
-  json_serializable: ^6.6.1 # Dart Build System builders for handling JSON.
+  build_runner: ^2.4.5 # a concrete way of generating files using Dart code.
+  json_serializable: ^6.7.0 # Dart Build System builders for handling JSON.
 
 flutter:
   uses-material-design: true

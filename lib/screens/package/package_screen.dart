@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/models/package.dart';
 import 'package:gestures/screens/package/components/gesture_list.dart';
-import 'package:gestures/screens/package/components/search_bar.dart';
 
 class PackageScreen extends StatelessWidget {
   final Package package;
@@ -21,8 +20,11 @@ class PackageScreen extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(16),
-            child: SearchBar(
-              onSearch: _search,
+            child: TextField(
+              decoration: const InputDecoration(
+                labelText: 'Suche',
+              ),
+              onChanged: _search,
             ),
           ),
           Expanded(
