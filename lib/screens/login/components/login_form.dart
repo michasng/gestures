@@ -14,6 +14,7 @@ class _LoginFormState extends State<LoginForm> {
   String? _email;
   String? _password;
   String? _errorMessage;
+  bool _obscurePassword = true;
 
   // workaround for https://github.com/firebase/flutterfire/issues/10966
   String? extractFirebaseAuthExceptionCode(FirebaseAuthException exception) {
@@ -90,7 +91,7 @@ class _LoginFormState extends State<LoginForm> {
           SizedBox(height: 16),
           TextFormField(
             focusNode: _passwordFocus,
-            obscureText: true,
+            obscureText: _obscurePassword,
             autofillHints: [AutofillHints.password],
             onFieldSubmitted: (_) => _submit(),
             validator: (value) {
@@ -98,8 +99,15 @@ class _LoginFormState extends State<LoginForm> {
               return null;
             },
             onSaved: (value) => _password = value,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'Passwort',
+              suffixIcon: IconButton(
+                onPressed: () =>
+                    setState(() => _obscurePassword = !_obscurePassword),
+                icon: Icon(
+                  _obscurePassword ? Icons.visibility : Icons.visibility_off,
+                ),
+              ),
             ),
           ),
           SizedBox(height: 16),
