@@ -15,7 +15,19 @@ class _LoginFormState extends State<LoginForm> {
   String? _password;
   String? _errorMessage;
 
-  String _errorCodeToMessage(String code) {
+  // workaround for https://github.com/firebase/flutterfire/issues/10966
+  String? extractFirebaseAuthExceptionCode(FirebaseAuthException exception) {
+    if (exception.code != 'unknown') return exception.code;
+    if (exception.message == null) return null;
+
+    String regexPattern = r'(?<=\(auth/)(.*?)(?=\)\.)';
+    RegExp regExp = RegExp(regexPattern);
+    Match? match = regExp.firstMatch(exception.message!);
+
+    return match == null ? null : match.group(0)!;
+  }
+
+  String _errorCodeToMessage(String? code) {
     switch (code) {
       case 'invalid-email':
         return 'Die E-Mail Adresse ist ungültig.';
@@ -23,6 +35,8 @@ class _LoginFormState extends State<LoginForm> {
         return 'Dieser Nutzer existiert nicht.';
       case 'wrong-password':
         return 'Das Passwort ist falsch.';
+      case null:
+        return 'Unbekannter Fehler';
       default:
         return 'Unerwarteter Fehler: $code';
     }
@@ -38,8 +52,9 @@ class _LoginFormState extends State<LoginForm> {
           password: _password!.trim(),
         );
       } on FirebaseAuthException catch (e) {
+        final code = extractFirebaseAuthExceptionCode(e);
         setState(() {
-          _errorMessage = _errorCodeToMessage(e.code);
+          _errorMessage = _errorCodeToMessage(code);
         });
       }
     }
