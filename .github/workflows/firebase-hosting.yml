@@ -1,0 +1,42 @@
+name: Deploy to Firebase Hosting
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build_web:
+    name: Build Flutter Web
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@main
+      - name: Get Flutter
+        uses: subosito/flutter-action@main
+        with:
+          flutter-version: "3.10.4"
+      - run: flutter pub get
+      - run: flutter build web
+      - name: Write Artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: web-build
+          path: build/web
+  deploy_web:
+    name: Deploy Web to Firebase Hosting
+    needs: build_web
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@main
+      - name: Read Artifact
+        uses: actions/download-artifact@main
+        with:
+          name: web-build
+          path: build/web
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@main
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_URSBERGER_GEBAERDEN }}"
+          channelId: live
+          projectId: ursberger-gebaerden
