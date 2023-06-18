@@ -87,8 +87,9 @@ class _AppState extends State<App> {
       home: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/sprechende_haende.jpg'),
-            fit: BoxFit.cover,
+            image: AssetImage('assets/sprechende_haende.png'),
+            fit: BoxFit.fitHeight,
+            repeat: ImageRepeat.repeatX,
           ),
         ),
         child: AuthStateBuilder(
