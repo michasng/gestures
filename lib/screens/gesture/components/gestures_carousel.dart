@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/models/gesture.dart';
+import 'package:gestures/screens/gesture/components/carousel_controls.dart';
 import 'package:gestures/screens/gesture/components/gesture_view.dart';
 
 class GesturesCarousel extends StatefulWidget {
@@ -67,8 +68,11 @@ class _GesturesCarouselState extends State<GesturesCarousel> {
 
             return GestureView(
               gesture: widget.gestures[index],
-              onPrevious: _previous,
-              onNext: _next,
+              controlsChild: CarouselControls(
+                gesture: widget.gestures[index],
+                onPrevious: _previous,
+                onNext: _next,
+              ),
             );
           },
         );
