@@ -23,7 +23,6 @@ class _GesturePlayerState extends State<GesturePlayer> {
 
   Future<void> init() async {
     final url = await widget.gesture.storageReference.getDownloadURL();
-    print('Now playing: $url');
     if (!mounted) return;
     setState(() {
       final controller = VideoPlayerController.network(url);
