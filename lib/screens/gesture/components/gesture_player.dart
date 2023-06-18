@@ -18,11 +18,15 @@ class _GesturePlayerState extends State<GesturePlayer> {
   @override
   void initState() {
     super.initState();
+    init();
+  }
 
-    print('Now playing: ${widget.gesture.directLink}');
+  Future<void> init() async {
+    final url = await widget.gesture.storageReference.getDownloadURL();
+    print('Now playing: $url');
+    if (!mounted) return;
     setState(() {
-      final controller =
-          VideoPlayerController.network(widget.gesture.directLink);
+      final controller = VideoPlayerController.network(url);
       _chewieController = ChewieController(
         videoPlayerController: controller,
         // aspectRatio: 1 / 1, // stretch and squash the video to force-fit the frame

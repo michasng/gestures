@@ -10,14 +10,15 @@ dependencies:
   flutter:
     sdk: flutter
 
-  http: ^1.0.0
+  http: ^0.13.0
   json_annotation: ^4.8.1 # defines annotations for JSON (de)serialization.
-  google_fonts: ^5.0.0
+  google_fonts: ^4.0.4
   chewie: ^1.5.0 # adds a widget to play videos with controls
   video_player: ^2.6.1 # used for lower-level access with chewie
   get_it: ^7.6.0 # dependency injection, basically provider without the need for context
   firebase_core: ^2.14.0
   firebase_auth: ^4.6.3
+  firebase_storage: ^11.2.3
 
 dev_dependencies:
   flutter_test:
