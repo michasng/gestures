@@ -21,6 +21,7 @@ class PackageScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16),
             child: TextField(
+              autofocus: true,
               decoration: const InputDecoration(
                 labelText: 'Suche',
               ),

@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
         children: [
           PackageListTile(
             package: Package(
-              title: 'Alle Gebärden',
+              title: 'Alle Gebärden durchsuchen',
               gestures: allGestures,
             ),
           ),
