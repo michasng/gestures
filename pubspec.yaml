@@ -33,3 +33,5 @@ flutter:
 
   assets:
     - assets/
+    - assets/fonts/fira_sans/
+    - assets/fonts/cincel_decorative/

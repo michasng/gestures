@@ -19,6 +19,7 @@ void main() async {
   GetIt.I.registerSingleton<AppService>(AppService());
   GetIt.I.registerSingleton<SearchService>(SearchService());
 
+  GoogleFonts.config.allowRuntimeFetching = false;
   runApp(const App());
 }
 
