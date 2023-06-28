@@ -35,3 +35,9 @@ flutter:
     - assets/
     - assets/fonts/fira_sans/
     - assets/fonts/cincel_decorative/
+
+  # prevent fallback font from being downloaded from google fonts
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
