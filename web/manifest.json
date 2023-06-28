@@ -3,10 +3,10 @@
     "short_name": "gestures",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
-    "orientation": "portrait-primary",
+    "background_color": "#a60430",
+    "theme_color": "#a60430",
+    "description": "A video dictionary for sign language.",
+    "orientation": "any",
     "prefer_related_applications": false,
     "icons": [
         {
