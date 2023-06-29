@@ -53,7 +53,6 @@ class DefaultFirebaseOptions {
     projectId: 'ursberger-gebaerden',
     authDomain: 'ursberger-gebaerden.firebaseapp.com',
     storageBucket: 'ursberger-gebaerden.appspot.com',
-    measurementId: 'G-4ZE7C4Z841',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
