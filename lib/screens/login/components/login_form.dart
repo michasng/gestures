@@ -69,6 +69,7 @@ class _LoginFormState extends State<LoginForm> {
       key: _formKey,
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
             'Anmelden',
@@ -111,7 +112,9 @@ class _LoginFormState extends State<LoginForm> {
             ),
           ),
           SizedBox(height: 16),
-          Row(
+          Wrap(
+            alignment: WrapAlignment.end,
+            runAlignment: WrapAlignment.spaceBetween,
             children: [
               TextButton(
                 onPressed: () {
@@ -123,15 +126,14 @@ class _LoginFormState extends State<LoginForm> {
                 },
                 child: Text('Account anfragen'),
               ),
-              Spacer(),
               ElevatedButton(
                 onPressed: _submit,
                 child: Text('Bestätigen'),
               ),
             ],
           ),
-          SizedBox(height: 16),
-          if (_errorMessage != null)
+          if (_errorMessage != null) ...[
+            SizedBox(height: 16),
             Row(
               children: [
                 Spacer(),
@@ -141,7 +143,8 @@ class _LoginFormState extends State<LoginForm> {
                       ?.copyWith(color: theme.colorScheme.error),
                 ),
               ],
-            )
+            ),
+          ],
         ],
       ),
     );
