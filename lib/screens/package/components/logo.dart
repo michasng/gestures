@@ -13,18 +13,10 @@ class Logo extends StatelessWidget {
     return Container(
       color: Colors.white,
       height: height,
-      child: Row(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: Image(
-              image: AssetImage('assets/logo.png'),
-              filterQuality: FilterQuality.medium,
-              color: Color(0xffa60430),
-            ),
-          ),
-          Spacer(),
-        ],
+      alignment: Alignment.bottomRight,
+      child: Image(
+        image: AssetImage('assets/logo.png'),
+        filterQuality: FilterQuality.medium,
       ),
     );
   }
