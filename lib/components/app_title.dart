@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppTitle extends StatelessWidget {
   const AppTitle({
@@ -13,8 +12,7 @@ class AppTitle extends StatelessWidget {
     return FittedBox(
       child: Text(
         'Ursberger Gebärden',
-        style: GoogleFonts.cinzelDecorative(
-          textStyle: theme.textTheme.headlineSmall,
+        style: theme.textTheme.headlineSmall?.copyWith(
           color: theme.appBarTheme.titleTextStyle?.color,
         ),
       ),

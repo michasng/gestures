@@ -34,7 +34,6 @@ flutter:
   assets:
     - assets/
     - assets/fonts/fira_sans/
-    - assets/fonts/cincel_decorative/
 
   # prevent fallback font from being downloaded from google fonts
   fonts:
