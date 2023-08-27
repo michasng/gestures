@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestures/components/spinner.dart';
 
 class LoadingScreen extends StatelessWidget {
   const LoadingScreen({super.key});
@@ -6,15 +7,7 @@ class LoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(
-        child: SizedBox(
-          width: 256,
-          height: 256,
-          child: CircularProgressIndicator(
-            strokeWidth: 2,
-          ),
-        ),
-      ),
+      body: Spinner(),
     );
   }
 }

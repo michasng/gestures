@@ -3,14 +3,13 @@ import 'dart:convert';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/widgets.dart';
-import 'package:gestures/models/app_content.dart';
 import 'package:gestures/models/gesture.dart';
 import 'package:gestures/models/package.dart';
 
 class AppService {
   final _gestureTitleRegex = RegExp(r'(?<title>.*)\.mp4');
 
-  Future<AppContent> load(BuildContext context) async {
+  Future<List<Package>> loadPackages(BuildContext context) async {
     final synonyms = await _loadSynonyms(context);
 
     final storage = FirebaseStorage.instance;
@@ -20,7 +19,7 @@ class AppService {
     for (final packageRef in rootItems.prefixes) {
       packages.add(await _mapPackageRef(packageRef, synonyms));
     }
-    return AppContent(packages: packages);
+    return packages;
   }
 
   Future<Map<String, List<String>>> _loadSynonyms(BuildContext context) async {

@@ -2,7 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:gestures/components/auth_state_builder.dart';
 import 'package:gestures/firebase_options.dart';
-import 'package:gestures/models/app_content.dart';
 import 'package:gestures/screens/error/error_screen.dart';
 import 'package:gestures/screens/home/home_screen.dart';
 import 'package:gestures/screens/loading/loading_screen.dart';
@@ -97,20 +96,7 @@ class _AppState extends State<App> {
           loadingBuilder: (_) => const LoadingScreen(),
           errorBuilder: (_, error) => ErrorScreen(error: error),
           unauthenticatedBuilder: (_) => LoginScreen(),
-          authenticatedBuilder: (_, user) {
-            return FutureBuilder<AppContent>(
-              future: GetIt.I<AppService>().load(context),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState != ConnectionState.done)
-                  return const LoadingScreen();
-
-                if (snapshot.hasError)
-                  return ErrorScreen(error: snapshot.error!);
-
-                return HomeScreen(appContent: snapshot.data!);
-              },
-            );
-          },
+          authenticatedBuilder: (_, __) => HomeScreen(),
         ),
       ),
     );
