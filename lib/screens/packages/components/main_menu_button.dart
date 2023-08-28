@@ -3,27 +3,36 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 enum MainMenuOption {
-  logout;
+  preface,
+  logout,
 }
 
 class MainMenuButton extends StatelessWidget {
   const MainMenuButton({super.key});
 
-  void _logout(BuildContext context) async {
+  void _selectPreface(BuildContext context) async {
+    context.go('/preface');
+  }
+
+  void _selectLogout(BuildContext context) async {
     final router = GoRouter.of(context);
     await FirebaseAuth.instance.signOut();
     router.go('/login');
   }
 
   void _select(BuildContext context, MainMenuOption option) async {
-    var handlers = {
-      MainMenuOption.logout: _logout,
-    };
-    handlers[option]?.call(context);
+    switch (option) {
+      case MainMenuOption.preface:
+        return _selectPreface(context);
+      case MainMenuOption.logout:
+        return _selectLogout(context);
+    }
   }
 
   String _mapOptionLabel(MainMenuOption option) {
     switch (option) {
+      case MainMenuOption.preface:
+        return 'Vorwort';
       case MainMenuOption.logout:
         return 'Abmelden';
     }
