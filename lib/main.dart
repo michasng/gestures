@@ -32,20 +32,11 @@ class App extends StatelessWidget {
       title: 'Ursberger Gebärden',
       debugShowCheckedModeBanner: false,
       theme: theme,
-      home: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/sprechende_haende.png'),
-            fit: BoxFit.fitHeight,
-            repeat: ImageRepeat.repeatX,
-          ),
-        ),
-        child: AuthStateBuilder(
-          loadingBuilder: (_) => const LoadingScreen(),
-          errorBuilder: (_, error) => ErrorScreen(error: error),
-          unauthenticatedBuilder: (_) => LoginScreen(),
-          authenticatedBuilder: (_, __) => HomeScreen(),
-        ),
+      home: AuthStateBuilder(
+        loadingBuilder: (_) => const LoadingScreen(),
+        errorBuilder: (_, error) => ErrorScreen(error: error),
+        unauthenticatedBuilder: (_) => LoginScreen(),
+        authenticatedBuilder: (_, __) => HomeScreen(),
       ),
     );
   }
