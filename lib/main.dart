@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:gestures/firebase_options.dart';
 import 'package:gestures/router.dart';
 import 'package:gestures/services/app_service.dart';
@@ -16,6 +17,7 @@ void main() async {
   GetIt.I.registerSingleton<SearchService>(SearchService());
 
   GoogleFonts.config.allowRuntimeFetching = false;
+  usePathUrlStrategy();
   runApp(const App());
 }
 
