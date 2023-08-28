@@ -4,6 +4,7 @@ import 'package:gestures/screens/login/login_screen.dart';
 import 'package:gestures/screens/package/package_screen.dart';
 import 'package:gestures/screens/packages/packages_screen.dart';
 import 'package:gestures/screens/preface/preface_screen.dart';
+import 'package:gestures/screens/site_notice/site_notice_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final routerConfig = GoRouter(
@@ -15,6 +16,10 @@ final routerConfig = GoRouter(
     GoRoute(
       path: '/preface',
       builder: (context, state) => PrefaceScreen(),
+    ),
+    GoRoute(
+      path: '/site_notice',
+      builder: (context, state) => SiteNoticeScreen(),
     ),
     GoRoute(
       path: '/packages',

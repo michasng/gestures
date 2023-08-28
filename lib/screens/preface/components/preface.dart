@@ -25,7 +25,7 @@ class _PrefaceState extends State<Preface> {
   Widget build(BuildContext context) {
     return AppFutureBuilder<String>(
       future: _loadFuture,
-      builder: (context, data) => SelectableText(data),
+      builder: (context, data) => Text(data),
     );
   }
 }
