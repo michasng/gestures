@@ -55,7 +55,7 @@ class _LoginFormState extends State<LoginForm> {
         email: _email!.trim(),
         password: _password!.trim(),
       );
-      router.go('/packages');
+      router.go('/preface');
     } on FirebaseAuthException catch (e) {
       final code = extractFirebaseAuthExceptionCode(e);
       setState(() {

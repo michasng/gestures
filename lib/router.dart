@@ -3,6 +3,7 @@ import 'package:gestures/screens/gesture/gesture_screen.dart';
 import 'package:gestures/screens/login/login_screen.dart';
 import 'package:gestures/screens/package/package_screen.dart';
 import 'package:gestures/screens/packages/packages_screen.dart';
+import 'package:gestures/screens/preface/preface_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final routerConfig = GoRouter(
@@ -10,6 +11,10 @@ final routerConfig = GoRouter(
     GoRoute(
       path: '/login',
       builder: (context, state) => LoginScreen(),
+    ),
+    GoRoute(
+      path: '/preface',
+      builder: (context, state) => PrefaceScreen(),
     ),
     GoRoute(
       path: '/packages',
