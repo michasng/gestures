@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/components/app_future_builder.dart';
 
-class Preface extends StatefulWidget {
-  const Preface({super.key});
+class AssetText extends StatefulWidget {
+  final String path;
+
+  const AssetText({
+    super.key,
+    required this.path,
+  });
 
   @override
-  State<Preface> createState() => _PrefaceState();
+  State<AssetText> createState() => _AssetTextState();
 }
 
-class _PrefaceState extends State<Preface> {
+class _AssetTextState extends State<AssetText> {
   late Future<String> _loadFuture;
 
   @override
@@ -18,7 +23,7 @@ class _PrefaceState extends State<Preface> {
   }
 
   Future<String> load() {
-    return DefaultAssetBundle.of(context).loadString('assets/preface.txt');
+    return DefaultAssetBundle.of(context).loadString(widget.path);
   }
 
   @override

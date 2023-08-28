@@ -4,24 +4,23 @@ import 'package:gestures/components/asset_text.dart';
 import 'package:gestures/components/screen_body.dart';
 import 'package:go_router/go_router.dart';
 
-class PrefaceScreen extends StatelessWidget {
-  const PrefaceScreen({super.key});
+class RequestAccessScreen extends StatelessWidget {
+  const RequestAccessScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       appBar: AppBar(
         title: AppTitle(),
       ),
       body: ScreenBody(
+        alignment: Alignment.topCenter,
         children: [
-          Text(
-            'Vorwort',
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
+          Text('Zugriff erwerben', style: textTheme.titleLarge),
           SizedBox(height: 32),
-          AssetText(path: 'assets/preface.txt'),
-          SizedBox(height: 64),
+          AssetText(path: 'assets/request_access.txt'),
         ],
       ),
       floatingActionButton: ElevatedButton(

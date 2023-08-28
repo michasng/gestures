@@ -142,8 +142,10 @@ class _LoginFormState extends State<LoginForm> {
                 },
               ),
               LinkText(
-                'Account anfragen',
-                onTap: null,
+                'Zugriff erwerben',
+                onTap: () {
+                  context.go('/request_access');
+                },
               ),
               ElevatedButton(
                 onPressed: _submit,
