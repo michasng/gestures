@@ -52,14 +52,6 @@ class _GesturePlayerState extends State<GesturePlayer> {
 
   @override
   Widget build(BuildContext context) {
-    /*
-    return AspectRatio(
-      aspectRatio: 1 / 1, // aspect ratio of the video frame
-      child: Chewie(
-        controller: _chewieController,
-      ),
-    );
-    */
     if (_chewieController == null)
       return const Center(
         child: SizedBox(
