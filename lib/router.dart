@@ -18,6 +18,12 @@ String? _redirectUnauthenticated(context, state) {
 final routerConfig = GoRouter(
   routes: [
     GoRoute(
+      path: '/',
+      redirect: (context, state) {
+        return _redirectUnauthenticated(context, state) ?? '/packages';
+      },
+    ),
+    GoRoute(
       path: '/login',
       builder: (context, state) => LoginScreen(),
     ),
