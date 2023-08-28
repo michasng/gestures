@@ -48,7 +48,7 @@ class SiteNoticeScreen extends StatelessWidget {
           ..._buildSection(
             context,
             'Kontakt',
-            'Telefon: +49 (0) 8281 92-0\nTelefax: +49 (0) 8281 92-1000\nE-Mail: info@drw.de',
+            'E-Mail: schulleitung.franzvonsales-schule@drw.de',
           ),
           SizedBox(height: 16),
           ..._buildSection(
