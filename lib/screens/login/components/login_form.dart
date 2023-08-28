@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gestures/components/link_text.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginForm extends StatefulWidget {
@@ -114,27 +115,6 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ),
           ),
-          SizedBox(height: 16),
-          Wrap(
-            alignment: WrapAlignment.end,
-            runAlignment: WrapAlignment.spaceBetween,
-            children: [
-              TextButton(
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('TODO: Account-Anfrage abschicken'),
-                    ),
-                  );
-                },
-                child: Text('Account anfragen'),
-              ),
-              ElevatedButton(
-                onPressed: _submit,
-                child: Text('Bestätigen'),
-              ),
-            ],
-          ),
           if (_errorMessage != null) ...[
             SizedBox(height: 16),
             Row(
@@ -148,6 +128,29 @@ class _LoginFormState extends State<LoginForm> {
               ],
             ),
           ],
+          SizedBox(height: 16),
+          Wrap(
+            alignment: WrapAlignment.end,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 16,
+            runSpacing: 16,
+            children: [
+              LinkText(
+                'Impressum',
+                onTap: () {
+                  context.go('/site_notice');
+                },
+              ),
+              LinkText(
+                'Account anfragen',
+                onTap: null,
+              ),
+              ElevatedButton(
+                onPressed: _submit,
+                child: Text('Bestätigen'),
+              ),
+            ],
+          ),
         ],
       ),
     );

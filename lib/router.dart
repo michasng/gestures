@@ -7,6 +7,13 @@ import 'package:gestures/screens/preface/preface_screen.dart';
 import 'package:gestures/screens/site_notice/site_notice_screen.dart';
 import 'package:go_router/go_router.dart';
 
+String? _redirectUnauthenticated(context, state) {
+  if (FirebaseAuth.instance.currentUser == null) {
+    return '/login';
+  }
+  return null;
+}
+
 final routerConfig = GoRouter(
   routes: [
     GoRoute(
@@ -24,6 +31,7 @@ final routerConfig = GoRouter(
     GoRoute(
       path: '/packages',
       builder: (context, state) => PackagesScreen(),
+      redirect: _redirectUnauthenticated,
       routes: [
         GoRoute(
           path: ':packageId',
@@ -43,10 +51,4 @@ final routerConfig = GoRouter(
       ],
     ),
   ],
-  redirect: (context, state) {
-    if (FirebaseAuth.instance.currentUser == null) {
-      return '/login';
-    }
-    return null;
-  },
 );
