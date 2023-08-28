@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -44,20 +45,22 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   void _submit() async {
-    var formState = _formKey.currentState;
-    if (formState?.validate() ?? false) {
-      formState!.save();
-      try {
-        await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: _email!.trim(),
-          password: _password!.trim(),
-        );
-      } on FirebaseAuthException catch (e) {
-        final code = extractFirebaseAuthExceptionCode(e);
-        setState(() {
-          _errorMessage = _errorCodeToMessage(code);
-        });
-      }
+    final formState = _formKey.currentState;
+    if (formState == null || !formState.validate()) return;
+    formState.save();
+
+    final router = GoRouter.of(context);
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _email!.trim(),
+        password: _password!.trim(),
+      );
+      router.go('/packages');
+    } on FirebaseAuthException catch (e) {
+      final code = extractFirebaseAuthExceptionCode(e);
+      setState(() {
+        _errorMessage = _errorCodeToMessage(code);
+      });
     }
   }
 

@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/models/package.dart';
-import 'package:gestures/screens/package/components/gesture_list.dart';
+import 'package:gestures/screens/package/components/async_gesture_list.dart';
 
-class PackageScreen extends StatelessWidget {
-  final Package package;
-  final _gestureListKey = GlobalKey<GestureListState>();
+class PackageScreen extends StatefulWidget {
+  final String packageId;
 
-  PackageScreen({super.key, required this.package});
+  const PackageScreen({super.key, required this.packageId});
+
+  @override
+  State<PackageScreen> createState() => _PackageScreenState();
+}
+
+class _PackageScreenState extends State<PackageScreen> {
+  final _asyncGestureListKey = GlobalKey<AsyncGestureListState>();
 
   void _search(String search) {
-    _gestureListKey.currentState!.search(search);
+    _asyncGestureListKey.currentState?.search(search);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: FittedBox(child: Text(package.title))),
+      appBar: AppBar(title: FittedBox(child: Text(widget.packageId))),
       body: Column(
         children: [
           Padding(
@@ -29,9 +34,9 @@ class PackageScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: GestureList(
-              package: package,
-              key: _gestureListKey,
+            child: AsyncGestureList(
+              key: _asyncGestureListKey,
+              packageId: widget.packageId,
             ),
           ),
         ],

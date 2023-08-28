@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/models/package.dart';
-import 'package:gestures/screens/package/package_screen.dart';
+import 'package:go_router/go_router.dart';
 
 class PackageListTile extends StatelessWidget {
   final Package package;
@@ -16,11 +16,7 @@ class PackageListTile extends StatelessWidget {
         textColor: theme.colorScheme.onSurface,
         title: Text(package.title),
         subtitle: Text('${package.gestures.length} Videoclips'),
-        onTap: () => Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => PackageScreen(package: package),
-          ),
-        ),
+        onTap: () => context.go('/packages/${package.title}'),
         trailing: Icon(
           package.icon,
           color: theme.colorScheme.primary,

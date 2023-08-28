@@ -1,40 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/models/gesture.dart';
-import 'package:gestures/screens/gesture/components/gestures_carousel.dart';
+import 'package:gestures/screens/gesture/components/async_gesture_view.dart';
 
-class GestureScreen extends StatefulWidget {
-  final List<Gesture> gestures;
-  final int initialIndex;
+class GestureScreen extends StatelessWidget {
+  final String packageId;
+  final String gestureId;
 
   const GestureScreen({
     super.key,
-    required this.gestures,
-    required this.initialIndex,
+    required this.packageId,
+    required this.gestureId,
   });
-
-  @override
-  State<GestureScreen> createState() => _GestureScreenState();
-}
-
-class _GestureScreenState extends State<GestureScreen> {
-  late Gesture currentGesture;
-
-  @override
-  void initState() {
-    super.initState();
-    currentGesture = widget.gestures[widget.initialIndex];
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: FittedBox(child: Text(currentGesture.title))),
-      body: GesturesCarousel(
-        gestures: widget.gestures,
-        initialIndex: widget.initialIndex,
-        onRotate: (newIndex) => setState(() {
-          currentGesture = widget.gestures[newIndex];
-        }),
+      appBar: AppBar(title: FittedBox(child: Text(gestureId))),
+      body: AsyncGestureView(
+        key: ValueKey('$packageId, $gestureId'),
+        packageId: packageId,
+        gestureId: gestureId,
       ),
     );
   }

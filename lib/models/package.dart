@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gestures/models/gesture.dart';
 
 class Package {
+  static const allGesturesPackageTitle = 'Alle Gebärden durchsuchen';
   static const _iconMapping = {
     'Arbeitssicherheit': Icons.health_and_safety_outlined,
     'Berufe': Icons.handyman_outlined,

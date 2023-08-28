@@ -9,7 +9,36 @@ import 'package:gestures/models/package.dart';
 class AppService {
   final _gestureTitleRegex = RegExp(r'(?<title>.*)\.mp4');
 
-  Future<List<Package>> loadPackages(BuildContext context) async {
+  Future<List<Package>>? _loadFuture;
+
+  Future<List<Package>> loadPackages(
+    BuildContext context,
+  ) async {
+    return _loadFuture ??= _loadPackages(context);
+  }
+
+  Future<Package> loadPackage(
+    BuildContext context, {
+    required String packageId,
+  }) async {
+    final packages = await loadPackages(context);
+
+    if (packageId == Package.allGesturesPackageTitle)
+      return createAllGesturesPackage(packages);
+
+    return packages.firstWhere((package) => package.title == packageId);
+  }
+
+  Future<Gesture> loadGesture(
+    BuildContext context, {
+    required String packageId,
+    required String gestureId,
+  }) async {
+    final package = await loadPackage(context, packageId: packageId);
+    return package.gestures.firstWhere((gesture) => gesture.title == gestureId);
+  }
+
+  Future<List<Package>> _loadPackages(BuildContext context) async {
     final synonyms = await _loadSynonyms(context);
 
     final storage = FirebaseStorage.instance;
@@ -20,6 +49,15 @@ class AppService {
       packages.add(await _mapPackageRef(packageRef, synonyms));
     }
     return packages;
+  }
+
+  Package createAllGesturesPackage(List<Package> packages) {
+    final allGestures = [...packages.expand((p) => p.gestures)];
+    allGestures.sort((g1, g2) => g1.title.compareTo(g2.title));
+    return Package(
+      title: Package.allGesturesPackageTitle,
+      gestures: allGestures,
+    );
   }
 
   Future<Map<String, List<String>>> _loadSynonyms(BuildContext context) async {

@@ -1,11 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:gestures/components/auth_state_builder.dart';
 import 'package:gestures/firebase_options.dart';
-import 'package:gestures/screens/error/error_screen.dart';
-import 'package:gestures/screens/home/home_screen.dart';
-import 'package:gestures/screens/loading/loading_screen.dart';
-import 'package:gestures/screens/login/login_screen.dart';
+import 'package:gestures/router.dart';
 import 'package:gestures/services/app_service.dart';
 import 'package:gestures/services/search_service.dart';
 import 'package:gestures/theme.dart';
@@ -28,16 +24,11 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Ursberger Gebärden',
       debugShowCheckedModeBanner: false,
       theme: theme,
-      home: AuthStateBuilder(
-        loadingBuilder: (_) => const LoadingScreen(),
-        errorBuilder: (_, error) => ErrorScreen(error: error),
-        unauthenticatedBuilder: (_) => LoginScreen(),
-        authenticatedBuilder: (_, __) => HomeScreen(),
-      ),
+      routerConfig: routerConfig,
     );
   }
 }
