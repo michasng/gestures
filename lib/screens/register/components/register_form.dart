@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gestures/components/firebase_auth_exception.dart';
 import 'package:gestures/components/link_text.dart';
 import 'package:gestures/components/secret_text_form_field.dart';
 import 'package:gestures/screens/login/login_screen.dart';
@@ -54,9 +53,8 @@ class _RegisterFormState extends State<RegisterForm> {
       );
       router.go(PrefaceScreen.path);
     } on FirebaseAuthException catch (e) {
-      final code = extractFirebaseAuthExceptionCode(e);
       setState(() {
-        _errorMessage = _errorCodeToMessage(code);
+        _errorMessage = _errorCodeToMessage(e.code);
       });
     }
   }
