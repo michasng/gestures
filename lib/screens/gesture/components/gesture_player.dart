@@ -25,7 +25,7 @@ class _GesturePlayerState extends State<GesturePlayer> {
     final url = await widget.gesture.storageReference.getDownloadURL();
     if (!mounted) return;
     setState(() {
-      final controller = VideoPlayerController.network(url);
+      final controller = VideoPlayerController.networkUrl(Uri.parse(url));
       _chewieController = ChewieController(
         videoPlayerController: controller,
         // aspectRatio: 1 / 1, // stretch and squash the video to force-fit the frame
