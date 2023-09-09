@@ -5,30 +5,32 @@ import 'package:gestures/components/link_text.dart';
 import 'package:gestures/components/secret_text_form_field.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+class RegisterForm extends StatefulWidget {
+  const RegisterForm({super.key});
 
   @override
-  State<LoginForm> createState() => _LoginFormState();
+  State<RegisterForm> createState() => _RegisterFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _RegisterFormState extends State<RegisterForm> {
   final _formKey = GlobalKey<FormState>();
+  final _passwordController = TextEditingController();
   final _passwordFocus = FocusNode();
+  final _confirmPasswordFocus = FocusNode();
   String? _email;
   String? _password;
   String? _errorMessage;
 
   String _errorCodeToMessage(String? code) {
     switch (code) {
+      case 'email-already-in-use':
+        return 'Dieser Nutzer existiert bereits.';
       case 'invalid-email':
         return 'Die E-Mail Adresse ist ungültig.';
-      case 'user-disabled':
-        return 'Dieser Nutzer ist deaktiviert.';
-      case 'user-not-found':
-        return 'Dieser Nutzer existiert nicht.';
-      case 'wrong-password':
-        return 'Das Passwort ist falsch.';
+      case 'operation-not-allowed':
+        return 'Der Vorgang ist aus technischen Gründen nicht erlaubt.';
+      case 'weak-password':
+        return 'Bitte wählen Sie ein stärkeres Passwort.';
       case null:
         return 'Unbekannter Fehler';
       default:
@@ -43,7 +45,7 @@ class _LoginFormState extends State<LoginForm> {
 
     final router = GoRouter.of(context);
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _email!.trim(),
         password: _password!.trim(),
       );
@@ -67,7 +69,7 @@ class _LoginFormState extends State<LoginForm> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            'Anmelden',
+            'Registrieren',
             style: theme.textTheme.headlineSmall,
           ),
           SizedBox(height: 16),
@@ -86,9 +88,10 @@ class _LoginFormState extends State<LoginForm> {
           ),
           SizedBox(height: 16),
           SecretTextFormField(
+            controller: _passwordController,
             focusNode: _passwordFocus,
             autofillHints: [AutofillHints.password],
-            onFieldSubmitted: (_) => _submit(),
+            onFieldSubmitted: (_) => _confirmPasswordFocus.requestFocus(),
             validator: (value) {
               if (value?.isEmpty ?? true) return 'Bitte Passwort eingeben.';
               return null;
@@ -96,6 +99,20 @@ class _LoginFormState extends State<LoginForm> {
             onSaved: (value) => _password = value,
             decoration: InputDecoration(
               labelText: 'Passwort',
+            ),
+          ),
+          SizedBox(height: 16),
+          SecretTextFormField(
+            focusNode: _confirmPasswordFocus,
+            onFieldSubmitted: (_) => _submit(),
+            validator: (value) {
+              if (value?.isEmpty ?? true) return 'Bitte Passwort eingeben.';
+              if (value?.trim() != _passwordController.text.trim())
+                return 'Die Passwörter unterscheiden sich.';
+              return null;
+            },
+            decoration: InputDecoration(
+              labelText: 'Passwort bestätigen',
             ),
           ),
           if (_errorMessage != null) ...[
@@ -125,9 +142,9 @@ class _LoginFormState extends State<LoginForm> {
                 },
               ),
               LinkText(
-                'Neues Konto erstellen',
+                'Bereits registriert?',
                 onTap: () {
-                  context.go('/register');
+                  context.go('/login');
                 },
               ),
               ElevatedButton(

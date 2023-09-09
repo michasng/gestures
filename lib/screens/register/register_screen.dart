@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:gestures/components/app_background.dart';
 import 'package:gestures/components/app_title.dart';
 import 'package:gestures/components/centered_card.dart';
-import 'package:gestures/screens/login/components/login_form.dart';
 import 'package:gestures/screens/package/components/logo.dart';
+import 'package:gestures/screens/register/components/register_form.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class LoginScreen extends StatelessWidget {
             Spacer(),
             CenteredCard(
               width: 400,
-              child: LoginForm(),
+              child: RegisterForm(),
             ),
             Spacer(),
             Logo(height: 100),
