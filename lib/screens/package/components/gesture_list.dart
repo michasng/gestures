@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/models/gesture.dart';
 import 'package:gestures/models/package.dart';
+import 'package:gestures/screens/gesture/gesture_screen.dart';
 import 'package:gestures/screens/package/components/gesture_list_tile.dart';
 import 'package:gestures/services/search_service.dart';
 import 'package:get_it/get_it.dart';
@@ -25,7 +26,12 @@ class GestureListState extends State<GestureList> {
   }
 
   void _navigateToGesture(BuildContext context, Gesture gesture) {
-    context.go('/packages/${widget.package.title}/gestures/${gesture.title}');
+    context.go(
+      GestureScreen.path(
+        packageId: widget.package.title,
+        gestureId: gesture.title,
+      ),
+    );
   }
 
   void search(String search) {

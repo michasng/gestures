@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/screens/package/components/async_gesture_list.dart';
+import 'package:gestures/screens/packages/packages_screen.dart';
 
 class PackageScreen extends StatefulWidget {
+  static const String pathSegment = ':packageId';
+  static String path({required String packageId}) {
+    return '${PackagesScreen.path}/$packageId';
+  }
+
   final String packageId;
 
   const PackageScreen({super.key, required this.packageId});

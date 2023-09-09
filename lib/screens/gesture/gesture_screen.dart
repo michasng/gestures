@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/screens/gesture/components/async_gesture_view.dart';
+import 'package:gestures/screens/package/package_screen.dart';
 
 class GestureScreen extends StatelessWidget {
+  static const String pathSegment = 'gestures/:gestureId';
+  static String path({
+    required String packageId,
+    required String gestureId,
+  }) {
+    final packagePath = PackageScreen.path(packageId: packageId);
+    return '$packagePath/gestures/$gestureId';
+  }
+
   final String packageId;
   final String gestureId;
 

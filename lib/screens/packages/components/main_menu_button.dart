@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gestures/screens/login/login_screen.dart';
+import 'package:gestures/screens/preface/preface_screen.dart';
+import 'package:gestures/screens/site_notice/site_notice_screen.dart';
 import 'package:go_router/go_router.dart';
 
 enum MainMenuOption {
@@ -16,12 +19,12 @@ class MainMenuButton extends StatelessWidget {
 
     switch (option) {
       case MainMenuOption.preface:
-        return router.go('/preface');
+        return router.go(PrefaceScreen.path);
       case MainMenuOption.siteNotice:
-        return router.go('/site_notice');
+        return router.go(SiteNoticeScreen.path);
       case MainMenuOption.logout:
         await FirebaseAuth.instance.signOut();
-        return router.go('/login');
+        return router.go(LoginScreen.path);
     }
   }
 

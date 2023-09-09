@@ -6,6 +6,8 @@ import 'package:gestures/screens/package/components/logo.dart';
 import 'package:gestures/screens/register/components/register_form.dart';
 
 class RegisterScreen extends StatelessWidget {
+  static const String path = '/register';
+
   const RegisterScreen({super.key});
 
   @override

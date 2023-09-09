@@ -5,6 +5,8 @@ import 'package:gestures/screens/packages/components/async_package_list.dart';
 import 'package:gestures/screens/packages/components/main_menu_button.dart';
 
 class PackagesScreen extends StatelessWidget {
+  static const String path = '/packages';
+
   const PackagesScreen({super.key});
 
   @override

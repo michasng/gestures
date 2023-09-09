@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:gestures/components/firebase_auth_exception.dart';
 import 'package:gestures/components/link_text.dart';
 import 'package:gestures/components/secret_text_form_field.dart';
+import 'package:gestures/screens/login/login_screen.dart';
+import 'package:gestures/screens/preface/preface_screen.dart';
+import 'package:gestures/screens/site_notice/site_notice_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class RegisterForm extends StatefulWidget {
@@ -49,7 +52,7 @@ class _RegisterFormState extends State<RegisterForm> {
         email: _email!.trim(),
         password: _password!.trim(),
       );
-      router.go('/preface');
+      router.go(PrefaceScreen.path);
     } on FirebaseAuthException catch (e) {
       final code = extractFirebaseAuthExceptionCode(e);
       setState(() {
@@ -138,13 +141,13 @@ class _RegisterFormState extends State<RegisterForm> {
               LinkText(
                 'Impressum',
                 onTap: () {
-                  context.go('/site_notice');
+                  context.go(SiteNoticeScreen.path);
                 },
               ),
               LinkText(
                 'Bereits registriert?',
                 onTap: () {
-                  context.go('/login');
+                  context.go(LoginScreen.path);
                 },
               ),
               ElevatedButton(

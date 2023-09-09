@@ -10,7 +10,7 @@ import 'package:go_router/go_router.dart';
 
 String? _redirectUnauthenticated(context, state) {
   if (FirebaseAuth.instance.currentUser == null) {
-    return '/login';
+    return LoginScreen.path;
   }
   return null;
 }
@@ -20,38 +20,38 @@ final routerConfig = GoRouter(
     GoRoute(
       path: '/',
       redirect: (context, state) {
-        return _redirectUnauthenticated(context, state) ?? '/packages';
+        return _redirectUnauthenticated(context, state) ?? PackagesScreen.path;
       },
     ),
     GoRoute(
-      path: '/login',
+      path: LoginScreen.path,
       builder: (context, state) => LoginScreen(),
     ),
     GoRoute(
-      path: '/register',
+      path: RegisterScreen.path,
       builder: (context, state) => RegisterScreen(),
     ),
     GoRoute(
-      path: '/preface',
+      path: PrefaceScreen.path,
       builder: (context, state) => PrefaceScreen(),
     ),
     GoRoute(
-      path: '/site_notice',
+      path: SiteNoticeScreen.path,
       builder: (context, state) => SiteNoticeScreen(),
     ),
     GoRoute(
-      path: '/packages',
+      path: PackagesScreen.path,
       builder: (context, state) => PackagesScreen(),
       redirect: _redirectUnauthenticated,
       routes: [
         GoRoute(
-          path: ':packageId',
+          path: PackageScreen.pathSegment,
           builder: (context, state) => PackageScreen(
             packageId: state.pathParameters['packageId'] ?? '',
           ),
           routes: [
             GoRoute(
-              path: 'gestures/:gestureId',
+              path: GestureScreen.pathSegment,
               builder: (context, state) => GestureScreen(
                 packageId: state.pathParameters['packageId'] ?? '',
                 gestureId: state.pathParameters['gestureId'] ?? '',

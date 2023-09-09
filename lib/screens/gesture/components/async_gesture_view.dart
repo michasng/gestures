@@ -3,6 +3,7 @@ import 'package:gestures/components/app_future_builder.dart';
 import 'package:gestures/models/gesture.dart';
 import 'package:gestures/screens/gesture/components/carousel_controls.dart';
 import 'package:gestures/screens/gesture/components/gesture_view.dart';
+import 'package:gestures/screens/gesture/gesture_screen.dart';
 import 'package:gestures/services/app_service.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
@@ -44,7 +45,12 @@ class _AsyncGestureViewState extends State<AsyncGestureView> {
         .indexWhere((gesture) => gesture.title == widget.gestureId);
     final newIndex = (currentIndex + delta) % package.gestures.length;
     final newGesture = package.gestures[newIndex];
-    router.go('/packages/${widget.packageId}/gestures/${newGesture.title}');
+    router.go(
+      GestureScreen.path(
+        packageId: widget.packageId,
+        gestureId: newGesture.title,
+      ),
+    );
   }
 
   @override

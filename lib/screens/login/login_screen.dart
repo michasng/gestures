@@ -6,6 +6,8 @@ import 'package:gestures/screens/login/components/login_form.dart';
 import 'package:gestures/screens/package/components/logo.dart';
 
 class LoginScreen extends StatelessWidget {
+  static const String path = '/login';
+
   const LoginScreen({super.key});
 
   @override
