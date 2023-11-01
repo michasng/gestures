@@ -4,7 +4,7 @@ import 'package:gestures/models/gesture.dart';
 class Package {
   static const allGesturesPackageTitle = 'Alle Gebärden durchsuchen';
   static const _iconMapping = {
-    'Alle Gebärden durchsuchen': Icons.search,
+    allGesturesPackageTitle: Icons.search,
     'Arbeitssicherheit': Icons.health_and_safety_outlined,
     'Ausbildung': Icons.menu_book,
     'Bankwesen': Icons.account_balance_outlined,
