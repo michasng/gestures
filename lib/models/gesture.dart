@@ -15,4 +15,22 @@ class Gesture implements Comparable<Gesture> {
   int compareTo(Gesture other) {
     return title.compareTo(other.title);
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'fullPath': fullPath,
+      'synonyms': synonyms,
+    };
+  }
+
+  factory Gesture.fromJson(Map<String, dynamic> json) {
+    return Gesture(
+      title: json['title'],
+      fullPath: json['fullPath'],
+      synonyms: (json['synonyms'] as List)
+          .map((synonymJson) => synonymJson as String)
+          .toList(),
+    );
+  }
 }

@@ -93,4 +93,20 @@ class Package {
   IconData? get icon {
     return _iconMapping[title];
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'gestures': gestures.map((gesture) => gesture.toJson()).toList(),
+    };
+  }
+
+  factory Package.fromJson(Map<String, dynamic> json) {
+    return Package(
+      title: json['title'],
+      gestures: (json['gestures'] as List)
+          .map((gestureJson) => Gesture.fromJson(gestureJson))
+          .toList(),
+    );
+  }
 }
