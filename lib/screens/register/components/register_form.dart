@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gestures/components/link_text.dart';
+import 'package:gestures/components/links/link_text.dart';
+import 'package:gestures/components/links/privacy_policy_link.dart';
+import 'package:gestures/components/links/site_notice_link.dart';
 import 'package:gestures/components/secret_text_form_field.dart';
 import 'package:gestures/screens/login/login_screen.dart';
 import 'package:gestures/screens/preface/preface_screen.dart';
-import 'package:gestures/screens/site_notice/site_notice_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class RegisterForm extends StatefulWidget {
@@ -130,24 +131,24 @@ class _RegisterFormState extends State<RegisterForm> {
             ),
           ],
           SizedBox(height: 16),
-          Wrap(
-            alignment: WrapAlignment.end,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            spacing: 16,
-            runSpacing: 16,
+          Row(
             children: [
-              LinkText(
-                'Impressum',
-                onTap: () {
-                  context.go(SiteNoticeScreen.path);
-                },
-              ),
+              PrivacyPolicyLink(),
+              SizedBox(width: 16),
+              SiteNoticeLink(),
+            ],
+          ),
+          SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
               LinkText(
                 'Bereits registriert?',
                 onTap: () {
                   context.go(LoginScreen.path);
                 },
               ),
+              SizedBox(width: 16),
               ElevatedButton(
                 onPressed: _submit,
                 child: Text('Bestätigen'),
