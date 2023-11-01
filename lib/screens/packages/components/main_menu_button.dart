@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gestures/components/links/privacy_policy_link.dart';
 import 'package:gestures/screens/login/login_screen.dart';
 import 'package:gestures/screens/preface/preface_screen.dart';
 import 'package:gestures/screens/site_notice/site_notice_screen.dart';
@@ -8,6 +9,7 @@ import 'package:go_router/go_router.dart';
 enum MainMenuOption {
   preface,
   siteNotice,
+  privacyPolicy,
   logout,
 }
 
@@ -22,6 +24,8 @@ class MainMenuButton extends StatelessWidget {
         return router.go(PrefaceScreen.path);
       case MainMenuOption.siteNotice:
         return router.go(SiteNoticeScreen.path);
+      case MainMenuOption.privacyPolicy:
+        return await PrivacyPolicyLink.showPrivacyPolicy();
       case MainMenuOption.logout:
         await FirebaseAuth.instance.signOut();
         return router.go(LoginScreen.path);
@@ -34,6 +38,8 @@ class MainMenuButton extends StatelessWidget {
         return 'Vorwort';
       case MainMenuOption.siteNotice:
         return 'Impressum';
+      case MainMenuOption.privacyPolicy:
+        return 'Datenschutzerklärung';
       case MainMenuOption.logout:
         return 'Abmelden';
     }

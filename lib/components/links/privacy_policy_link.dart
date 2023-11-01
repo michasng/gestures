@@ -6,7 +6,7 @@ import 'package:universal_html/html.dart' as html;
 class PrivacyPolicyLink extends StatelessWidget {
   const PrivacyPolicyLink({super.key});
 
-  Future<void> _showPrivacyPolicy() async {
+  static Future<void> showPrivacyPolicy() async {
     var bytes = await rootBundle.load('assets/DRW-DSE-gebaerden-web-app.pdf');
 
     final blob = html.Blob([bytes], 'application/pdf');
@@ -19,7 +19,7 @@ class PrivacyPolicyLink extends StatelessWidget {
   Widget build(BuildContext context) {
     return LinkText(
       'Datenschutzerklärung',
-      onTap: _showPrivacyPolicy,
+      onTap: showPrivacyPolicy,
     );
   }
 }
