@@ -1,3 +1,256 @@
 {
-  "Gebärden/Arbeitssicherheit/Arbeiter.mp4": ["Angestellter", "Arbeitnehmer"]
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet A.mp4": [
+    "A",
+    "Graphembestimmtes Manualsystem A",
+    "GMS A"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet Ä.mp4": [
+    "Ä",
+    "Graphembestimmtes Manualsystem Ä",
+    "GMS Ä"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet B.mp4": [
+    "B",
+    "Graphembestimmtes Manualsystem B",
+    "GMS B"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet C.mp4": [
+    "C",
+    "Graphembestimmtes Manualsystem C",
+    "GMS C"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet D.mp4": [
+    "D",
+    "Graphembestimmtes Manualsystem D",
+    "GMS D"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet E.mp4": [
+    "E",
+    "Graphembestimmtes Manualsystem E",
+    "GMS E"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet F.mp4": [
+    "F",
+    "Graphembestimmtes Manualsystem F",
+    "GMS F"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet G.mp4": [
+    "G",
+    "Graphembestimmtes Manualsystem G",
+    "GMS G"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet H.mp4": [
+    "H",
+    "Graphembestimmtes Manualsystem H",
+    "GMS H"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet I.mp4": [
+    "I",
+    "Graphembestimmtes Manualsystem I",
+    "GMS I"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet J.mp4": [
+    "J",
+    "Graphembestimmtes Manualsystem J",
+    "GMS J"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet K.mp4": [
+    "K",
+    "Graphembestimmtes Manualsystem K",
+    "GMS K"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet L.mp4": [
+    "L",
+    "Graphembestimmtes Manualsystem L",
+    "GMS L"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet M.mp4": [
+    "M",
+    "Graphembestimmtes Manualsystem M",
+    "GMS M"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet N.mp4": [
+    "N",
+    "Graphembestimmtes Manualsystem N",
+    "GMS N"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet O.mp4": [
+    "O",
+    "Graphembestimmtes Manualsystem O",
+    "GMS O"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet Ö.mp4": [
+    "Ö",
+    "Graphembestimmtes Manualsystem Ö",
+    "GMS Ö"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet P.mp4": [
+    "P",
+    "Graphembestimmtes Manualsystem P",
+    "GMS P"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet Q.mp4": [
+    "Q",
+    "Graphembestimmtes Manualsystem Q",
+    "GMS Q"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet R.mp4": [
+    "R",
+    "Graphembestimmtes Manualsystem R",
+    "GMS R"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet S.mp4": [
+    "S",
+    "Graphembestimmtes Manualsystem S",
+    "GMS S"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet SCH.mp4": [
+    "SCH",
+    "Graphembestimmtes Manualsystem SCH",
+    "GMS SCH"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet T.mp4": [
+    "T",
+    "Graphembestimmtes Manualsystem T",
+    "GMS T"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet U.mp4": [
+    "U",
+    "Graphembestimmtes Manualsystem U",
+    "GMS U"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet Ü.mp4": [
+    "Ü",
+    "Graphembestimmtes Manualsystem Ü",
+    "GMS Ü"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet V.mp4": [
+    "V",
+    "Graphembestimmtes Manualsystem V",
+    "GMS V"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet W.mp4": [
+    "W",
+    "Graphembestimmtes Manualsystem W",
+    "GMS W"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet X.mp4": [
+    "X",
+    "Graphembestimmtes Manualsystem X",
+    "GMS X"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet Y.mp4": [
+    "Y",
+    "Graphembestimmtes Manualsystem Y",
+    "GMS Y"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet Z.mp4": [
+    "Z",
+    "Graphembestimmtes Manualsystem Z",
+    "GMS Z"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet (alle).mp4": [
+    "Fingeralphabet alle",
+    "alle",
+    "Graphembestimmtes Manualsystem alle",
+    "GMS alle"
+  ],
+  "Gebärden/Fingeralphabet (GMS)/Fingeralphabet (alle Umlaute).mp4": [
+    "Fingeralphabet alle Umlaute",
+    "alle Umlaute",
+    "Graphembestimmtes Manualsystem alle Umlaute",
+    "GMS alle Umlaute"
+  ],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen A (1).mp4": ["A"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen A (2).mp4": ["A"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen B.mp4": ["B"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen CH.mp4": ["CH", "C", "H"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen D.mp4": ["D"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen E.mp4": ["E"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen F.mp4": ["F"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen G.mp4": ["G"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen H.mp4": ["H"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen I.mp4": ["I"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen J.mp4": ["J"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen K.mp4": ["K"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen L.mp4": ["L"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen M.mp4": ["M"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen N.mp4": ["N"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen NG.mp4": ["NG", "N", "G"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen O.mp4": ["O"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen P.mp4": ["P"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen R.mp4": ["R"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen S.mp4": ["S"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen SCH.mp4": ["SCH", "S"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen T.mp4": ["T"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen U.mp4": ["U"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen W.mp4": ["W"],
+  "Gebärden/Lautzeichen (PMS)/Lautzeichen (alle).mp4": [
+    "Lautzeichen alle",
+    "alle"
+  ],
+  "Gebärden/Zahlen/1.mp4": ["Eins"],
+  "Gebärden/Zahlen/2.mp4": ["Zwei"],
+  "Gebärden/Zahlen/3.mp4": ["Drei"],
+  "Gebärden/Zahlen/4.mp4": ["Vier"],
+  "Gebärden/Zahlen/5.mp4": ["Fünf"],
+  "Gebärden/Zahlen/6.mp4": ["Sechs"],
+  "Gebärden/Zahlen/7.mp4": ["Sieben"],
+  "Gebärden/Zahlen/8.mp4": ["Acht"],
+  "Gebärden/Zahlen/9.mp4": ["Neun"],
+  "Gebärden/Zahlen/10.mp4": ["Zehn"],
+  "Gebärden/Zahlen/11.mp4": ["Elf"],
+  "Gebärden/Zahlen/12.mp4": ["Zwölf"],
+  "Gebärden/Zahlen/13.mp4": ["Dreizehn"],
+  "Gebärden/Zahlen/14.mp4": ["Vierzehn"],
+  "Gebärden/Zahlen/15.mp4": ["Fünfzehn"],
+  "Gebärden/Zahlen/16.mp4": ["Sechzehn"],
+  "Gebärden/Zahlen/17.mp4": ["Siebzehn"],
+  "Gebärden/Zahlen/18.mp4": ["Achtzehn"],
+  "Gebärden/Zahlen/19.mp4": ["Neunzehn"],
+  "Gebärden/Zahlen/20.mp4": ["Zwanzig"],
+  "Gebärden/Zahlen/30.mp4": ["Dreißig"],
+  "Gebärden/Zahlen/40.mp4": ["Vierzig"],
+  "Gebärden/Zahlen/50.mp4": ["Fünfzig"],
+  "Gebärden/Zahlen/60.mp4": ["Sechzig"],
+  "Gebärden/Zahlen/70.mp4": ["Siebzig"],
+  "Gebärden/Zahlen/80.mp4": ["Achtzig"],
+  "Gebärden/Zahlen/90.mp4": ["Neunzig"],
+  "Gebärden/Zahlen/100.mp4": ["Einhundert", "Hundert"],
+  "Gebärden/Zahlen/200.mp4": ["Zweihundert"],
+  "Gebärden/Zahlen/300.mp4": ["Dreihundert"],
+  "Gebärden/Zahlen/400.mp4": ["Vierhundert"],
+  "Gebärden/Zahlen/500.mp4": ["Fünfhundert"],
+  "Gebärden/Zahlen/600.mp4": ["Sechshundert"],
+  "Gebärden/Zahlen/700.mp4": ["Siebenhundert"],
+  "Gebärden/Zahlen/800.mp4": ["Achthundert"],
+  "Gebärden/Zahlen/900.mp4": ["Neunhundert"],
+  "Gebärden/Zahlen/1000.mp4": ["Eintausend", "Tausend"],
+  "Gebärden/Zahlen/2000.mp4": ["Zweitausend"],
+  "Gebärden/Zahlen/3000.mp4": ["Dreitausend"],
+  "Gebärden/Zahlen/4000.mp4": ["Viertausend"],
+  "Gebärden/Zahlen/5000.mp4": ["Fünftausend"],
+  "Gebärden/Zahlen/6000.mp4": ["Sechstausend"],
+  "Gebärden/Zahlen/7000.mp4": ["Siebentausend"],
+  "Gebärden/Zahlen/8000.mp4": ["Achttausend"],
+  "Gebärden/Zahlen/9000.mp4": ["Neuntausend"],
+  "Gebärden/Zahlen/Zahlen (1-20).mp4": [
+    "1-20",
+    "1 - 20",
+    "Zahlen 1 bis 20",
+    "1 bis 20",
+    "Zahlen Eins bis Zwanzig",
+    "Eins bis Zwanzig"
+  ],
+  "Gebärden/Zahlen/Zahlen (20-9000).mp4": [
+    "20-9000",
+    "20 - 9000",
+    "Zahlen 20 bis 9000",
+    "20 bis 9000",
+    "Zahlen Zwanzig bis Neuntausend",
+    "Zwanzig bis Neuntausend"
+  ],
+  "Gebärden/Zahlen/erster.mp4": ["1."],
+  "Gebärden/Zahlen/zweiter.mp4": ["2."],
+  "Gebärden/Zahlen/dritter.mp4": ["3."]
 }
