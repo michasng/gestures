@@ -1,4 +1,5 @@
 import 'package:chewie/chewie.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:gestures/models/gesture.dart';
 import 'package:video_player/video_player.dart';
@@ -22,7 +23,9 @@ class _GesturePlayerState extends State<GesturePlayer> {
   }
 
   Future<void> init() async {
-    final url = await widget.gesture.storageReference.getDownloadURL();
+    final storage = FirebaseStorage.instance;
+    final storageRef = storage.ref(widget.gesture.fullPath);
+    final url = await storageRef.getDownloadURL();
     if (!mounted) return;
     setState(() {
       final controller = VideoPlayerController.networkUrl(Uri.parse(url));

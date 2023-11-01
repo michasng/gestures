@@ -1,13 +1,11 @@
-import 'package:firebase_storage/firebase_storage.dart';
-
 class Gesture implements Comparable<Gesture> {
   final String title;
-  final Reference storageReference;
+  final String fullPath;
   final List<String> synonyms;
 
   const Gesture({
     required this.title,
-    required this.storageReference,
+    required this.fullPath,
     this.synonyms = const [],
   });
 

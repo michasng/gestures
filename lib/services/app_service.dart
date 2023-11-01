@@ -42,7 +42,7 @@ class AppService {
     final synonyms = await _loadSynonyms(context);
 
     final storage = FirebaseStorage.instance;
-    final root = storage.ref('/Gebärden');
+    final root = storage.ref('Gebärden');
     final rootItems = await root.listAll();
     final List<Package> packages = [];
     for (final packageRef in rootItems.prefixes) {
@@ -94,7 +94,7 @@ class AppService {
       title:
           _gestureTitleRegex.firstMatch(gestureRef.name)?.namedGroup('title') ??
               gestureRef.name,
-      storageReference: gestureRef,
+      fullPath: gestureRef.fullPath,
       synonyms: synonyms[gestureRef.fullPath] ?? [],
     );
   }
