@@ -35,7 +35,12 @@ class AppService {
     final rootItems = await root.listAll();
     final List<Package> packages = [];
     for (final packageRef in rootItems.prefixes) {
-      packages.add(await _mapPackageRef(packageRef, synonyms));
+      packages.add(
+        await _mapPackageRef(
+          packageRef: packageRef,
+          synonyms: synonyms,
+        ),
+      );
     }
     return packages;
   }
@@ -53,26 +58,34 @@ class AppService {
     );
   }
 
-  Future<Package> _mapPackageRef(
-    Reference packageRef,
-    Map<String, List<String>> synonyms,
-  ) async {
+  Future<Package> _mapPackageRef({
+    required Reference packageRef,
+    required Map<String, List<String>> synonyms,
+  }) async {
     final packageItems = await packageRef.listAll();
     final videoFiles =
         packageItems.items.where((itemRef) => itemRef.name.endsWith('.mp4'));
     return Package(
       title: packageRef.name,
       gestures: videoFiles
-          .map((gestureRef) => _mapGestureRef(gestureRef, synonyms))
+          .map(
+            (gestureRef) => _mapGestureRef(
+              packageId: packageRef.name,
+              gestureRef: gestureRef,
+              synonyms: synonyms,
+            ),
+          )
           .toList(),
     );
   }
 
-  Gesture _mapGestureRef(
-    Reference gestureRef,
-    Map<String, List<String>> synonyms,
-  ) {
+  Gesture _mapGestureRef({
+    required String packageId,
+    required Reference gestureRef,
+    required Map<String, List<String>> synonyms,
+  }) {
     return Gesture(
+      packageId: packageId,
       title:
           _gestureTitleRegex.firstMatch(gestureRef.name)?.namedGroup('title') ??
               gestureRef.name,
@@ -101,20 +114,14 @@ class AppService {
     required String packageId,
   }) async {
     final packages = await getPackages(context);
-
-    if (packageId == Package.allGesturesPackageTitle)
-      return createAllGesturesPackage(packages);
-
     return packages.firstWhere((package) => package.title == packageId);
   }
 
-  Package createAllGesturesPackage(List<Package> packages) {
+  Future<List<Gesture>> getAllGestures(BuildContext context) async {
+    final packages = await getPackages(context);
     final allGestures = [...packages.expand((p) => p.gestures)];
     allGestures.sort((g1, g2) => g1.title.compareTo(g2.title));
-    return Package(
-      title: Package.allGesturesPackageTitle,
-      gestures: allGestures,
-    );
+    return allGestures;
   }
 
   Future<Gesture> getGesture(

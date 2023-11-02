@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/models/gesture.dart';
-import 'package:gestures/models/package.dart';
 import 'package:gestures/screens/gesture/gesture_screen.dart';
 import 'package:gestures/screens/package/components/gesture_list_tile.dart';
 import 'package:gestures/services/search_service.dart';
@@ -8,9 +7,9 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 class GestureList extends StatefulWidget {
-  final Package package;
+  final List<Gesture> gestures;
 
-  const GestureList({super.key, required this.package});
+  const GestureList({super.key, required this.gestures});
 
   @override
   State<GestureList> createState() => GestureListState();
@@ -21,14 +20,14 @@ class GestureListState extends State<GestureList> {
 
   @override
   void initState() {
-    gestures = widget.package.gestures;
+    gestures = widget.gestures;
     super.initState();
   }
 
   void _navigateToGesture(BuildContext context, Gesture gesture) {
     context.go(
       GestureScreen.path(
-        packageId: widget.package.title,
+        packageId: gesture.packageId,
         gestureId: gesture.title,
       ),
     );
@@ -36,7 +35,7 @@ class GestureListState extends State<GestureList> {
 
   void search(String search) {
     final searchService = GetIt.I<SearchService>();
-    final results = searchService.search(widget.package.gestures, search);
+    final results = searchService.search(widget.gestures, search);
     setState(() {
       gestures = results;
     });

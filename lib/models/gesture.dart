@@ -1,9 +1,11 @@
 class Gesture implements Comparable<Gesture> {
+  final String packageId;
   final String title;
   final String fullPath;
   final List<String> synonyms;
 
   const Gesture({
+    required this.packageId,
     required this.title,
     required this.fullPath,
     this.synonyms = const [],
@@ -24,8 +26,12 @@ class Gesture implements Comparable<Gesture> {
     };
   }
 
-  factory Gesture.fromJson(Map<String, dynamic> json) {
+  factory Gesture.fromJson(
+    Map<String, dynamic> json, {
+    required String packageId,
+  }) {
     return Gesture(
+      packageId: packageId,
       title: json['title'],
       fullPath: json['fullPath'],
       synonyms: (json['synonyms'] as List)

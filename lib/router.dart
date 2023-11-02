@@ -5,6 +5,7 @@ import 'package:gestures/screens/package/package_screen.dart';
 import 'package:gestures/screens/packages/packages_screen.dart';
 import 'package:gestures/screens/preface/preface_screen.dart';
 import 'package:gestures/screens/register/register_screen.dart';
+import 'package:gestures/screens/search_all/search_all_screen.dart';
 import 'package:gestures/screens/site_notice/site_notice_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -44,6 +45,10 @@ final routerConfig = GoRouter(
       builder: (context, state) => PackagesScreen(),
       redirect: _redirectUnauthenticated,
       routes: [
+        GoRoute(
+          path: SearchAllScreen.pathSegment,
+          builder: (context, state) => SearchAllScreen(),
+        ),
         GoRoute(
           path: PackageScreen.pathSegment,
           builder: (context, state) => PackageScreen(

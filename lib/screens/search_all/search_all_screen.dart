@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/screens/package/components/async_gesture_list.dart';
 import 'package:gestures/screens/packages/packages_screen.dart';
+import 'package:gestures/screens/search_all/components/async_all_gestures_list.dart';
 
-class PackageScreen extends StatefulWidget {
-  static const String pathSegment = ':packageId';
-  static String path({required String packageId}) {
-    return '${PackagesScreen.path}/$packageId';
-  }
+class SearchAllScreen extends StatefulWidget {
+  static const String pathSegment = 'search_all';
+  static const String path = '${PackagesScreen.path}/$pathSegment';
 
-  final String packageId;
-
-  const PackageScreen({super.key, required this.packageId});
+  const SearchAllScreen({super.key});
 
   @override
-  State<PackageScreen> createState() => _PackageScreenState();
+  State<SearchAllScreen> createState() => _SearchAllScreenState();
 }
 
-class _PackageScreenState extends State<PackageScreen> {
+class _SearchAllScreenState extends State<SearchAllScreen> {
   final _asyncGestureListKey = GlobalKey<AsyncGestureListState>();
 
   void _search(String search) {
@@ -26,13 +23,17 @@ class _PackageScreenState extends State<PackageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: FittedBox(child: Text(widget.packageId))),
+      appBar: AppBar(
+        title: FittedBox(
+          child: Text('Alle Gebärden durchsuchen'),
+        ),
+      ),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(16),
             child: TextField(
-              autofocus: false,
+              autofocus: true,
               decoration: const InputDecoration(
                 labelText: 'Suche',
               ),
@@ -40,9 +41,8 @@ class _PackageScreenState extends State<PackageScreen> {
             ),
           ),
           Expanded(
-            child: AsyncGestureList(
+            child: AsyncAllGesturesList(
               key: _asyncGestureListKey,
-              packageId: widget.packageId,
             ),
           ),
         ],

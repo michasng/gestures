@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gestures/models/gesture.dart';
 
 class Package {
-  static const allGesturesPackageTitle = 'Alle Gebärden durchsuchen';
   static const _iconMapping = {
-    allGesturesPackageTitle: Icons.search,
     'Arbeitssicherheit': Icons.health_and_safety_outlined,
     'Ausbildung': Icons.menu_book,
     'Bankwesen': Icons.account_balance_outlined,
@@ -105,7 +103,12 @@ class Package {
     return Package(
       title: json['title'],
       gestures: (json['gestures'] as List)
-          .map((gestureJson) => Gesture.fromJson(gestureJson))
+          .map(
+            (gestureJson) => Gesture.fromJson(
+              gestureJson,
+              packageId: json['title'],
+            ),
+          )
           .toList(),
     );
   }

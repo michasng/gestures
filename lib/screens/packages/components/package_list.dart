@@ -1,8 +1,8 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:gestures/models/package.dart';
 import 'package:gestures/screens/packages/components/package_list_tile.dart';
-import 'package:gestures/services/app_service.dart';
-import 'package:get_it/get_it.dart';
+import 'package:gestures/screens/packages/components/search_all_list_tile.dart';
 
 class PackageList extends StatelessWidget {
   final List<Package> packages;
@@ -15,13 +15,12 @@ class PackageList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final appService = GetIt.I<AppService>();
+    final allGesturesCount =
+        packages.map((package) => package.gestures.length).sum;
 
     return ListView(
       children: [
-        PackageListTile(
-          package: appService.createAllGesturesPackage(packages),
-        ),
+        SearchAllListTile(allGesturesCount: allGesturesCount),
         Divider(),
         ListTile(
           title: Text(
