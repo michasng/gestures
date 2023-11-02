@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/screens/package/components/async_gesture_list.dart';
 import 'package:gestures/screens/packages/packages_screen.dart';
 import 'package:gestures/screens/search_all/components/async_all_gestures_list.dart';
 
@@ -14,10 +13,10 @@ class SearchAllScreen extends StatefulWidget {
 }
 
 class _SearchAllScreenState extends State<SearchAllScreen> {
-  final _asyncGestureListKey = GlobalKey<AsyncGestureListState>();
+  final _asyncAllGesturesListKey = GlobalKey<AsyncAllGesturesListState>();
 
   void _search(String search) {
-    _asyncGestureListKey.currentState?.search(search);
+    _asyncAllGesturesListKey.currentState?.search(search);
   }
 
   @override
@@ -42,7 +41,7 @@ class _SearchAllScreenState extends State<SearchAllScreen> {
           ),
           Expanded(
             child: AsyncAllGesturesList(
-              key: _asyncGestureListKey,
+              key: _asyncAllGesturesListKey,
             ),
           ),
         ],
