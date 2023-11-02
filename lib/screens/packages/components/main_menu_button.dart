@@ -4,13 +4,21 @@ import 'package:gestures/components/links/privacy_policy_link.dart';
 import 'package:gestures/screens/login/login_screen.dart';
 import 'package:gestures/screens/preface/preface_screen.dart';
 import 'package:gestures/screens/site_notice/site_notice_screen.dart';
+import 'package:gestures/services/app_service.dart';
+import 'package:gestures/services/permission_service.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 enum MainMenuOption {
   preface,
   siteNotice,
   privacyPolicy,
-  logout,
+  exportAppContent(true),
+  logout;
+
+  final bool accessRestricted;
+
+  const MainMenuOption([this.accessRestricted = false]);
 }
 
 class MainMenuButton extends StatelessWidget {
@@ -26,6 +34,8 @@ class MainMenuButton extends StatelessWidget {
         return router.go(SiteNoticeScreen.path);
       case MainMenuOption.privacyPolicy:
         return await PrivacyPolicyLink.showPrivacyPolicy();
+      case MainMenuOption.exportAppContent:
+        return await GetIt.I<AppService>().exportAppContent(context);
       case MainMenuOption.logout:
         await FirebaseAuth.instance.signOut();
         return router.go(LoginScreen.path);
@@ -40,6 +50,8 @@ class MainMenuButton extends StatelessWidget {
         return 'Impressum';
       case MainMenuOption.privacyPolicy:
         return 'Datenschutzerklärung';
+      case MainMenuOption.exportAppContent:
+        return 'JSON exportieren';
       case MainMenuOption.logout:
         return 'Abmelden';
     }
@@ -47,14 +59,17 @@ class MainMenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isPrivilegedUser = GetIt.I<PermissionService>().isPrivilegedUser();
+
     return PopupMenuButton(
       itemBuilder: (context) {
         return [
           for (var option in MainMenuOption.values)
-            PopupMenuItem<MainMenuOption>(
-              value: option,
-              child: Text(_mapOptionLabel(option)),
-            ),
+            if (!option.accessRestricted || isPrivilegedUser)
+              PopupMenuItem<MainMenuOption>(
+                value: option,
+                child: Text(_mapOptionLabel(option)),
+              ),
         ];
       },
       onSelected: (option) => _select(context, option),

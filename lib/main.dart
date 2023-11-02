@@ -4,6 +4,7 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:gestures/firebase_options.dart';
 import 'package:gestures/router.dart';
 import 'package:gestures/services/app_service.dart';
+import 'package:gestures/services/permission_service.dart';
 import 'package:gestures/services/search_service.dart';
 import 'package:gestures/theme.dart';
 import 'package:get_it/get_it.dart';
@@ -13,6 +14,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
+  GetIt.I.registerSingleton<PermissionService>(PermissionService());
   GetIt.I.registerSingleton<AppService>(AppService());
   GetIt.I.registerSingleton<SearchService>(SearchService());
 

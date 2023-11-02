@@ -2,9 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:gestures/models/gesture.dart';
 import 'package:gestures/models/package.dart';
+import 'package:universal_html/html.dart' as html;
 
 class AppService {
   final _gestureTitleRegex = RegExp(r'(?<title>.*)\.mp4');
@@ -97,5 +98,19 @@ class AppService {
       fullPath: gestureRef.fullPath,
       synonyms: synonyms[gestureRef.fullPath] ?? [],
     );
+  }
+
+  Future<void> exportAppContent(BuildContext context) async {
+    final packages = await loadPackages(context);
+
+    final appContentJson = {
+      'packages': packages.map((package) => package.toJson()).toList(),
+    };
+
+    List<int> bytes = utf8.encode(jsonEncode(appContentJson));
+    final blob = html.Blob([bytes], 'application/json');
+    final url = html.Url.createObjectUrlFromBlob(blob);
+    html.window.open(url, '_blank');
+    html.Url.revokeObjectUrl(url);
   }
 }
