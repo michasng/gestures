@@ -35,6 +35,7 @@ class AsyncAllGesturesListState extends State<AsyncAllGesturesList> {
       builder: (context, gestures) => GestureList(
         key: _gestureListKey,
         gestures: gestures,
+        showPackageTitle: true,
       ),
     );
   }

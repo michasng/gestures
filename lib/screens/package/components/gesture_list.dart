@@ -8,8 +8,13 @@ import 'package:go_router/go_router.dart';
 
 class GestureList extends StatefulWidget {
   final List<Gesture> gestures;
+  final bool showPackageTitle;
 
-  const GestureList({super.key, required this.gestures});
+  const GestureList({
+    super.key,
+    required this.gestures,
+    required this.showPackageTitle,
+  });
 
   @override
   State<GestureList> createState() => GestureListState();
@@ -49,6 +54,7 @@ class GestureListState extends State<GestureList> {
           GestureListTile(
             gesture: gesture,
             onTap: (gesture) => _navigateToGesture(context, gesture),
+            showPackageTitle: widget.showPackageTitle,
           ),
       ],
     );
