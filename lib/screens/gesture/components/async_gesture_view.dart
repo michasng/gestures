@@ -28,7 +28,7 @@ class _AsyncGestureViewState extends State<AsyncGestureView> {
   @override
   void initState() {
     super.initState();
-    _loadFuture = GetIt.I<AppService>().loadGesture(
+    _loadFuture = GetIt.I<AppService>().getGesture(
       context,
       packageId: widget.packageId,
       gestureId: widget.gestureId,
@@ -37,7 +37,7 @@ class _AsyncGestureViewState extends State<AsyncGestureView> {
 
   void _goToPageDelta(int delta) async {
     final router = GoRouter.of(context);
-    final package = await GetIt.I<AppService>().loadPackage(
+    final package = await GetIt.I<AppService>().getPackage(
       context,
       packageId: widget.packageId,
     );

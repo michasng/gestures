@@ -18,7 +18,7 @@ class _AsyncPackageListState extends State<AsyncPackageList> {
   @override
   void initState() {
     super.initState();
-    _loadFuture = GetIt.I<AppService>().loadPackages(context);
+    _loadFuture = GetIt.I<AppService>().getPackages(context);
   }
 
   @override

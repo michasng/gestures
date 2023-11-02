@@ -35,7 +35,7 @@ class MainMenuButton extends StatelessWidget {
       case MainMenuOption.privacyPolicy:
         return await PrivacyPolicyLink.showPrivacyPolicy();
       case MainMenuOption.exportAppContent:
-        return await GetIt.I<AppService>().exportAppContent(context);
+        return await GetIt.I<AppService>().exportLiveAppContent(context);
       case MainMenuOption.logout:
         await FirebaseAuth.instance.signOut();
         return router.go(LoginScreen.path);

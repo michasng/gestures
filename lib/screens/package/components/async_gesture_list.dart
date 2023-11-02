@@ -24,7 +24,7 @@ class AsyncGestureListState extends State<AsyncGestureList> {
   @override
   void initState() {
     super.initState();
-    _loadFuture = GetIt.I<AppService>().loadPackage(
+    _loadFuture = GetIt.I<AppService>().getPackage(
       context,
       packageId: widget.packageId,
     );

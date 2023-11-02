@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:gestures/models/app_content.dart';
 import 'package:gestures/models/gesture.dart';
 import 'package:gestures/models/package.dart';
 import 'package:universal_html/html.dart' as html;
@@ -10,37 +11,24 @@ import 'package:universal_html/html.dart' as html;
 class AppService {
   final _gestureTitleRegex = RegExp(r'(?<title>.*)\.mp4');
 
-  Future<List<Package>>? _loadFuture;
+  Future<AppContent>? _loadFuture;
 
-  Future<List<Package>> loadPackages(
-    BuildContext context,
-  ) async {
-    return _loadFuture ??= _loadPackages(context);
+  Future<AppContent> _loadCachedAppContent() async {
+    final storage = FirebaseStorage.instance;
+    final ref = storage.ref('appContent.json');
+    final bytes = await ref.getData();
+    if (bytes == null) throw Exception('Cached app content not available.');
+    final json = jsonDecode(utf8.decode(bytes));
+    return AppContent.fromJson(json);
   }
 
-  Future<Package> loadPackage(
-    BuildContext context, {
-    required String packageId,
-  }) async {
-    final packages = await loadPackages(context);
-
-    if (packageId == Package.allGesturesPackageTitle)
-      return createAllGesturesPackage(packages);
-
-    return packages.firstWhere((package) => package.title == packageId);
+  Future<AppContent> _loadLiveAppContent(BuildContext context) async {
+    final packages = await _loadLivePackages(context);
+    return AppContent(packages: packages);
   }
 
-  Future<Gesture> loadGesture(
-    BuildContext context, {
-    required String packageId,
-    required String gestureId,
-  }) async {
-    final package = await loadPackage(context, packageId: packageId);
-    return package.gestures.firstWhere((gesture) => gesture.title == gestureId);
-  }
-
-  Future<List<Package>> _loadPackages(BuildContext context) async {
-    final synonyms = await _loadSynonyms(context);
+  Future<List<Package>> _loadLivePackages(BuildContext context) async {
+    final synonyms = await _loadLiveSynonyms(context);
 
     final storage = FirebaseStorage.instance;
     final root = storage.ref('Gebärden');
@@ -52,16 +40,9 @@ class AppService {
     return packages;
   }
 
-  Package createAllGesturesPackage(List<Package> packages) {
-    final allGestures = [...packages.expand((p) => p.gestures)];
-    allGestures.sort((g1, g2) => g1.title.compareTo(g2.title));
-    return Package(
-      title: Package.allGesturesPackageTitle,
-      gestures: allGestures,
-    );
-  }
-
-  Future<Map<String, List<String>>> _loadSynonyms(BuildContext context) async {
+  Future<Map<String, List<String>>> _loadLiveSynonyms(
+    BuildContext context,
+  ) async {
     final text =
         await DefaultAssetBundle.of(context).loadString('assets/synonyms.json');
     return (jsonDecode(text) as Map).map(
@@ -100,14 +81,55 @@ class AppService {
     );
   }
 
-  Future<void> exportAppContent(BuildContext context) async {
-    final packages = await loadPackages(context);
+  Future<AppContent> getAppContent(BuildContext context) async {
+    try {
+      return _loadFuture ??= _loadCachedAppContent();
+    } catch (e) {
+      // ignore: avoid_print
+      print(e);
+      return _loadFuture ??= _loadLiveAppContent(context);
+    }
+  }
 
-    final appContentJson = {
-      'packages': packages.map((package) => package.toJson()).toList(),
-    };
+  Future<List<Package>> getPackages(BuildContext context) async {
+    final appContent = await getAppContent(context);
+    return appContent.packages;
+  }
 
-    List<int> bytes = utf8.encode(jsonEncode(appContentJson));
+  Future<Package> getPackage(
+    BuildContext context, {
+    required String packageId,
+  }) async {
+    final packages = await getPackages(context);
+
+    if (packageId == Package.allGesturesPackageTitle)
+      return createAllGesturesPackage(packages);
+
+    return packages.firstWhere((package) => package.title == packageId);
+  }
+
+  Package createAllGesturesPackage(List<Package> packages) {
+    final allGestures = [...packages.expand((p) => p.gestures)];
+    allGestures.sort((g1, g2) => g1.title.compareTo(g2.title));
+    return Package(
+      title: Package.allGesturesPackageTitle,
+      gestures: allGestures,
+    );
+  }
+
+  Future<Gesture> getGesture(
+    BuildContext context, {
+    required String packageId,
+    required String gestureId,
+  }) async {
+    final package = await getPackage(context, packageId: packageId);
+    return package.gestures.firstWhere((gesture) => gesture.title == gestureId);
+  }
+
+  Future<void> exportLiveAppContent(BuildContext context) async {
+    final appContentFuture = _loadLiveAppContent(context);
+    final appContent = await appContentFuture;
+    List<int> bytes = utf8.encode(jsonEncode(appContent.toJson()));
     final blob = html.Blob([bytes], 'application/json');
     final url = html.Url.createObjectUrlFromBlob(blob);
     html.window.open(url, '_blank');
