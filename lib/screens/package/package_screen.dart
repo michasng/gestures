@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestures/models/package.dart';
 import 'package:gestures/screens/package/components/async_gesture_list.dart';
 import 'package:gestures/screens/packages/packages_screen.dart';
 
@@ -32,7 +33,7 @@ class _PackageScreenState extends State<PackageScreen> {
           Padding(
             padding: const EdgeInsets.all(16),
             child: TextField(
-              autofocus: true,
+              autofocus: widget.packageId == Package.allGesturesPackageTitle,
               decoration: const InputDecoration(
                 labelText: 'Suche',
               ),
