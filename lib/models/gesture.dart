@@ -1,4 +1,6 @@
 class Gesture implements Comparable<Gesture> {
+  static const String rootDirectory = 'Gebärden';
+
   final String id;
   final List<String>? synonyms;
 
@@ -9,7 +11,7 @@ class Gesture implements Comparable<Gesture> {
 
   String get packageId => id.split('/').first;
   String get title => id.split('/').last;
-  String get fullPath => 'Gebärden/$id.mp4';
+  String get fullPath => '$rootDirectory/$id.mp4';
 
   List<String> get searchTerms => [title, if (synonyms != null) ...synonyms!];
 

@@ -28,24 +28,24 @@ class AppService {
   }
 
   Future<List<Package>> _loadLivePackages(BuildContext context) async {
-    final synonyms = await _loadLiveSynonyms(context);
+    final allSynonyms = await _loadAllSynonymsFromAssets(context);
 
     final storage = FirebaseStorage.instance;
-    final root = storage.ref('Gebärden');
+    final root = storage.ref(Gesture.rootDirectory);
     final rootItems = await root.listAll();
     final List<Package> packages = [];
     for (final packageRef in rootItems.prefixes) {
       packages.add(
         await _mapPackageRef(
           packageRef: packageRef,
-          synonyms: synonyms,
+          allSynonyms: allSynonyms,
         ),
       );
     }
     return packages;
   }
 
-  Future<Map<String, List<String>>> _loadLiveSynonyms(
+  Future<Map<String, List<String>>> _loadAllSynonymsFromAssets(
     BuildContext context,
   ) async {
     final text =
@@ -60,7 +60,7 @@ class AppService {
 
   Future<Package> _mapPackageRef({
     required Reference packageRef,
-    required Map<String, List<String>> synonyms,
+    required Map<String, List<String>> allSynonyms,
   }) async {
     final packageItems = await packageRef.listAll();
     final videoFiles =
@@ -71,7 +71,7 @@ class AppService {
           .map(
             (gestureRef) => _mapGestureRef(
               gestureRef: gestureRef,
-              synonyms: synonyms,
+              allSynonyms: allSynonyms,
             ),
           )
           .toList(),
@@ -80,7 +80,7 @@ class AppService {
 
   Gesture _mapGestureRef({
     required Reference gestureRef,
-    required Map<String, List<String>> synonyms,
+    required Map<String, List<String>> allSynonyms,
   }) {
     final id =
         _gestureIdRegex.firstMatch(gestureRef.fullPath)?.namedGroup('id');
@@ -91,7 +91,7 @@ class AppService {
 
     return Gesture(
       id: id!,
-      synonyms: synonyms[gestureRef.fullPath],
+      synonyms: allSynonyms[id],
     );
   }
 
