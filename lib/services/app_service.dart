@@ -4,12 +4,14 @@ import 'dart:convert';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:gestures/models/app_content.dart';
+import 'package:gestures/models/distinct_gesture.dart';
 import 'package:gestures/models/gesture.dart';
 import 'package:gestures/models/package.dart';
 import 'package:universal_html/html.dart' as html;
 
 class AppService {
-  static final _gestureIdRegex = RegExp(r'^Gebärden\/(?<id>.*\/.*)\.mp4$');
+  static final _gestureIdRegex =
+      RegExp(r'^Gebärden\/(?<packageId>.*)\/(?<gestureId>.*)\.mp4$');
 
   Future<AppContent>? _loadFuture;
 
@@ -31,7 +33,7 @@ class AppService {
     final allSynonyms = await _loadAllSynonymsFromAssets(context);
 
     final storage = FirebaseStorage.instance;
-    final root = storage.ref(Gesture.rootDirectory);
+    final root = storage.ref('Gebärden');
     final rootItems = await root.listAll();
     final List<Package> packages = [];
     for (final packageRef in rootItems.prefixes) {
@@ -82,16 +84,12 @@ class AppService {
     required Reference gestureRef,
     required Map<String, List<String>> allSynonyms,
   }) {
-    final id =
-        _gestureIdRegex.firstMatch(gestureRef.fullPath)?.namedGroup('id');
-    assert(
-      id != null,
-      'Unable to find gesture ID in path ${gestureRef.fullPath}.',
-    );
-
+    final match = _gestureIdRegex.firstMatch(gestureRef.fullPath)!;
+    final packageId = match.namedGroup('packageId')!;
+    final gestureId = match.namedGroup('gestureId')!;
     return Gesture(
-      id: id!,
-      synonyms: allSynonyms[id],
+      id: gestureId,
+      synonyms: allSynonyms['$packageId/$gestureId'],
     );
   }
 
@@ -133,23 +131,23 @@ class AppService {
     required String packageId,
   }) async {
     final packages = await getPackages(context);
-    return packages.firstWhere((package) => package.title == packageId);
+    return packages.firstWhere((package) => package.id == packageId);
   }
 
-  Future<List<Gesture>> getAllGestures(BuildContext context) async {
+  Future<List<DistinctGesture>> getAllGestures(BuildContext context) async {
     final packages = await getPackages(context);
     final allGestures = [...packages.expand((p) => p.gestures)];
-    allGestures.sort((g1, g2) => g1.title.compareTo(g2.title));
+    allGestures.sort();
     return allGestures;
   }
 
-  Future<Gesture> getGesture(
+  Future<DistinctGesture> getPackageGesture(
     BuildContext context, {
     required String packageId,
     required String gestureId,
   }) async {
     final package = await getPackage(context, packageId: packageId);
-    return package.gestures.firstWhere((gesture) => gesture.title == gestureId);
+    return package.gestures.firstWhere((gesture) => gesture.id == gestureId);
   }
 
   Future<void> exportLiveAppContent(BuildContext context) async {

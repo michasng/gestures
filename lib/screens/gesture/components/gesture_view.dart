@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/components/aspect_ratio_builder.dart';
-import 'package:gestures/models/gesture.dart';
+import 'package:gestures/models/distinct_gesture.dart';
 import 'package:gestures/screens/gesture/components/gesture_player.dart';
 
 class GestureView extends StatelessWidget {
-  final Gesture gesture;
+  final DistinctGesture gesture;
   final Widget controlsChild;
 
   const GestureView({

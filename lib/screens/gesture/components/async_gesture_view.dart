@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/components/app_future_builder.dart';
-import 'package:gestures/models/gesture.dart';
+import 'package:gestures/models/distinct_gesture.dart';
 import 'package:gestures/screens/gesture/components/carousel_controls.dart';
 import 'package:gestures/screens/gesture/components/gesture_view.dart';
 import 'package:gestures/screens/gesture/gesture_screen.dart';
@@ -23,12 +23,12 @@ class AsyncGestureView extends StatefulWidget {
 }
 
 class _AsyncGestureViewState extends State<AsyncGestureView> {
-  late Future<Gesture> _loadFuture;
+  late Future<DistinctGesture> _loadFuture;
 
   @override
   void initState() {
     super.initState();
-    _loadFuture = GetIt.I<AppService>().getGesture(
+    _loadFuture = GetIt.I<AppService>().getPackageGesture(
       context,
       packageId: widget.packageId,
       gestureId: widget.gestureId,
@@ -55,7 +55,7 @@ class _AsyncGestureViewState extends State<AsyncGestureView> {
 
   @override
   Widget build(BuildContext context) {
-    return AppFutureBuilder<Gesture>(
+    return AppFutureBuilder<DistinctGesture>(
       future: _loadFuture,
       builder: (context, gesture) => GestureView(
         gesture: gesture,

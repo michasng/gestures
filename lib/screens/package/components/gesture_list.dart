@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/models/gesture.dart';
+import 'package:gestures/models/distinct_gesture.dart';
 import 'package:gestures/screens/gesture/gesture_screen.dart';
 import 'package:gestures/screens/package/components/gesture_list_tile.dart';
 import 'package:gestures/services/search_service.dart';
@@ -7,7 +7,7 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 class GestureList extends StatefulWidget {
-  final List<Gesture> gestures;
+  final List<DistinctGesture> gestures;
   final bool showPackageTitle;
 
   const GestureList({
@@ -21,7 +21,7 @@ class GestureList extends StatefulWidget {
 }
 
 class GestureListState extends State<GestureList> {
-  late List<Gesture> gestures;
+  late List<DistinctGesture> gestures;
 
   @override
   void initState() {
@@ -29,11 +29,11 @@ class GestureListState extends State<GestureList> {
     super.initState();
   }
 
-  void _navigateToGesture(BuildContext context, Gesture gesture) {
+  void _navigateToGesture(BuildContext context, DistinctGesture gesture) {
     context.go(
       GestureScreen.path(
-        packageId: gesture.packageId,
-        gestureId: gesture.title,
+        packageId: gesture.package.id,
+        gestureId: gesture.id,
       ),
     );
   }

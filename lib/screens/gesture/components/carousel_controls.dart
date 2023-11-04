@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/components/text/headline_small.dart';
-import 'package:gestures/models/gesture.dart';
+import 'package:gestures/models/distinct_gesture.dart';
 
 class CarouselControls extends StatelessWidget {
-  final Gesture gesture;
+  final DistinctGesture gesture;
   final void Function() onPrevious;
   final void Function() onNext;
 

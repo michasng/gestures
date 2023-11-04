@@ -1,11 +1,11 @@
 import 'package:chewie/chewie.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:gestures/models/gesture.dart';
+import 'package:gestures/models/distinct_gesture.dart';
 import 'package:video_player/video_player.dart';
 
 class GesturePlayer extends StatefulWidget {
-  final Gesture gesture;
+  final DistinctGesture gesture;
 
   const GesturePlayer({super.key, required this.gesture});
 

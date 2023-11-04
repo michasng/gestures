@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestures/models/distinct_gesture.dart';
 import 'package:gestures/models/gesture.dart';
 
 class Package {
@@ -81,12 +82,12 @@ class Package {
   };
 
   final String id;
-  final List<Gesture> gestures;
+  final List<Gesture> _gestures;
 
   const Package({
     required this.id,
-    required this.gestures,
-  });
+    required gestures,
+  }) : _gestures = gestures;
 
   String get title => id;
 
@@ -94,10 +95,19 @@ class Package {
     return _iconMapping[id];
   }
 
+  List<DistinctGesture> get gestures => _gestures
+      .map(
+        (gesture) => DistinctGesture(
+          package: this,
+          gesture: gesture,
+        ),
+      )
+      .toList();
+
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'gestures': gestures.map((gesture) => gesture.toJson()).toList(),
+      'gestures': _gestures.map((gesture) => gesture.toJson()).toList(),
     };
   }
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/components/app_future_builder.dart';
-import 'package:gestures/models/gesture.dart';
+import 'package:gestures/models/distinct_gesture.dart';
 import 'package:gestures/screens/package/components/gesture_list.dart';
 import 'package:gestures/services/app_service.dart';
 import 'package:get_it/get_it.dart';
@@ -16,7 +16,7 @@ class AsyncAllGesturesList extends StatefulWidget {
 
 class AsyncAllGesturesListState extends State<AsyncAllGesturesList> {
   final _gestureListKey = GlobalKey<GestureListState>();
-  late Future<List<Gesture>> _loadFuture;
+  late Future<List<DistinctGesture>> _loadFuture;
 
   @override
   void initState() {
@@ -30,7 +30,7 @@ class AsyncAllGesturesListState extends State<AsyncAllGesturesList> {
 
   @override
   Widget build(BuildContext context) {
-    return AppFutureBuilder<List<Gesture>>(
+    return AppFutureBuilder<List<DistinctGesture>>(
       future: _loadFuture,
       builder: (context, gestures) => GestureList(
         key: _gestureListKey,

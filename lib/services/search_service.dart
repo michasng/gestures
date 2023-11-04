@@ -1,12 +1,12 @@
-import 'package:gestures/models/gesture.dart';
+import 'package:gestures/models/distinct_gesture.dart';
 
 class SearchService {
   String toSearchString(String text) {
     return text.replaceAll(' ', '').toLowerCase();
   }
 
-  Iterable<Gesture> _searchBy(
-    List<Gesture> gestures,
+  Iterable<DistinctGesture> _searchBy(
+    List<DistinctGesture> gestures,
     bool Function(String term) isMatch,
   ) {
     return gestures.where(
@@ -17,7 +17,7 @@ class SearchService {
     );
   }
 
-  List<Gesture> search(List<Gesture> gestures, String search) {
+  List<DistinctGesture> search(List<DistinctGesture> gestures, String search) {
     final searchString = toSearchString(search);
 
     final exactMatches = _searchBy(
@@ -38,7 +38,10 @@ class SearchService {
     containedMatches.sort();
 
     // combine and remove duplicate entries with a set literal
-    return <Gesture>{...exactMatches, ...prefixMatches, ...containedMatches}
-        .toList();
+    return <DistinctGesture>{
+      ...exactMatches,
+      ...prefixMatches,
+      ...containedMatches,
+    }.toList();
   }
 }
