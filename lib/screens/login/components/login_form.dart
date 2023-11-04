@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gestures/components/form_fields/secret_text_form_field.dart';
+import 'package:gestures/components/spinner.dart';
 import 'package:gestures/components/text/error_text.dart';
 import 'package:gestures/components/text/headline_small.dart';
 import 'package:gestures/components/text/links/link_text.dart';
@@ -20,12 +21,23 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
+  bool _isSubmitting = false;
+  String? _errorMessage;
+
   final _passwordFocus = FocusNode();
   String? _email;
   String? _password;
-  String? _errorMessage;
 
-  void _submit() async {
+  Future<void> _submit() async {
+    setState(() {
+      _isSubmitting = true;
+      _errorMessage = null;
+    });
+    await _submitInternal();
+    setState(() => _isSubmitting = false);
+  }
+
+  Future<void> _submitInternal() async {
     final formState = _formKey.currentState;
     if (formState == null || !formState.validate()) return;
     formState.save();
@@ -71,7 +83,7 @@ class _LoginFormState extends State<LoginForm> {
           SecretTextFormField(
             focusNode: _passwordFocus,
             autofillHints: [AutofillHints.password],
-            onFieldSubmitted: (_) => _submit(),
+            onFieldSubmitted: _isSubmitting ? null : (_) => _submit(),
             validator: (value) {
               if (value?.isEmpty ?? true) return 'Bitte Passwort eingeben.';
               return null;
@@ -108,8 +120,14 @@ class _LoginFormState extends State<LoginForm> {
                   context.go(RegisterScreen.path);
                 },
               ),
+              Spacer(),
+              if (_isSubmitting) ...[
+                SizedBox(width: 16),
+                Spinner(size: 24),
+              ],
+              SizedBox(width: 16),
               ElevatedButton(
-                onPressed: _submit,
+                onPressed: _isSubmitting ? null : _submit,
                 child: Text('Bestätigen'),
               ),
             ],

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gestures/components/form_fields/secret_text_form_field.dart';
+import 'package:gestures/components/spinner.dart';
 import 'package:gestures/components/text/error_text.dart';
 import 'package:gestures/components/text/headline_small.dart';
 import 'package:gestures/firebase_auth_error.dart';
@@ -14,15 +15,26 @@ class ChangePasswordForm extends StatefulWidget {
 
 class _ChangePasswordFormState extends State<ChangePasswordForm> {
   final _formKey = GlobalKey<FormState>();
+  bool _isSubmitting = false;
+  String? _errorMessage;
+
   final _passwordController = TextEditingController();
   final _passwordFocus = FocusNode();
   final _confirmNewPasswordFocus = FocusNode();
   final _oldPasswordFocus = FocusNode();
   String? _newPassword;
   String? _oldPassword;
-  String? _errorMessage;
 
-  void _submit() async {
+  Future<void> _submit() async {
+    setState(() {
+      _isSubmitting = true;
+      _errorMessage = null;
+    });
+    await _submitInternal();
+    setState(() => _isSubmitting = false);
+  }
+
+  Future<void> _submitInternal() async {
     final formState = _formKey.currentState;
     if (formState == null || !formState.validate()) return;
     formState.save();
@@ -98,7 +110,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
           SizedBox(height: 16),
           SecretTextFormField(
             focusNode: _oldPasswordFocus,
-            onFieldSubmitted: (_) => _submit(),
+            onFieldSubmitted: _isSubmitting ? null : (_) => _submit(),
             validator: (value) {
               if (value?.isEmpty ?? true)
                 return 'Bitte altes Passwort eingeben.';
@@ -119,12 +131,16 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
             ),
           ],
           SizedBox(height: 16),
-          Align(
-            alignment: Alignment.centerRight,
-            child: ElevatedButton(
-              onPressed: _submit,
-              child: Text('Bestätigen'),
-            ),
+          Row(
+            children: [
+              Spacer(),
+              if (_isSubmitting) Spinner(size: 24),
+              SizedBox(width: 16),
+              ElevatedButton(
+                onPressed: _isSubmitting ? null : _submit,
+                child: Text('Bestätigen'),
+              ),
+            ],
           ),
         ],
       ),

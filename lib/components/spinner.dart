@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 
 class Spinner extends StatelessWidget {
-  const Spinner({super.key});
+  final int size;
+
+  const Spinner({
+    super.key,
+    this.size = 256,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        width: 256,
-        height: 256,
+        width: size.toDouble(),
+        height: size.toDouble(),
         child: CircularProgressIndicator(
           strokeWidth: 2,
         ),
