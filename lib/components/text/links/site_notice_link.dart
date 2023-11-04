@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/components/links/link_text.dart';
+import 'package:gestures/components/text/links/link_text.dart';
 import 'package:gestures/screens/site_notice/site_notice_screen.dart';
 import 'package:go_router/go_router.dart';
 

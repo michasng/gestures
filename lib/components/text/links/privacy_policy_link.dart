@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gestures/components/links/link_text.dart';
+import 'package:gestures/components/text/links/link_text.dart';
 import 'package:universal_html/html.dart' as html;
 
 class PrivacyPolicyLink extends StatelessWidget {

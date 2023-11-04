@@ -6,6 +6,7 @@ import 'package:gestures/screens/packages/packages_screen.dart';
 import 'package:gestures/screens/preface/preface_screen.dart';
 import 'package:gestures/screens/register/register_screen.dart';
 import 'package:gestures/screens/search_all/search_all_screen.dart';
+import 'package:gestures/screens/settings/settings_screen.dart';
 import 'package:gestures/screens/site_notice/site_notice_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -39,6 +40,10 @@ final routerConfig = GoRouter(
     GoRoute(
       path: SiteNoticeScreen.path,
       builder: (context, state) => SiteNoticeScreen(),
+    ),
+    GoRoute(
+      path: SettingsScreen.path,
+      builder: (context, state) => SettingsScreen(),
     ),
     GoRoute(
       path: PackagesScreen.path,

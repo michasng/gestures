@@ -1,9 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gestures/components/links/link_text.dart';
-import 'package:gestures/components/links/privacy_policy_link.dart';
-import 'package:gestures/components/links/site_notice_link.dart';
-import 'package:gestures/components/secret_text_form_field.dart';
+import 'package:gestures/components/form_fields/secret_text_form_field.dart';
+import 'package:gestures/components/text/error_text.dart';
+import 'package:gestures/components/text/headline_small.dart';
+import 'package:gestures/components/text/links/link_text.dart';
+import 'package:gestures/components/text/links/privacy_policy_link.dart';
+import 'package:gestures/components/text/links/site_notice_link.dart';
+import 'package:gestures/firebase_auth_error.dart';
 import 'package:gestures/screens/preface/preface_screen.dart';
 import 'package:gestures/screens/register/register_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -22,23 +25,6 @@ class _LoginFormState extends State<LoginForm> {
   String? _password;
   String? _errorMessage;
 
-  String _errorCodeToMessage(String? code) {
-    switch (code) {
-      case 'invalid-email':
-        return 'Die E-Mail Adresse ist ungültig.';
-      case 'user-disabled':
-        return 'Dieser Nutzer ist deaktiviert.';
-      case 'user-not-found':
-        return 'Dieser Nutzer existiert nicht.';
-      case 'wrong-password':
-        return 'Das Passwort ist falsch.';
-      case null:
-        return 'Unbekannter Fehler';
-      default:
-        return 'Unerwarteter Fehler: $code';
-    }
-  }
-
   void _submit() async {
     final formState = _formKey.currentState;
     if (formState == null || !formState.validate()) return;
@@ -53,25 +39,20 @@ class _LoginFormState extends State<LoginForm> {
       router.go(PrefaceScreen.path);
     } on FirebaseAuthException catch (e) {
       setState(() {
-        _errorMessage = _errorCodeToMessage(e.code);
+        _errorMessage = FirebaseAuthError.byCode(e.code)?.message ?? e.code;
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Form(
       key: _formKey,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
-            'Anmelden',
-            style: theme.textTheme.headlineSmall,
-          ),
+          HeadlineSmall('Anmelden'),
           SizedBox(height: 16),
           TextFormField(
             autofillHints: [AutofillHints.email],
@@ -105,11 +86,7 @@ class _LoginFormState extends State<LoginForm> {
             Row(
               children: [
                 Spacer(),
-                Text(
-                  _errorMessage!,
-                  style: theme.textTheme.bodyMedium
-                      ?.copyWith(color: theme.colorScheme.error),
-                ),
+                ErrorText(_errorMessage!),
               ],
             ),
           ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestures/components/text/headline_small.dart';
 import 'package:gestures/models/gesture.dart';
 
 class CarouselControls extends StatelessWidget {
@@ -26,10 +27,7 @@ class CarouselControls extends StatelessWidget {
         ),
         Flexible(
           child: FittedBox(
-            child: Text(
-              gesture.title,
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
+            child: HeadlineSmall(gesture.title),
           ),
         ),
         IconButton(

@@ -1,9 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gestures/components/links/link_text.dart';
-import 'package:gestures/components/links/privacy_policy_link.dart';
-import 'package:gestures/components/links/site_notice_link.dart';
-import 'package:gestures/components/secret_text_form_field.dart';
+import 'package:gestures/components/form_fields/secret_text_form_field.dart';
+import 'package:gestures/components/text/error_text.dart';
+import 'package:gestures/components/text/headline_small.dart';
+import 'package:gestures/components/text/links/link_text.dart';
+import 'package:gestures/components/text/links/privacy_policy_link.dart';
+import 'package:gestures/components/text/links/site_notice_link.dart';
+import 'package:gestures/firebase_auth_error.dart';
 import 'package:gestures/screens/login/login_screen.dart';
 import 'package:gestures/screens/preface/preface_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -24,23 +27,6 @@ class _RegisterFormState extends State<RegisterForm> {
   String? _password;
   String? _errorMessage;
 
-  String _errorCodeToMessage(String? code) {
-    switch (code) {
-      case 'email-already-in-use':
-        return 'Dieser Nutzer existiert bereits.';
-      case 'invalid-email':
-        return 'Die E-Mail Adresse ist ungültig.';
-      case 'operation-not-allowed':
-        return 'Der Vorgang ist aus technischen Gründen nicht erlaubt.';
-      case 'weak-password':
-        return 'Bitte wählen Sie ein stärkeres Passwort.';
-      case null:
-        return 'Unbekannter Fehler';
-      default:
-        return 'Unerwarteter Fehler: $code';
-    }
-  }
-
   void _submit() async {
     final formState = _formKey.currentState;
     if (formState == null || !formState.validate()) return;
@@ -55,25 +41,20 @@ class _RegisterFormState extends State<RegisterForm> {
       router.go(PrefaceScreen.path);
     } on FirebaseAuthException catch (e) {
       setState(() {
-        _errorMessage = _errorCodeToMessage(e.code);
+        _errorMessage = FirebaseAuthError.byCode(e.code)?.message ?? e.code;
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Form(
       key: _formKey,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
-            'Registrieren',
-            style: theme.textTheme.headlineSmall,
-          ),
+          HeadlineSmall('Registrieren'),
           SizedBox(height: 16),
           TextFormField(
             autofillHints: [AutofillHints.email],
@@ -92,7 +73,7 @@ class _RegisterFormState extends State<RegisterForm> {
           SecretTextFormField(
             controller: _passwordController,
             focusNode: _passwordFocus,
-            autofillHints: [AutofillHints.password],
+            autofillHints: [AutofillHints.newPassword],
             onFieldSubmitted: (_) => _confirmPasswordFocus.requestFocus(),
             validator: (value) {
               if (value?.isEmpty ?? true) return 'Bitte Passwort eingeben.';
@@ -122,11 +103,7 @@ class _RegisterFormState extends State<RegisterForm> {
             Row(
               children: [
                 Spacer(),
-                Text(
-                  _errorMessage!,
-                  style: theme.textTheme.bodyMedium
-                      ?.copyWith(color: theme.colorScheme.error),
-                ),
+                ErrorText(_errorMessage!),
               ],
             ),
           ],
