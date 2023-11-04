@@ -9,7 +9,7 @@ import 'package:gestures/models/package.dart';
 import 'package:universal_html/html.dart' as html;
 
 class AppService {
-  final _gestureTitleRegex = RegExp(r'(?<title>.*)\.mp4');
+  static final _gestureIdRegex = RegExp(r'^Gebärden\/(?<id>.*\/.*)\.mp4$');
 
   Future<AppContent>? _loadFuture;
 
@@ -66,11 +66,10 @@ class AppService {
     final videoFiles =
         packageItems.items.where((itemRef) => itemRef.name.endsWith('.mp4'));
     return Package(
-      title: packageRef.name,
+      id: packageRef.name,
       gestures: videoFiles
           .map(
             (gestureRef) => _mapGestureRef(
-              packageId: packageRef.name,
               gestureRef: gestureRef,
               synonyms: synonyms,
             ),
@@ -80,27 +79,47 @@ class AppService {
   }
 
   Gesture _mapGestureRef({
-    required String packageId,
     required Reference gestureRef,
     required Map<String, List<String>> synonyms,
   }) {
+    final id =
+        _gestureIdRegex.firstMatch(gestureRef.fullPath)?.namedGroup('id');
+    assert(
+      id != null,
+      'Unable to find gesture ID in path ${gestureRef.fullPath}.',
+    );
+
     return Gesture(
-      packageId: packageId,
-      title:
-          _gestureTitleRegex.firstMatch(gestureRef.name)?.namedGroup('title') ??
-              gestureRef.name,
-      fullPath: gestureRef.fullPath,
-      synonyms: synonyms[gestureRef.fullPath] ?? [],
+      id: id!,
+      synonyms: synonyms[gestureRef.fullPath],
     );
   }
 
   Future<AppContent> getAppContent(BuildContext context) async {
+    if (_loadFuture != null) return await _loadFuture!;
+
     try {
-      return _loadFuture ??= _loadCachedAppContent();
-    } catch (e) {
+      _loadFuture = _loadCachedAppContent();
+      return await _loadFuture!;
+    } catch (e, stackTrace) {
       // ignore: avoid_print
-      print(e);
-      return _loadFuture ??= _loadLiveAppContent(context);
+      print('Loading cached content failed: $e.');
+      // ignore: avoid_print
+      print(stackTrace);
+    }
+
+    // ignore: avoid_print
+    print('Loading live content as a fallback...');
+
+    try {
+      _loadFuture = _loadLiveAppContent(context);
+      return await _loadFuture!;
+    } catch (e, stackTrace) {
+      // ignore: avoid_print
+      print('Loading live content failed: $e.');
+      // ignore: avoid_print
+      print(stackTrace);
+      rethrow;
     }
   }
 

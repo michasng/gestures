@@ -1,17 +1,17 @@
 class Gesture implements Comparable<Gesture> {
-  final String packageId;
-  final String title;
-  final String fullPath;
-  final List<String> synonyms;
+  final String id;
+  final List<String>? synonyms;
 
   const Gesture({
-    required this.packageId,
-    required this.title,
-    required this.fullPath,
-    this.synonyms = const [],
+    required this.id,
+    this.synonyms,
   });
 
-  List<String> get searchTerms => [title, ...synonyms];
+  String get packageId => id.split('/').first;
+  String get title => id.split('/').last;
+  String get fullPath => 'Gebärden/$id.mp4';
+
+  List<String> get searchTerms => [title, if (synonyms != null) ...synonyms!];
 
   @override
   int compareTo(Gesture other) {
@@ -20,22 +20,16 @@ class Gesture implements Comparable<Gesture> {
 
   Map<String, dynamic> toJson() {
     return {
-      'title': title,
-      'fullPath': fullPath,
-      'synonyms': synonyms,
+      'id': id,
+      if (synonyms != null) 'synonyms': synonyms,
     };
   }
 
-  factory Gesture.fromJson(
-    Map<String, dynamic> json, {
-    required String packageId,
-  }) {
+  factory Gesture.fromJson(Map<String, dynamic> json) {
     return Gesture(
-      packageId: packageId,
-      title: json['title'],
-      fullPath: json['fullPath'],
-      synonyms: (json['synonyms'] as List)
-          .map((synonymJson) => synonymJson as String)
+      id: json['id'],
+      synonyms: (json['synonyms'] as List?)
+          ?.map((synonymJson) => synonymJson as String)
           .toList(),
     );
   }

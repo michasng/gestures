@@ -80,34 +80,33 @@ class Package {
     'Übergreifendes': Icons.select_all,
   };
 
-  final String title;
+  final String id;
   final List<Gesture> gestures;
 
   const Package({
-    required this.title,
+    required this.id,
     required this.gestures,
   });
 
+  String get title => id;
+
   IconData? get icon {
-    return _iconMapping[title];
+    return _iconMapping[id];
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'title': title,
+      'id': id,
       'gestures': gestures.map((gesture) => gesture.toJson()).toList(),
     };
   }
 
   factory Package.fromJson(Map<String, dynamic> json) {
     return Package(
-      title: json['title'],
+      id: json['id'],
       gestures: (json['gestures'] as List)
           .map(
-            (gestureJson) => Gesture.fromJson(
-              gestureJson,
-              packageId: json['title'],
-            ),
+            (gestureJson) => Gesture.fromJson(gestureJson),
           )
           .toList(),
     );
