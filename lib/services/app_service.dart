@@ -44,6 +44,7 @@ class AppService {
         ),
       );
     }
+    packages.sort();
     return packages;
   }
 
@@ -67,16 +68,18 @@ class AppService {
     final packageItems = await packageRef.listAll();
     final videoFiles =
         packageItems.items.where((itemRef) => itemRef.name.endsWith('.mp4'));
+    final gestures = videoFiles
+        .map(
+          (gestureRef) => _mapGestureRef(
+            gestureRef: gestureRef,
+            allSynonyms: allSynonyms,
+          ),
+        )
+        .toList();
+    gestures.sort();
     return Package(
       id: packageRef.name,
-      gestures: videoFiles
-          .map(
-            (gestureRef) => _mapGestureRef(
-              gestureRef: gestureRef,
-              allSynonyms: allSynonyms,
-            ),
-          )
-          .toList(),
+      gestures: gestures,
     );
   }
 

@@ -1,3 +1,6 @@
+import 'package:collection/collection.dart';
+import 'package:gestures/components/sorting.dart';
+
 class Gesture implements Comparable<Gesture> {
   final String id;
   final List<String>? synonyms;
@@ -13,7 +16,10 @@ class Gesture implements Comparable<Gesture> {
 
   @override
   int compareTo(Gesture other) {
-    return title.compareTo(other.title);
+    return compareNatural(
+      encodeForSorting(title),
+      encodeForSorting(other.title),
+    );
   }
 
   Map<String, dynamic> toJson() {

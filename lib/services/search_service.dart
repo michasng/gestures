@@ -23,7 +23,8 @@ class SearchService {
     final exactMatches = _searchBy(
       gestures,
       (term) => term == searchString,
-    );
+    ).toList();
+    exactMatches.sort();
 
     final prefixMatches = _searchBy(
       gestures,

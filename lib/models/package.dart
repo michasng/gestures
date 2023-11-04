@@ -1,8 +1,10 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:gestures/components/sorting.dart';
 import 'package:gestures/models/distinct_gesture.dart';
 import 'package:gestures/models/gesture.dart';
 
-class Package {
+class Package implements Comparable<Package> {
   static const _iconMapping = {
     'Arbeitssicherheit': Icons.health_and_safety_outlined,
     'Ausbildung': Icons.menu_book,
@@ -103,6 +105,14 @@ class Package {
         ),
       )
       .toList();
+
+  @override
+  int compareTo(Package other) {
+    return compareNatural(
+      encodeForSorting(title),
+      encodeForSorting(other.title),
+    );
+  }
 
   Map<String, dynamic> toJson() {
     return {
