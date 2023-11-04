@@ -29,6 +29,7 @@ enum FirebaseAuthError {
     return FirebaseAuthError.values.cast<FirebaseAuthError?>().firstWhere(
       (element) => element?.code == code,
       orElse: () {
+        // ignore: avoid_print
         print('An unexpected firebase auth error occurred: $code');
         return null;
       },
