@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gestures/components/gesture_list/gesture_list_tile.dart';
 import 'package:gestures/models/distinct_gesture.dart';
-import 'package:gestures/screens/package/components/gesture_list_tile.dart';
 
 class GestureList extends StatelessWidget {
   final List<DistinctGesture> gestures;

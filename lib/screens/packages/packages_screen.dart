@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/components/app_background.dart';
+import 'package:gestures/components/branding/app_background.dart';
 import 'package:gestures/components/text/app_title.dart';
 import 'package:gestures/screens/packages/components/async_package_list.dart';
 import 'package:gestures/screens/packages/components/main_menu_button.dart';

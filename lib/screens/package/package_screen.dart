@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/components/async/async_view.dart';
+import 'package:gestures/components/gesture_list/searchable_gesture_list.dart';
 import 'package:gestures/models/distinct_gesture.dart';
 import 'package:gestures/models/package.dart';
 import 'package:gestures/screens/gesture/gesture_screen.dart';
-import 'package:gestures/screens/package/components/searchable_gesture_list.dart';
 import 'package:gestures/screens/packages/packages_screen.dart';
 import 'package:gestures/services/app_service.dart';
 import 'package:get_it/get_it.dart';

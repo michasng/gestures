@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gestures/components/gesture_list/gesture_list.dart';
 import 'package:gestures/models/distinct_gesture.dart';
-import 'package:gestures/screens/package/components/gesture_list.dart';
 import 'package:gestures/services/search_service.dart';
 import 'package:get_it/get_it.dart';
 
