@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/components/spinner.dart';
+import 'package:gestures/components/async/spinner.dart';
 
 typedef AppFutureBuilderCallback<T> = Widget Function(
   BuildContext context,

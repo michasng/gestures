@@ -65,6 +65,10 @@ final routerConfig = GoRouter(
               builder: (context, state) => GestureScreen(
                 packageId: state.pathParameters['packageId'] ?? '',
                 gestureId: state.pathParameters['gestureId'] ?? '',
+                searchKey: state.uri.queryParameters['search_key'],
+                searchingAll:
+                    state.uri.queryParameters['searching_all']?.toLowerCase() ==
+                        'true',
               ),
             ),
           ],

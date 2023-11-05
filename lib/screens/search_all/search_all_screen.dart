@@ -1,22 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:gestures/components/async/async_view.dart';
+import 'package:gestures/models/distinct_gesture.dart';
+import 'package:gestures/screens/gesture/gesture_screen.dart';
+import 'package:gestures/screens/package/components/searchable_gesture_list.dart';
 import 'package:gestures/screens/packages/packages_screen.dart';
-import 'package:gestures/screens/search_all/components/async_all_gestures_list.dart';
+import 'package:gestures/services/app_service.dart';
+import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 
-class SearchAllScreen extends StatefulWidget {
+class SearchAllScreen extends StatelessWidget {
   static const String pathSegment = 'search_all';
   static const String path = '${PackagesScreen.path}/$pathSegment';
 
   const SearchAllScreen({super.key});
 
-  @override
-  State<SearchAllScreen> createState() => _SearchAllScreenState();
-}
+  Future<List<DistinctGesture>> _load(BuildContext context) async {
+    return await GetIt.I<AppService>().getAllGestures(context);
+  }
 
-class _SearchAllScreenState extends State<SearchAllScreen> {
-  final _asyncAllGesturesListKey = GlobalKey<AsyncAllGesturesListState>();
-
-  void _search(String search) {
-    _asyncAllGesturesListKey.currentState?.search(search);
+  void _navigateToGesture(
+    BuildContext context,
+    DistinctGesture gesture,
+    String? searchKey,
+  ) {
+    context.go(
+      GestureScreen.path(
+        packageId: gesture.package.id,
+        gestureId: gesture.id,
+        searchKey: searchKey,
+        searchingAll: true,
+      ),
+    );
   }
 
   @override
@@ -27,24 +41,18 @@ class _SearchAllScreenState extends State<SearchAllScreen> {
           child: Text('Alle Gebärden durchsuchen'),
         ),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: TextField(
-              autofocus: true,
-              decoration: const InputDecoration(
-                labelText: 'Suche',
-              ),
-              onChanged: _search,
-            ),
+      body: AsyncView(
+        createFuture: () => _load(context),
+        builder: (context, gestures) => SearchableGestureList(
+          gestures: gestures,
+          initialSearchKey: null,
+          showPackageTitles: true,
+          onTapGesture: (gesture, searchKey) => _navigateToGesture(
+            context,
+            gesture,
+            searchKey,
           ),
-          Expanded(
-            child: AsyncAllGesturesList(
-              key: _asyncAllGesturesListKey,
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

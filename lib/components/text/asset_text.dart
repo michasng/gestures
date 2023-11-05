@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/components/app_future_builder.dart';
+import 'package:gestures/components/async/app_future_builder.dart';
 
 class AssetText extends StatefulWidget {
   final String path;

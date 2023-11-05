@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gestures/components/async/spinner.dart';
 import 'package:gestures/components/form_fields/secret_text_form_field.dart';
-import 'package:gestures/components/spinner.dart';
 import 'package:gestures/components/text/error_text.dart';
 import 'package:gestures/components/text/headline_small.dart';
 import 'package:gestures/components/text/links/link_text.dart';
