@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/components/async/async_view.dart';
 import 'package:gestures/components/gesture_list/searchable_gesture_list.dart';
+import 'package:gestures/components/routing.dart';
 import 'package:gestures/models/distinct_gesture.dart';
 import 'package:gestures/models/package.dart';
 import 'package:gestures/screens/gesture/gesture_screen.dart';
@@ -11,13 +12,25 @@ import 'package:go_router/go_router.dart';
 
 class PackageScreen extends StatelessWidget {
   static const String pathSegment = ':packageId';
-  static String path({required String packageId}) {
-    return '${PackagesScreen.path}/$packageId';
+  static String path({
+    required String packageId,
+    required String? searchKey,
+  }) {
+    final queryString = createQueryString({
+      'search_key': searchKey,
+    });
+
+    return '${PackagesScreen.path}/$packageId$queryString';
   }
 
   final String packageId;
+  final String? initialSearchKey;
 
-  const PackageScreen({super.key, required this.packageId});
+  const PackageScreen({
+    super.key,
+    required this.packageId,
+    required String? searchKey,
+  }) : initialSearchKey = searchKey;
 
   Future<Package> _load(BuildContext context) async {
     return await GetIt.I<AppService>().getPackage(
@@ -53,7 +66,7 @@ class PackageScreen extends StatelessWidget {
         createFuture: () => _load(context),
         builder: (context, package) => SearchableGestureList(
           gestures: package.gestures,
-          initialSearchKey: null,
+          initialSearchKey: initialSearchKey,
           showPackageTitles: false,
           onTapGesture: (gesture, searchKey) => _navigateToGesture(
             context,

@@ -16,7 +16,7 @@ class SearchAllListTile extends StatelessWidget {
         textColor: theme.colorScheme.onSurface,
         title: Text('Alle Gebärden durchsuchen'),
         subtitle: Text('$allGesturesCount Videoclips'),
-        onTap: () => context.go(SearchAllScreen.path),
+        onTap: () => context.go(SearchAllScreen.path(searchKey: null)),
         trailing: Icon(
           Icons.search,
           color: theme.colorScheme.primary,

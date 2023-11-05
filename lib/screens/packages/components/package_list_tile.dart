@@ -17,7 +17,12 @@ class PackageListTile extends StatelessWidget {
         textColor: theme.colorScheme.onSurface,
         title: Text(package.title),
         subtitle: Text('${package.gestures.length} Videoclips'),
-        onTap: () => context.go(PackageScreen.path(packageId: package.title)),
+        onTap: () => context.go(
+          PackageScreen.path(
+            packageId: package.title,
+            searchKey: null,
+          ),
+        ),
         trailing: Icon(
           package.icon,
           color: theme.colorScheme.primary,

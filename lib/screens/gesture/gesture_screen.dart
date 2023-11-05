@@ -3,6 +3,7 @@ import 'package:gestures/components/routing.dart';
 import 'package:gestures/models/distinct_gesture.dart';
 import 'package:gestures/screens/gesture/components/async_gesture_view.dart';
 import 'package:gestures/screens/package/package_screen.dart';
+import 'package:gestures/screens/packages/packages_screen.dart';
 import 'package:gestures/screens/search_all/search_all_screen.dart';
 import 'package:gestures/services/app_service.dart';
 import 'package:gestures/services/search_service.dart';
@@ -22,8 +23,7 @@ class GestureScreen extends StatelessWidget {
       'searching_all': searchingAll,
     });
 
-    final packagePath = PackageScreen.path(packageId: packageId);
-    return '$packagePath/gestures/$gestureId$queryString';
+    return '${PackagesScreen.path}/$packageId/gestures/$gestureId$queryString';
   }
 
   final String packageId;
@@ -77,9 +77,18 @@ class GestureScreen extends StatelessWidget {
 
   void _navigateBack(BuildContext context) {
     if (searchingAll) {
-      context.go(SearchAllScreen.path);
+      context.go(
+        SearchAllScreen.path(
+          searchKey: searchKey,
+        ),
+      );
     } else {
-      context.go(PackageScreen.path(packageId: packageId));
+      context.go(
+        PackageScreen.path(
+          packageId: packageId,
+          searchKey: searchKey,
+        ),
+      );
     }
   }
 

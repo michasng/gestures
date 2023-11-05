@@ -35,7 +35,7 @@ class SearchableGestureListState extends State<SearchableGestureList> {
   void _search(String? searchKey) {
     if (searchKey == null || searchKey.isEmpty) {
       setState(() {
-        _searchKey = searchKey;
+        _searchKey = null;
         _gestures = widget.gestures;
       });
       return;

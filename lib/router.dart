@@ -52,12 +52,15 @@ final routerConfig = GoRouter(
       routes: [
         GoRoute(
           path: SearchAllScreen.pathSegment,
-          builder: (context, state) => SearchAllScreen(),
+          builder: (context, state) => SearchAllScreen(
+            searchKey: state.uri.queryParameters['search_key'],
+          ),
         ),
         GoRoute(
           path: PackageScreen.pathSegment,
           builder: (context, state) => PackageScreen(
             packageId: state.pathParameters['packageId'] ?? '',
+            searchKey: state.uri.queryParameters['search_key'],
           ),
           routes: [
             GoRoute(
