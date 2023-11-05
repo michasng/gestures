@@ -1,7 +1,7 @@
 import 'package:gestures/models/distinct_gesture.dart';
 
 class SearchService {
-  String toSearchString(String text) {
+  String _toSearchString(String text) {
     return text.replaceAll(' ', '').toLowerCase();
   }
 
@@ -12,13 +12,16 @@ class SearchService {
     return gestures.where(
       (gesture) =>
           gesture.searchTerms
-              .indexWhere((term) => isMatch(toSearchString(term))) !=
+              .indexWhere((term) => isMatch(_toSearchString(term))) !=
           -1,
     );
   }
 
-  List<DistinctGesture> search(List<DistinctGesture> gestures, String search) {
-    final searchString = toSearchString(search);
+  List<DistinctGesture> search(
+    List<DistinctGesture> gestures,
+    String searchKey,
+  ) {
+    final searchString = _toSearchString(searchKey);
 
     final exactMatches = _searchBy(
       gestures,
