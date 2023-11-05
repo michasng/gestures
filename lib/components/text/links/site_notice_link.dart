@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/components/text/links/link_text.dart';
-import 'package:gestures/screens/site_notice/site_notice_screen.dart';
-import 'package:go_router/go_router.dart';
+import 'package:gestures/routes/root_route.dart';
+import 'package:gestures/routes/site_notice/site_notice_route.dart';
 
 class SiteNoticeLink extends StatelessWidget {
   const SiteNoticeLink({super.key});
@@ -11,7 +11,7 @@ class SiteNoticeLink extends StatelessWidget {
     return LinkText(
       'Impressum',
       onTap: () {
-        context.go(SiteNoticeScreen.path);
+        SiteNoticeRoute().go(context);
       },
     );
   }

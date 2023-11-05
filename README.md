@@ -9,6 +9,26 @@ This project was realized in cooperation with [Ursberger Gebärden](https://www.
 It is now live on https://ursberger-gebaerden.web.app.
 A production account is required for video access.
 
+## Development
+
+### Install dependencies
+
+```bash
+flutter pub get
+```
+
+### Generate routes
+
+```bash
+dart run build_runner build
+```
+
+### Run
+
+```bash
+flutter run
+```
+
 ## Cached app content
 
 Changes to the storage bucket or to assets/synonyms.json are not immediately reflected in the app.

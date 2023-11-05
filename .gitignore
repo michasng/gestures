@@ -30,6 +30,7 @@
 .pub-cache/
 .pub/
 /build/
+*.g.dart
 
 # Web related
 
@@ -44,5 +45,5 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# firebase generated files
+# Firebase generated files
 .firebase/
