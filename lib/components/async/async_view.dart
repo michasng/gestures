@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/components/async/app_future_builder.dart';
+import 'package:gestures/components/async/async_builder.dart';
 
 class AsyncView<T> extends StatefulWidget {
   final Future<T> Function() createFuture;
@@ -26,7 +26,7 @@ class _AsyncViewState<T> extends State<AsyncView<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return AppFutureBuilder<T>(
+    return AsyncBuilder<T>(
       future: _loadFuture,
       builder: widget.builder,
     );

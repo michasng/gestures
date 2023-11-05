@@ -6,11 +6,11 @@ typedef AppFutureBuilderCallback<T> = Widget Function(
   T data,
 );
 
-class AppFutureBuilder<T> extends StatelessWidget {
+class AsyncBuilder<T> extends StatelessWidget {
   final Future<T> future;
   final AppFutureBuilderCallback<T> builder;
 
-  const AppFutureBuilder({
+  const AsyncBuilder({
     super.key,
     required this.future,
     required this.builder,

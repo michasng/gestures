@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/components/async/app_future_builder.dart';
+import 'package:gestures/components/async/async_view.dart';
 
-class AssetText extends StatefulWidget {
+class AssetText extends StatelessWidget {
   final String path;
 
   const AssetText({
@@ -9,27 +9,14 @@ class AssetText extends StatefulWidget {
     required this.path,
   });
 
-  @override
-  State<AssetText> createState() => _AssetTextState();
-}
-
-class _AssetTextState extends State<AssetText> {
-  late Future<String> _loadFuture;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadFuture = load();
-  }
-
-  Future<String> load() {
-    return DefaultAssetBundle.of(context).loadString(widget.path);
+  Future<String> _load(BuildContext context) async {
+    return await DefaultAssetBundle.of(context).loadString(path);
   }
 
   @override
   Widget build(BuildContext context) {
-    return AppFutureBuilder<String>(
-      future: _loadFuture,
+    return AsyncView<String>(
+      createFuture: () => _load(context),
       builder: (context, data) => Text(data),
     );
   }
