@@ -13,7 +13,6 @@ dependencies:
     sdk: flutter
 
   http: ^1.1.0
-  json_annotation: ^4.8.1 # defines annotations for JSON (de)serialization.
   google_fonts: ^5.1.0
   chewie: ^1.5.0 # adds a widget to play videos with controls
   video_player: ^2.6.1 # used for lower-level access with chewie
@@ -29,8 +28,6 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^2.0.1
-  build_runner: ^2.4.5 # a concrete way of generating files using Dart code.
-  json_serializable: ^6.7.0 # Dart Build System builders for handling JSON.
 
 flutter:
   uses-material-design: true
