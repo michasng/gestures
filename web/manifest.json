@@ -1,6 +1,6 @@
 {
-    "name": "gestures",
-    "short_name": "gestures",
+    "name": "Ursberger Gebärden",
+    "short_name": "Ursberger Gebärden",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#a60430",
