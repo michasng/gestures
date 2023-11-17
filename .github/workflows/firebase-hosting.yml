@@ -13,7 +13,7 @@ jobs:
       - name: Get Flutter
         uses: subosito/flutter-action@main
         with:
-          flutter-version: "3.10.4"
+          flutter-version: "3.13.9"
       - run: flutter pub get
       - run: flutter build web
       - name: Write Artifact
