@@ -15,6 +15,7 @@ jobs:
         with:
           flutter-version: "3.13.9"
       - run: flutter pub get
+      - run: dart run build_runner build
       - run: flutter build web
       - name: Write Artifact
         uses: actions/upload-artifact@main
