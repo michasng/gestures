@@ -14,6 +14,7 @@ class LoginRoute extends GoRouteData {
     return AppBackground(
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: AppTitle(),
         ),
         body: Column(

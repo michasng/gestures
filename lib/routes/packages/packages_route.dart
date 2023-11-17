@@ -13,6 +13,7 @@ class PackagesRoute extends GoRouteData {
     return AppBackground(
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: AppTitle(),
           actions: [
             MainMenuButton(),
