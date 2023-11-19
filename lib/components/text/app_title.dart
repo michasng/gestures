@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:micha_core/micha_core.dart';
 
 class AppTitle extends StatelessWidget {
   const AppTitle({
@@ -10,10 +11,12 @@ class AppTitle extends StatelessWidget {
     final theme = Theme.of(context);
 
     return FittedBox(
-      child: Text(
+      child: ThemedText.headlineSmall(
         'Ursberger Gebärden',
-        style: theme.textTheme.headlineSmall?.copyWith(
-          color: theme.appBarTheme.titleTextStyle?.color,
+        options: TextOptions(
+          style: TextStyle(
+            color: theme.appBarTheme.titleTextStyle?.color,
+          ),
         ),
       ),
     );

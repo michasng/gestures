@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gestures/components/text/links/link_text.dart';
+import 'package:micha_core/micha_core.dart';
 import 'package:universal_html/html.dart' as html;
 
 class PrivacyPolicyLink extends StatelessWidget {
@@ -17,9 +17,9 @@ class PrivacyPolicyLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LinkText(
-      'Datenschutzerklärung',
+    return Link(
       onTap: showPrivacyPolicy,
+      child: Text('Datenschutzerklärung'),
     );
   }
 }

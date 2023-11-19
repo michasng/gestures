@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gestures/models/package.dart';
 import 'package:gestures/routes/packages/components/package_list_tile.dart';
 import 'package:gestures/routes/packages/components/search_all_list_tile.dart';
+import 'package:micha_core/micha_core.dart';
 
 class PackageList extends StatelessWidget {
   final List<Package> packages;
@@ -23,10 +24,11 @@ class PackageList extends StatelessWidget {
         SearchAllListTile(allGesturesCount: allGesturesCount),
         Divider(),
         ListTile(
-          title: Text(
+          title: ThemedText.headlineSmall(
             'Pakete',
-            style: theme.textTheme.headlineSmall
-                ?.copyWith(color: theme.colorScheme.onPrimary),
+            options: TextOptions(
+              style: TextStyle(color: theme.colorScheme.onPrimary),
+            ),
           ),
         ),
         for (final package in packages) PackageListTile(package: package),

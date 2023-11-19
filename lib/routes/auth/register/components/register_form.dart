@@ -1,16 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gestures/components/async/spinner.dart';
 import 'package:gestures/components/form_fields/secret_text_form_field.dart';
 import 'package:gestures/components/text/error_text.dart';
-import 'package:gestures/components/text/headline_small.dart';
-import 'package:gestures/components/text/links/link_text.dart';
 import 'package:gestures/components/text/links/privacy_policy_link.dart';
 import 'package:gestures/components/text/links/site_notice_link.dart';
 import 'package:gestures/firebase_auth_error.dart';
 import 'package:gestures/routes/auth/login/login_route.dart';
 import 'package:gestures/routes/preface/preface_route.dart';
 import 'package:gestures/routes/root_route.dart';
+import 'package:micha_core/micha_core.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({super.key});
@@ -65,8 +63,7 @@ class _RegisterFormState extends State<RegisterForm> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          HeadlineSmall('Registrieren'),
-          SizedBox(height: 16),
+          ThemedText.headlineSmall('Registrieren'),
           TextFormField(
             autofillHints: [AutofillHints.email],
             onFieldSubmitted: (_) => _passwordFocus.requestFocus(),
@@ -80,7 +77,6 @@ class _RegisterFormState extends State<RegisterForm> {
               labelText: 'E-Mail Adresse',
             ),
           ),
-          SizedBox(height: 16),
           SecretTextFormField(
             controller: _passwordController,
             focusNode: _passwordFocus,
@@ -95,7 +91,6 @@ class _RegisterFormState extends State<RegisterForm> {
               labelText: 'Passwort',
             ),
           ),
-          SizedBox(height: 16),
           SecretTextFormField(
             focusNode: _confirmPasswordFocus,
             onFieldSubmitted: _isSubmitting ? null : (_) => _submit(),
@@ -109,45 +104,41 @@ class _RegisterFormState extends State<RegisterForm> {
               labelText: 'Passwort bestätigen',
             ),
           ),
-          if (_errorMessage != null) ...[
-            SizedBox(height: 16),
+          if (_errorMessage != null)
             Row(
               children: [
                 Spacer(),
                 ErrorText(_errorMessage!),
               ],
             ),
-          ],
-          SizedBox(height: 16),
           Row(
             children: [
               PrivacyPolicyLink(),
-              SizedBox(width: 16),
+              Gap(),
               SiteNoticeLink(),
             ],
           ),
-          SizedBox(height: 16),
           Row(
             children: [
-              LinkText(
-                'Bereits registriert?',
+              Link(
                 onTap: () {
                   LoginRoute().go(context);
                 },
+                child: Text('Bereits registriert?'),
               ),
               Spacer(),
               if (_isSubmitting) ...[
-                SizedBox(width: 16),
+                Gap(),
                 Spinner(size: 24),
               ],
-              SizedBox(width: 16),
+              Gap(),
               ElevatedButton(
                 onPressed: _isSubmitting ? null : _submit,
                 child: Text('Bestätigen'),
               ),
             ],
           ),
-        ],
+        ].separated(Gap()),
       ),
     );
   }

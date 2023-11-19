@@ -4,6 +4,7 @@ import 'package:gestures/components/text/app_title.dart';
 import 'package:gestures/routes/packages/components/async_package_list.dart';
 import 'package:gestures/routes/packages/components/main_menu_button.dart';
 import 'package:go_router/go_router.dart';
+import 'package:micha_core/micha_core.dart';
 
 class PackagesRoute extends GoRouteData {
   const PackagesRoute();
@@ -17,7 +18,7 @@ class PackagesRoute extends GoRouteData {
           title: AppTitle(),
           actions: [
             MainMenuButton(),
-            SizedBox(width: 8),
+            Gap() / 2,
           ],
         ),
         body: AsyncPackageList(),

@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gestures/components/async/spinner.dart';
 import 'package:gestures/components/form_fields/secret_text_form_field.dart';
 import 'package:gestures/components/text/error_text.dart';
-import 'package:gestures/components/text/headline_small.dart';
 import 'package:gestures/firebase_auth_error.dart';
+import 'package:micha_core/micha_core.dart';
 
 class ChangePasswordForm extends StatefulWidget {
   const ChangePasswordForm({super.key});
@@ -75,8 +74,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          HeadlineSmall('Passwort ändern'),
-          SizedBox(height: 16),
+          ThemedText.headlineSmall('Passwort ändern'),
           SecretTextFormField(
             controller: _passwordController,
             focusNode: _passwordFocus,
@@ -92,7 +90,6 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
               labelText: 'neues Passwort',
             ),
           ),
-          SizedBox(height: 16),
           SecretTextFormField(
             focusNode: _confirmNewPasswordFocus,
             onFieldSubmitted: (_) => _oldPasswordFocus.requestFocus(),
@@ -107,7 +104,6 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
               labelText: 'neues Passwort bestätigen',
             ),
           ),
-          SizedBox(height: 16),
           SecretTextFormField(
             focusNode: _oldPasswordFocus,
             onFieldSubmitted: _isSubmitting ? null : (_) => _submit(),
@@ -121,28 +117,25 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
               labelText: 'altes Passwort',
             ),
           ),
-          if (_errorMessage != null) ...[
-            SizedBox(height: 16),
+          if (_errorMessage != null)
             Row(
               children: [
                 Spacer(),
                 ErrorText(_errorMessage!),
               ],
             ),
-          ],
-          SizedBox(height: 16),
           Row(
             children: [
               Spacer(),
               if (_isSubmitting) Spinner(size: 24),
-              SizedBox(width: 16),
+              Gap(),
               ElevatedButton(
                 onPressed: _isSubmitting ? null : _submit,
                 child: Text('Bestätigen'),
               ),
             ],
           ),
-        ],
+        ].separated(Gap()),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:micha_core/micha_core.dart';
 
 class ScreenBody extends StatelessWidget {
   final Alignment alignment;
@@ -22,7 +23,7 @@ class ScreenBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ...children,
-                SizedBox(height: 64),
+                Gap() * 4,
               ],
             ),
           ),

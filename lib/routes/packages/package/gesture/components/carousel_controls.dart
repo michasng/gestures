@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/components/text/headline_small.dart';
 import 'package:gestures/models/distinct_gesture.dart';
+import 'package:micha_core/micha_core.dart';
 
 class CarouselControls extends StatelessWidget {
   final DistinctGesture gesture;
@@ -27,7 +27,7 @@ class CarouselControls extends StatelessWidget {
         ),
         Flexible(
           child: FittedBox(
-            child: HeadlineSmall(gesture.title),
+            child: ThemedText.headlineSmall(gesture.title),
           ),
         ),
         IconButton(

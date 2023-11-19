@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:micha_core/micha_core.dart';
 
 // DRW corporate design
 final _primaryColor = Color(0xffa60430);
@@ -47,4 +48,13 @@ final theme = ThemeData.from(
       color: _onDarkColor,
     ),
   ),
+  extensions: [
+    LinkThemeData(
+      color: Color(0xff0086BB),
+      underlined: true,
+    ),
+    SpinnerThemeData(
+      size: 256,
+    ),
+  ],
 );

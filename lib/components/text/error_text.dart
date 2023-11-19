@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:micha_core/micha_core.dart';
 
 class ErrorText extends StatelessWidget {
   final String data;
@@ -9,10 +10,10 @@ class ErrorText extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Text(
+    return ThemedText.bodyMedium(
       data,
-      style: theme.textTheme.bodyMedium?.copyWith(
-        color: theme.colorScheme.error,
+      options: TextOptions(
+        style: TextStyle(color: theme.colorScheme.error),
       ),
     );
   }

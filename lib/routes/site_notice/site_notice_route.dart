@@ -4,28 +4,13 @@ import 'package:gestures/components/text/app_title.dart';
 import 'package:gestures/routes/packages/packages_route.dart';
 import 'package:gestures/routes/root_route.dart';
 import 'package:go_router/go_router.dart';
+import 'package:micha_core/micha_core.dart';
 
 class SiteNoticeRoute extends GoRouteData {
   const SiteNoticeRoute();
 
-  List<Widget> _buildSection(
-    BuildContext context,
-    String title,
-    String sectionText,
-  ) {
-    final textTheme = Theme.of(context).textTheme;
-
-    return [
-      Text(title, style: textTheme.titleMedium),
-      SizedBox(height: 16),
-      Text(sectionText),
-    ];
-  }
-
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    final textTheme = Theme.of(context).textTheme;
-
     return Scaffold(
       appBar: AppBar(
         title: AppTitle(),
@@ -33,32 +18,25 @@ class SiteNoticeRoute extends GoRouteData {
       body: ScreenBody(
         alignment: Alignment.center,
         children: [
-          Text('Impressum', style: textTheme.titleLarge),
-          SizedBox(height: 32),
-          ..._buildSection(
-            context,
-            'Angaben gemäß § 5 TMG',
-            'Dominikus-Ringeisen-Werk, kirchliche Stiftung des öffentlichen Rechts\nKlosterhof 2\n86513 Ursberg',
-          ),
-          SizedBox(height: 16),
-          ..._buildSection(
-            context,
-            'Vertreten durch:',
-            'Geistl. Direktor Martin Riß, Vorstandsvorsitzender\nMichael Winter, Stv. Vorstandsvorsitzender',
-          ),
-          SizedBox(height: 16),
-          ..._buildSection(
-            context,
-            'Kontakt',
-            'E-Mail: schulleitung.franzvonsales-schule@drw.de',
-          ),
-          SizedBox(height: 16),
-          ..._buildSection(
-            context,
-            'Umsatzsteuer-ID',
-            'Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:\nDE 811974491',
-          ),
-          SizedBox(height: 64),
+          ThemedText.titleLarge('Impressum'),
+          Gap() * 2,
+          ...[
+            ThemedText.titleMedium('Angaben gemäß § 5 TMG'),
+            Text(
+              'Dominikus-Ringeisen-Werk, kirchliche Stiftung des öffentlichen Rechts\nKlosterhof 2\n86513 Ursberg',
+            ),
+            ThemedText.titleMedium('Vertreten durch:'),
+            Text(
+              'Geistl. Direktor Martin Riß, Vorstandsvorsitzender\nMichael Winter, Stv. Vorstandsvorsitzender',
+            ),
+            ThemedText.titleMedium('Kontakt'),
+            Text('E-Mail: schulleitung.franzvonsales-schule@drw.de'),
+            ThemedText.titleMedium('Umsatzsteuer-ID'),
+            Text(
+              'Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:\nDE 811974491',
+            ),
+          ].separated(Gap()),
+          Gap() * 4,
         ],
       ),
       floatingActionButton: ElevatedButton(

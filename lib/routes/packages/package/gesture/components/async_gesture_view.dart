@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/components/async/async_view.dart';
 import 'package:gestures/models/distinct_gesture.dart';
 import 'package:gestures/routes/packages/package/gesture/components/carousel_controls.dart';
 import 'package:gestures/routes/packages/package/gesture/components/gesture_view.dart';
 import 'package:gestures/services/app_service.dart';
 import 'package:get_it/get_it.dart';
+import 'package:micha_core/micha_core.dart';
 
 class AsyncGestureView extends StatelessWidget {
   final String packageId;
@@ -28,8 +28,8 @@ class AsyncGestureView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AsyncView<DistinctGesture>(
-      createFuture: () => _load(context),
+    return AsyncBuilder<DistinctGesture>(
+      createFuture: (context) => _load(context),
       builder: (context, gesture) => GestureView(
         gesture: gesture,
         controlsChild: CarouselControls(

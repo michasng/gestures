@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/components/async/async_view.dart';
 import 'package:gestures/models/package.dart';
 import 'package:gestures/routes/packages/components/package_list.dart';
 import 'package:gestures/services/app_service.dart';
 import 'package:get_it/get_it.dart';
+import 'package:micha_core/micha_core.dart';
 
 class AsyncPackageList extends StatelessWidget {
   const AsyncPackageList({super.key});
@@ -14,8 +14,8 @@ class AsyncPackageList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AsyncView<List<Package>>(
-      createFuture: () => _load(context),
+    return AsyncBuilder<List<Package>>(
+      createFuture: (context) => _load(context),
       builder: (context, packages) {
         return PackageList(packages: packages);
       },

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/components/async/async_view.dart';
 import 'package:gestures/components/gesture_list/searchable_gesture_list.dart';
 import 'package:gestures/models/distinct_gesture.dart';
 import 'package:gestures/models/package.dart';
@@ -8,6 +7,7 @@ import 'package:gestures/routes/root_route.dart';
 import 'package:gestures/services/app_service.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
+import 'package:micha_core/micha_core.dart';
 
 class PackageRoute extends GoRouteData {
   final String packageId;
@@ -46,8 +46,8 @@ class PackageRoute extends GoRouteData {
           child: Text(packageId),
         ),
       ),
-      body: AsyncView(
-        createFuture: () => _load(context),
+      body: AsyncBuilder(
+        createFuture: (context) => _load(context),
         builder: (context, package) => SearchableGestureList(
           gestures: package.gestures,
           initialSearchKey: initialSearchKey,
