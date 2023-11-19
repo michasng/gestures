@@ -12,6 +12,10 @@ class SettingsRoute extends GoRouteData {
     return Scaffold(
       appBar: AppBar(
         title: Text('Einstellungen'),
+        leading: IconButton(
+          onPressed: () => PackagesRoute().go(context),
+          icon: Icon(Icons.arrow_back),
+        ),
       ),
       body: ListView(
         children: [
@@ -26,9 +30,7 @@ class SettingsRoute extends GoRouteData {
         ],
       ),
       floatingActionButton: ElevatedButton(
-        onPressed: () {
-          PackagesRoute().go(context);
-        },
+        onPressed: () => PackagesRoute().go(context),
         child: Text('Zurück zur App'),
       ),
     );

@@ -14,6 +14,10 @@ class SiteNoticeRoute extends GoRouteData {
     return Scaffold(
       appBar: AppBar(
         title: AppTitle(),
+        leading: IconButton(
+          onPressed: () => PackagesRoute().go(context),
+          icon: Icon(Icons.arrow_back),
+        ),
       ),
       body: ScreenBody(
         alignment: Alignment.center,
@@ -40,9 +44,7 @@ class SiteNoticeRoute extends GoRouteData {
         ],
       ),
       floatingActionButton: ElevatedButton(
-        onPressed: () {
-          PackagesRoute().go(context);
-        },
+        onPressed: () => PackagesRoute().go(context),
         child: Text('Weiter zur App'),
       ),
     );

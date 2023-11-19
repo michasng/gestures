@@ -14,6 +14,7 @@ class PrefaceRoute extends GoRouteData {
     return Scaffold(
       appBar: AppBar(
         title: AppTitle(),
+        automaticallyImplyLeading: false,
       ),
       body: ScreenBody(
         children: [
