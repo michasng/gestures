@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestures/components/branding/app_version.dart';
 import 'package:gestures/components/screen_body.dart';
 import 'package:gestures/components/text/app_title.dart';
 import 'package:gestures/routes/packages/packages_route.dart';
@@ -23,6 +24,7 @@ class SiteNoticeRoute extends GoRouteData {
         alignment: Alignment.center,
         children: [
           ThemedText.titleLarge('Impressum'),
+          AppVersion(),
           Gap() * 2,
           ...[
             ThemedText.titleMedium('Angaben gemäß § 5 TMG'),

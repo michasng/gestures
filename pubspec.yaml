@@ -21,6 +21,7 @@ dependencies:
   go_router: ^12.1.0
   universal_html: ^2.2.4
   micha_core: ^0.3.1
+  package_info_plus: ^4.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
