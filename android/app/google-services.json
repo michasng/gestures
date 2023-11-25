@@ -29,6 +29,13 @@
             {
               "client_id": "792547535206-vgpladcuskbulbmi4ort6tg4cgbb914t.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "792547535206-uhnjhn4b4o5rkqreo3fl2g4d9umha8rs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.gestures"
+              }
             }
           ]
         }
