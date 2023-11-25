@@ -13,10 +13,8 @@ class AppTitle extends StatelessWidget {
     return FittedBox(
       child: ThemedText.headlineSmall(
         'Ursberger Gebärden',
-        options: TextOptions(
-          style: TextStyle(
-            color: theme.appBarTheme.titleTextStyle?.color,
-          ),
+        style: TextStyle(
+          color: theme.appBarTheme.titleTextStyle?.color,
         ),
       ),
     );

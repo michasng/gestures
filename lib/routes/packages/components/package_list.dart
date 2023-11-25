@@ -26,9 +26,7 @@ class PackageList extends StatelessWidget {
         ListTile(
           title: ThemedText.headlineSmall(
             'Pakete',
-            options: TextOptions(
-              style: TextStyle(color: theme.colorScheme.onPrimary),
-            ),
+            style: TextStyle(color: theme.colorScheme.onPrimary),
           ),
         ),
         for (final package in packages) PackageListTile(package: package),

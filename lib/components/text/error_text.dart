@@ -12,9 +12,7 @@ class ErrorText extends StatelessWidget {
 
     return ThemedText.bodyMedium(
       data,
-      options: TextOptions(
-        style: TextStyle(color: theme.colorScheme.error),
-      ),
+      style: TextStyle(color: theme.colorScheme.error),
     );
   }
 }
