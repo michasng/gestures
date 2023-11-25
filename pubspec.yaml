@@ -11,7 +11,7 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   http: ^1.1.0
-  google_fonts: ^5.1.0
+  google_fonts: ^6.1.0
   chewie: ^1.5.0 # adds a widget to play videos with controls
   video_player: ^2.6.1 # used for lower-level access with chewie
   get_it: ^7.6.0 # dependency injection, basically provider without the need for context
@@ -24,7 +24,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.1
+  flutter_lints: ^3.0.1
   go_router_builder: ^2.3.4 # A builder that supports generated strongly-typed route helpers for package:go_router
   build_runner: ^2.4.6 # A build system for Dart code generation and modular compilation.
   build_verify: ^3.1.0 # Test utility to ensure generated Dart code within a package is up-to-date when using package:build.
