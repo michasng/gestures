@@ -42,7 +42,6 @@ class SiteNoticeRoute extends GoRouteData {
               'Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:\nDE 811974491',
             ),
           ].separated(Gap()),
-          Gap() * 4,
         ],
       ),
       floatingActionButton: FilledButton(

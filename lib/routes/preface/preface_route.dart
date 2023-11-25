@@ -24,7 +24,6 @@ class PrefaceRoute extends GoRouteData {
             (assetBundle) => assetBundle.loadString('assets/preface.txt'),
             builder: (context, data) => Text(data),
           ),
-          Gap() * 4,
         ],
       ),
       floatingActionButton: FilledButton(
