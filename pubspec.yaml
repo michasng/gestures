@@ -2,16 +2,14 @@ name: gestures
 description: A video dictionary for sign language.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
-
 environment:
-  sdk: ">=3.0.3 <4.0.0"
-
+  sdk: ">=3.2.0 <4.0.0"
+  flutter: "^3.16.0"
 dependencies:
   flutter:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-
   http: ^1.1.0
   google_fonts: ^5.1.0
   chewie: ^1.5.0 # adds a widget to play videos with controls
@@ -23,23 +21,18 @@ dependencies:
   go_router: ^12.1.0
   universal_html: ^2.2.4
   micha_core: ^0.3.1
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^2.0.1
   go_router_builder: ^2.3.4 # A builder that supports generated strongly-typed route helpers for package:go_router
   build_runner: ^2.4.6 # A build system for Dart code generation and modular compilation.
   build_verify: ^3.1.0 # Test utility to ensure generated Dart code within a package is up-to-date when using package:build.
-
 flutter:
   uses-material-design: true
-
   assets:
     - assets/
     - assets/fonts/fira_sans/
-
   # prevent fallback font from being downloaded from google fonts
   fonts:
     - family: Roboto

@@ -132,7 +132,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 Spinner(size: 24),
               ],
               Gap(),
-              ElevatedButton(
+              FilledButton(
                 onPressed: _isSubmitting ? null : _submit,
                 child: Text('Bestätigen'),
               ),

@@ -129,7 +129,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
               Spacer(),
               if (_isSubmitting) Spinner(size: 24),
               Gap(),
-              ElevatedButton(
+              FilledButton(
                 onPressed: _isSubmitting ? null : _submit,
                 child: Text('Bestätigen'),
               ),

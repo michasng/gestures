@@ -39,7 +39,7 @@ class SettingsRoute extends GoRouteData {
           ),
         ],
       ),
-      floatingActionButton: ElevatedButton(
+      floatingActionButton: FilledButton(
         onPressed: () => PackagesRoute().go(context),
         child: Text('Zurück zur App'),
       ),

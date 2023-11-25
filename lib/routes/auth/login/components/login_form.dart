@@ -117,7 +117,7 @@ class _LoginFormState extends State<LoginForm> {
                 Spinner(size: 24),
               ],
               Gap(),
-              ElevatedButton(
+              FilledButton(
                 onPressed: _isSubmitting ? null : _submit,
                 child: Text('Bestätigen'),
               ),

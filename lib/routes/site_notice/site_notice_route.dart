@@ -43,7 +43,7 @@ class SiteNoticeRoute extends GoRouteData {
           Gap() * 4,
         ],
       ),
-      floatingActionButton: ElevatedButton(
+      floatingActionButton: FilledButton(
         onPressed: () => PackagesRoute().go(context),
         child: Text('Weiter zur App'),
       ),
