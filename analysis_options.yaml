@@ -20,16 +20,6 @@ analyzer:
 linter:
   rules:
     prefer_single_quotes: true
-    curly_braces_in_flow_control_structures: false
-    prefer_const_constructors: false
-    prefer_const_literals_to_create_immutables: false
     directives_ordering: true
     require_trailing_commas: true
     use_super_parameters: true
-    # this was showing false positives for the generated app_localizations package
-    depend_on_referenced_packages: false
-    # too much effort to fix it now, but we might want to fix it eventually
-    library_private_types_in_public_api: false
-    # good rule, but it doesn't recognize properties like "footer" as children,
-    # leading to weird sorting sometimes.
-    sort_child_properties_last: false

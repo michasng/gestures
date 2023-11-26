@@ -11,7 +11,7 @@ class AuthRoute extends GoRouteData {
   @override
   FutureOr<String?> redirect(BuildContext context, GoRouterState state) {
     if (state.fullPath != location) return null;
-    return LoginRoute().location;
+    return const LoginRoute().location;
   }
 
   @override

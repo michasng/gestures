@@ -29,10 +29,12 @@ class AspectRatioBuilder extends StatelessWidget {
       builder: (context, constraints) {
         final difference = constraints.maxHeight - constraints.maxWidth;
 
-        if (difference >= minHeightSurplusForPortrait)
+        if (difference >= minHeightSurplusForPortrait) {
           return builder(context, AspectRatioMode.portrait);
-        if (-difference >= minWidthSurplusForLandscape)
+        }
+        if (-difference >= minWidthSurplusForLandscape) {
           return builder(context, AspectRatioMode.landscape);
+        }
         return builder(context, AspectRatioMode.squarish);
       },
     );

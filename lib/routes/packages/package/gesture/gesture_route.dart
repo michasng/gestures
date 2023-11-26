@@ -74,7 +74,7 @@ class GestureRoute extends GoRouteData {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => _navigateBack(context),
         ),
         title: FittedBox(

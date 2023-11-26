@@ -36,7 +36,7 @@ class SearchAllRoute extends GoRouteData {
   Widget build(BuildContext context, GoRouterState state) {
     return Scaffold(
       appBar: AppBar(
-        title: FittedBox(
+        title: const FittedBox(
           child: Text('Alle Gebärden durchsuchen'),
         ),
       ),

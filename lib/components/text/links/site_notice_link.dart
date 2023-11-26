@@ -10,9 +10,9 @@ class SiteNoticeLink extends StatelessWidget {
   Widget build(BuildContext context) {
     return Link(
       onTap: () {
-        SiteNoticeRoute().go(context);
+        const SiteNoticeRoute().go(context);
       },
-      child: Text('Impressum'),
+      child: const Text('Impressum'),
     );
   }
 }

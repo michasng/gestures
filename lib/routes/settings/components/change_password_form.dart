@@ -57,7 +57,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
       );
       await user.updatePassword(_newPassword!);
       scaffoldMessenger.showSnackBar(
-        SnackBar(content: Text('Passwort wurde geändert.')),
+        const SnackBar(content: Text('Passwort wurde geändert.')),
       );
     } on FirebaseAuthException catch (e) {
       setState(() {
@@ -74,19 +74,20 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ThemedText.headlineSmall('Passwort ändern'),
+          const ThemedText.headlineSmall('Passwort ändern'),
           SecretTextFormField(
             controller: _passwordController,
             focusNode: _passwordFocus,
-            autofillHints: [AutofillHints.newPassword],
+            autofillHints: const [AutofillHints.newPassword],
             onFieldSubmitted: (_) => _confirmNewPasswordFocus.requestFocus(),
             validator: (value) {
-              if (value?.isEmpty ?? true)
+              if (value?.isEmpty ?? true) {
                 return 'Bitte neues Passwort eingeben.';
+              }
               return null;
             },
             onSaved: (value) => _newPassword = value,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'neues Passwort',
             ),
           ),
@@ -94,13 +95,15 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
             focusNode: _confirmNewPasswordFocus,
             onFieldSubmitted: (_) => _oldPasswordFocus.requestFocus(),
             validator: (value) {
-              if (value?.isEmpty ?? true)
+              if (value?.isEmpty ?? true) {
                 return 'Bitte neues Passwort eingeben.';
-              if (value?.trim() != _passwordController.text.trim())
+              }
+              if (value?.trim() != _passwordController.text.trim()) {
                 return 'Die neuen Passwörter unterscheiden sich.';
+              }
               return null;
             },
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'neues Passwort bestätigen',
             ),
           ),
@@ -108,34 +111,35 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
             focusNode: _oldPasswordFocus,
             onFieldSubmitted: _isSubmitting ? null : (_) => _submit(),
             validator: (value) {
-              if (value?.isEmpty ?? true)
+              if (value?.isEmpty ?? true) {
                 return 'Bitte altes Passwort eingeben.';
+              }
               return null;
             },
             onSaved: (value) => _oldPassword = value,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'altes Passwort',
             ),
           ),
           if (_errorMessage != null)
             Row(
               children: [
-                Spacer(),
+                const Spacer(),
                 ErrorText(_errorMessage!),
               ],
             ),
           Row(
             children: [
-              Spacer(),
-              if (_isSubmitting) Spinner(size: 24),
-              Gap(),
+              const Spacer(),
+              if (_isSubmitting) const Spinner(size: 24),
+              const Gap(),
               FilledButton(
                 onPressed: _isSubmitting ? null : _submit,
-                child: Text('Bestätigen'),
+                child: const Text('Bestätigen'),
               ),
             ],
           ),
-        ].separated(Gap()),
+        ].separated(const Gap()),
       ),
     );
   }

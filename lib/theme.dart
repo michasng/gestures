@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:micha_core/micha_core.dart';
 
 // DRW corporate design
-final _primaryColor = Color(0xffa60430);
-final _accentColor = Color(0xffedd7d5);
+const _primaryColor = Color(0xffa60430);
+const _accentColor = Color(0xffedd7d5);
 // final _surfaceColor = Color(0xfff0f0ed);
 // final _surfaceColor2 = Color(0xffe1e1dd);
 const _backgroundColor = Colors.white;
@@ -30,14 +30,14 @@ final theme = ThemeData.from(
     onSurface: _onLightColor,
   ),
 ).copyWith(
-  iconTheme: IconThemeData(
+  iconTheme: const IconThemeData(
     color: _onLightColor,
   ),
-  inputDecorationTheme: InputDecorationTheme(
+  inputDecorationTheme: const InputDecorationTheme(
     border: OutlineInputBorder(),
   ),
   scaffoldBackgroundColor: Colors.transparent,
-  appBarTheme: AppBarTheme(
+  appBarTheme: const AppBarTheme(
     centerTitle: true,
     toolbarHeight: 64,
     backgroundColor: _primaryColor,
@@ -52,11 +52,11 @@ final theme = ThemeData.from(
     ),
   ),
   extensions: [
-    LinkThemeData(
+    const LinkThemeData(
       color: Color(0xff0086BB),
       underlined: true,
     ),
-    SpinnerThemeData(
+    const SpinnerThemeData(
       size: 256,
     ),
   ],

@@ -83,8 +83,8 @@ class _GesturePlayerState extends State<GesturePlayer> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.error_outline, size: 48),
-          ThemedText.headlineSmall(
+          const Icon(Icons.error_outline, size: 48),
+          const ThemedText.headlineSmall(
             'Ein Fehler ist aufgetreten:',
             textAlign: TextAlign.center,
           ),
@@ -92,7 +92,7 @@ class _GesturePlayerState extends State<GesturePlayer> {
             errorMessage,
             textAlign: TextAlign.center,
           ),
-        ].separated(Gap()),
+        ].separated(const Gap()),
       ),
     );
   }

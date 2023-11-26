@@ -15,9 +15,9 @@ class RegisterRoute extends GoRouteData {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: AppTitle(),
+          title: const AppTitle(),
         ),
-        body: Column(
+        body: const Column(
           children: [
             Spacer(),
             CenteredCard(

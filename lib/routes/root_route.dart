@@ -63,8 +63,10 @@ class RootRoute extends GoRouteData {
   @override
   FutureOr<String?> redirect(BuildContext context, GoRouterState state) {
     if (state.fullPath != location) return null;
-    if (FirebaseAuth.instance.currentUser == null) return LoginRoute().location;
-    return PackagesRoute().location;
+    if (FirebaseAuth.instance.currentUser == null) {
+      return const LoginRoute().location;
+    }
+    return const PackagesRoute().location;
   }
 
   @override

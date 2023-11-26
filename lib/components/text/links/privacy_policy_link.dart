@@ -17,7 +17,7 @@ class PrivacyPolicyLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Link(
+    return const Link(
       onTap: showPrivacyPolicy,
       child: Text('Datenschutzerklärung'),
     );

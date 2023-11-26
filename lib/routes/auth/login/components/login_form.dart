@@ -45,7 +45,7 @@ class _LoginFormState extends State<LoginForm> {
         email: _email!.trim(),
         password: _password!.trim(),
       );
-      if (context.mounted) PrefaceRoute().go(context);
+      if (context.mounted) const PrefaceRoute().go(context);
     } on FirebaseAuthException catch (e) {
       setState(() {
         _errorMessage = FirebaseAuthError.byCode(e.code)?.message ?? e.code;
@@ -61,13 +61,14 @@ class _LoginFormState extends State<LoginForm> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ThemedText.headlineSmall('Anmelden'),
+          const ThemedText.headlineSmall('Anmelden'),
           TextFormField(
-            autofillHints: [AutofillHints.email],
+            autofillHints: const [AutofillHints.email],
             onFieldSubmitted: (_) => _passwordFocus.requestFocus(),
             validator: (value) {
-              if (value?.isEmpty ?? true)
+              if (value?.isEmpty ?? true) {
                 return 'Bitte E-Mail Adresse eingeben.';
+              }
               return null;
             },
             onSaved: (value) => _email = value,
@@ -77,25 +78,25 @@ class _LoginFormState extends State<LoginForm> {
           ),
           SecretTextFormField(
             focusNode: _passwordFocus,
-            autofillHints: [AutofillHints.password],
+            autofillHints: const [AutofillHints.password],
             onFieldSubmitted: _isSubmitting ? null : (_) => _submit(),
             validator: (value) {
               if (value?.isEmpty ?? true) return 'Bitte Passwort eingeben.';
               return null;
             },
             onSaved: (value) => _password = value,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Passwort',
             ),
           ),
           if (_errorMessage != null)
             Row(
               children: [
-                Spacer(),
+                const Spacer(),
                 ErrorText(_errorMessage!),
               ],
             ),
-          Row(
+          const Row(
             children: [
               PrivacyPolicyLink(),
               Gap(),
@@ -107,23 +108,23 @@ class _LoginFormState extends State<LoginForm> {
             children: [
               Link(
                 onTap: () {
-                  RegisterRoute().go(context);
+                  const RegisterRoute().go(context);
                 },
-                child: Text('Neues Konto erstellen'),
+                child: const Text('Neues Konto erstellen'),
               ),
-              Spacer(),
+              const Spacer(),
               if (_isSubmitting) ...[
-                Gap(),
-                Spinner(size: 24),
+                const Gap(),
+                const Spinner(size: 24),
               ],
-              Gap(),
+              const Gap(),
               FilledButton(
                 onPressed: _isSubmitting ? null : _submit,
-                child: Text('Bestätigen'),
+                child: const Text('Bestätigen'),
               ),
             ],
           ),
-        ].separated(Gap()),
+        ].separated(const Gap()),
       ),
     );
   }

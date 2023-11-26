@@ -14,9 +14,9 @@ class SearchAllListTile extends StatelessWidget {
     return Card(
       child: ListTile(
         textColor: theme.colorScheme.onSurface,
-        title: Text('Alle Gebärden durchsuchen'),
+        title: const Text('Alle Gebärden durchsuchen'),
         subtitle: Text('$allGesturesCount Videoclips'),
-        onTap: () => SearchAllRoute().go(context),
+        onTap: () => const SearchAllRoute().go(context),
         trailing: Icon(
           Icons.search,
           color: theme.colorScheme.primary,

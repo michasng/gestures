@@ -22,7 +22,7 @@ class PackageList extends StatelessWidget {
     return ListView(
       children: [
         SearchAllListTile(allGesturesCount: allGesturesCount),
-        Divider(),
+        const Divider(),
         ListTile(
           title: ThemedText.headlineSmall(
             'Pakete',

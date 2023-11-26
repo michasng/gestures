@@ -14,7 +14,7 @@ class ScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Container(
         alignment: alignment,
         child: SingleChildScrollView(
@@ -23,7 +23,7 @@ class ScreenBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ...children,
-                Gap() * 4,
+                const Gap() * 4,
               ],
             ),
           ),

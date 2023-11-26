@@ -47,7 +47,7 @@ class _RegisterFormState extends State<RegisterForm> {
         email: _email!.trim(),
         password: _password!.trim(),
       );
-      if (context.mounted) PrefaceRoute().go(context);
+      if (context.mounted) const PrefaceRoute().go(context);
     } on FirebaseAuthException catch (e) {
       setState(() {
         _errorMessage = FirebaseAuthError.byCode(e.code)?.message ?? e.code;
@@ -63,13 +63,14 @@ class _RegisterFormState extends State<RegisterForm> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ThemedText.headlineSmall('Registrieren'),
+          const ThemedText.headlineSmall('Registrieren'),
           TextFormField(
-            autofillHints: [AutofillHints.email],
+            autofillHints: const [AutofillHints.email],
             onFieldSubmitted: (_) => _passwordFocus.requestFocus(),
             validator: (value) {
-              if (value?.isEmpty ?? true)
+              if (value?.isEmpty ?? true) {
                 return 'Bitte E-Mail Adresse eingeben.';
+              }
               return null;
             },
             onSaved: (value) => _email = value,
@@ -80,14 +81,14 @@ class _RegisterFormState extends State<RegisterForm> {
           SecretTextFormField(
             controller: _passwordController,
             focusNode: _passwordFocus,
-            autofillHints: [AutofillHints.newPassword],
+            autofillHints: const [AutofillHints.newPassword],
             onFieldSubmitted: (_) => _confirmPasswordFocus.requestFocus(),
             validator: (value) {
               if (value?.isEmpty ?? true) return 'Bitte Passwort eingeben.';
               return null;
             },
             onSaved: (value) => _password = value,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Passwort',
             ),
           ),
@@ -96,22 +97,23 @@ class _RegisterFormState extends State<RegisterForm> {
             onFieldSubmitted: _isSubmitting ? null : (_) => _submit(),
             validator: (value) {
               if (value?.isEmpty ?? true) return 'Bitte Passwort eingeben.';
-              if (value?.trim() != _passwordController.text.trim())
+              if (value?.trim() != _passwordController.text.trim()) {
                 return 'Die Passwörter unterscheiden sich.';
+              }
               return null;
             },
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Passwort bestätigen',
             ),
           ),
           if (_errorMessage != null)
             Row(
               children: [
-                Spacer(),
+                const Spacer(),
                 ErrorText(_errorMessage!),
               ],
             ),
-          Row(
+          const Row(
             children: [
               PrivacyPolicyLink(),
               Gap(),
@@ -122,23 +124,23 @@ class _RegisterFormState extends State<RegisterForm> {
             children: [
               Link(
                 onTap: () {
-                  LoginRoute().go(context);
+                  const LoginRoute().go(context);
                 },
-                child: Text('Bereits registriert?'),
+                child: const Text('Bereits registriert?'),
               ),
-              Spacer(),
+              const Spacer(),
               if (_isSubmitting) ...[
-                Gap(),
-                Spinner(size: 24),
+                const Gap(),
+                const Spinner(size: 24),
               ],
-              Gap(),
+              const Gap(),
               FilledButton(
                 onPressed: _isSubmitting ? null : _submit,
-                child: Text('Bestätigen'),
+                child: const Text('Bestätigen'),
               ),
             ],
           ),
-        ].separated(Gap()),
+        ].separated(const Gap()),
       ),
     );
   }

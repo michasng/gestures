@@ -13,13 +13,13 @@ class PrefaceRoute extends GoRouteData {
   Widget build(BuildContext context, GoRouterState state) {
     return Scaffold(
       appBar: AppBar(
-        title: AppTitle(),
+        title: const AppTitle(),
         automaticallyImplyLeading: false,
       ),
       body: ScreenBody(
         children: [
-          ThemedText.titleLarge('Vorwort'),
-          Gap() * 2,
+          const ThemedText.titleLarge('Vorwort'),
+          const Gap() * 2,
           AsyncBuilder.asset(
             (assetBundle) => assetBundle.loadString('assets/preface.txt'),
             builder: (context, data) => Text(data),
@@ -28,9 +28,9 @@ class PrefaceRoute extends GoRouteData {
       ),
       floatingActionButton: FilledButton(
         onPressed: () {
-          PackagesRoute().go(context);
+          const PackagesRoute().go(context);
         },
-        child: Text('Weiter zur App'),
+        child: const Text('Weiter zur App'),
       ),
     );
   }

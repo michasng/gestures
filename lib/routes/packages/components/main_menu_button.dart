@@ -30,21 +30,21 @@ class MainMenuButton extends StatelessWidget {
     switch (option) {
       case MainMenuOption.preface:
         if (!context.mounted) return;
-        return PrefaceRoute().go(context);
+        return const PrefaceRoute().go(context);
       case MainMenuOption.siteNotice:
         if (!context.mounted) return;
-        return SiteNoticeRoute().go(context);
+        return const SiteNoticeRoute().go(context);
       case MainMenuOption.privacyPolicy:
         return await PrivacyPolicyLink.showPrivacyPolicy();
       case MainMenuOption.settings:
         if (!context.mounted) return;
-        return SettingsRoute().go(context);
+        return const SettingsRoute().go(context);
       case MainMenuOption.exportAppContent:
         return await GetIt.I<AppService>().exportLiveAppContent(context);
       case MainMenuOption.logout:
         await FirebaseAuth.instance.signOut();
         if (!context.mounted) return;
-        return LoginRoute().go(context);
+        return const LoginRoute().go(context);
     }
   }
 

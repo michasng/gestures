@@ -14,19 +14,19 @@ class SiteNoticeRoute extends GoRouteData {
   Widget build(BuildContext context, GoRouterState state) {
     return Scaffold(
       appBar: AppBar(
-        title: AppTitle(),
+        title: const AppTitle(),
         leading: IconButton(
-          onPressed: () => PackagesRoute().go(context),
-          icon: Icon(Icons.arrow_back),
+          onPressed: () => const PackagesRoute().go(context),
+          icon: const Icon(Icons.arrow_back),
         ),
       ),
       body: ScreenBody(
         alignment: Alignment.center,
         children: [
-          ThemedText.titleLarge('Impressum'),
-          AppVersion(),
-          Gap() * 2,
-          ...[
+          const ThemedText.titleLarge('Impressum'),
+          const AppVersion(),
+          const Gap() * 2,
+          ...const [
             ThemedText.titleMedium('Angaben gemäß § 5 TMG'),
             Text(
               'Dominikus-Ringeisen-Werk, kirchliche Stiftung des öffentlichen Rechts\nKlosterhof 2\n86513 Ursberg',
@@ -41,12 +41,12 @@ class SiteNoticeRoute extends GoRouteData {
             Text(
               'Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:\nDE 811974491',
             ),
-          ].separated(Gap()),
+          ].separated(const Gap()),
         ],
       ),
       floatingActionButton: FilledButton(
-        onPressed: () => PackagesRoute().go(context),
-        child: Text('Weiter zur App'),
+        onPressed: () => const PackagesRoute().go(context),
+        child: const Text('Weiter zur App'),
       ),
     );
   }

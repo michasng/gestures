@@ -29,7 +29,7 @@ class _SecretTextFormFieldState extends State<SecretTextFormField> {
 
   @override
   Widget build(BuildContext context) {
-    final decoration = widget.decoration ?? InputDecoration();
+    final decoration = widget.decoration ?? const InputDecoration();
 
     return TextFormField(
       controller: widget.controller,

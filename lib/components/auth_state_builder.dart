@@ -20,8 +20,9 @@ class AuthStateBuilder extends StatelessWidget {
     return StreamBuilder(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
-        if (snapshot.connectionState != ConnectionState.active)
+        if (snapshot.connectionState != ConnectionState.active) {
           return loadingBuilder(context);
+        }
 
         if (snapshot.hasError) return errorBuilder(context, snapshot.error!);
 

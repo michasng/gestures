@@ -13,7 +13,9 @@ class SettingsRoute extends GoRouteData {
 
   @override
   FutureOr<String?> redirect(BuildContext context, GoRouterState state) {
-    if (FirebaseAuth.instance.currentUser == null) return LoginRoute().location;
+    if (FirebaseAuth.instance.currentUser == null) {
+      return const LoginRoute().location;
+    }
     return null;
   }
 
@@ -21,10 +23,10 @@ class SettingsRoute extends GoRouteData {
   Widget build(BuildContext context, GoRouterState state) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Einstellungen'),
+        title: const Text('Einstellungen'),
         leading: IconButton(
-          onPressed: () => PackagesRoute().go(context),
-          icon: Icon(Icons.arrow_back),
+          onPressed: () => const PackagesRoute().go(context),
+          icon: const Icon(Icons.arrow_back),
         ),
       ),
       body: ListView(
@@ -32,7 +34,7 @@ class SettingsRoute extends GoRouteData {
           Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.all(16),
-            child: SizedBox(
+            child: const SizedBox(
               width: 400,
               child: ChangePasswordForm(),
             ),
@@ -40,8 +42,8 @@ class SettingsRoute extends GoRouteData {
         ],
       ),
       floatingActionButton: FilledButton(
-        onPressed: () => PackagesRoute().go(context),
-        child: Text('Zurück zur App'),
+        onPressed: () => const PackagesRoute().go(context),
+        child: const Text('Zurück zur App'),
       ),
     );
   }

@@ -14,7 +14,7 @@ class Logo extends StatelessWidget {
       color: Colors.white,
       height: height,
       alignment: Alignment.bottomRight,
-      child: Image(
+      child: const Image(
         image: AssetImage('assets/logo.png'),
         filterQuality: FilterQuality.medium,
       ),

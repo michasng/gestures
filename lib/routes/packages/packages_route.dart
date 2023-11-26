@@ -16,7 +16,9 @@ class PackagesRoute extends GoRouteData {
 
   @override
   FutureOr<String?> redirect(BuildContext context, GoRouterState state) {
-    if (FirebaseAuth.instance.currentUser == null) return LoginRoute().location;
+    if (FirebaseAuth.instance.currentUser == null) {
+      return const LoginRoute().location;
+    }
     return null;
   }
 
@@ -26,13 +28,13 @@ class PackagesRoute extends GoRouteData {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: AppTitle(),
+          title: const AppTitle(),
           actions: [
-            MainMenuButton(),
-            Gap() / 2,
+            const MainMenuButton(),
+            const Gap() / 2,
           ],
         ),
-        body: AsyncPackageList(),
+        body: const AsyncPackageList(),
       ),
     );
   }
