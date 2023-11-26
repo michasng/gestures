@@ -30,6 +30,9 @@ final theme = ThemeData.from(
     onSurface: _onLightColor,
   ),
 ).copyWith(
+  iconTheme: IconThemeData(
+    color: _onLightColor,
+  ),
   inputDecorationTheme: InputDecorationTheme(
     border: OutlineInputBorder(),
   ),

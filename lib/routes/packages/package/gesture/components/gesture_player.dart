@@ -2,6 +2,7 @@ import 'package:chewie/chewie.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:gestures/models/distinct_gesture.dart';
+import 'package:micha_core/micha_core.dart';
 import 'package:video_player/video_player.dart';
 
 class GesturePlayer extends StatefulWidget {
@@ -31,9 +32,9 @@ class _GesturePlayerState extends State<GesturePlayer> {
       final controller = VideoPlayerController.networkUrl(Uri.parse(url));
       _chewieController = ChewieController(
         videoPlayerController: controller,
-        // aspectRatio: 1 / 1, // stretch and squash the video to force-fit the frame
         autoPlay: true,
         showControlsOnInitialize: false,
+        errorBuilder: _errorBuilder,
       );
     });
   }
@@ -51,6 +52,25 @@ class _GesturePlayerState extends State<GesturePlayer> {
   void dispose() {
     _chewieController?.dispose();
     super.dispose();
+  }
+
+  Widget _errorBuilder(BuildContext context, String errorMessage) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.error_outline, size: 48),
+          ThemedText.headlineSmall(
+            'Ein Fehler ist aufgetreten:',
+            textAlign: TextAlign.center,
+          ),
+          Text(
+            errorMessage,
+            textAlign: TextAlign.center,
+          ),
+        ].separated(Gap()),
+      ),
+    );
   }
 
   @override
