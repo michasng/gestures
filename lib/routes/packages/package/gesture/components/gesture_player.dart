@@ -3,6 +3,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:gestures/models/distinct_gesture.dart';
 import 'package:micha_core/micha_core.dart';
+import 'package:universal_html/html.dart' as html;
 import 'package:video_player/video_player.dart';
 
 class GesturePlayer extends StatefulWidget {
@@ -24,9 +25,22 @@ class _GesturePlayerState extends State<GesturePlayer> {
   }
 
   Future<void> init() async {
-    final storage = FirebaseStorage.instance;
-    final storageRef = storage.ref(widget.gesture.fullPath);
-    final url = await storageRef.getDownloadURL();
+    if (!(html.window.navigator.onLine ?? false)) {
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) => _showSnackbar('Kein Internet verfügbar.'),
+      );
+    }
+
+    String url;
+    try {
+      final storage = FirebaseStorage.instance;
+      final storageRef = storage.ref(widget.gesture.fullPath);
+      url = await storageRef.getDownloadURL();
+    } catch (error) {
+      _showSnackbar(error.toString());
+      return;
+    }
+
     if (!context.mounted) return;
     setState(() {
       final controller = VideoPlayerController.networkUrl(Uri.parse(url));
@@ -37,6 +51,16 @@ class _GesturePlayerState extends State<GesturePlayer> {
         errorBuilder: _errorBuilder,
       );
     });
+  }
+
+  void _showSnackbar(String message) {
+    if (!context.mounted) return;
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
+    scaffoldMessenger.showSnackBar(
+      SnackBar(
+        content: Text(message),
+      ),
+    );
   }
 
   @override
@@ -75,19 +99,10 @@ class _GesturePlayerState extends State<GesturePlayer> {
 
   @override
   Widget build(BuildContext context) {
-    if (_chewieController == null)
-      return const Center(
-        child: SizedBox(
-          width: 128,
-          height: 128,
-          child: CircularProgressIndicator(
-            strokeWidth: 2,
-          ),
-        ),
-      );
-    else
-      return Chewie(
-        controller: _chewieController!,
-      );
+    if (_chewieController == null) return const Spinner(size: 128);
+
+    return Chewie(
+      controller: _chewieController!,
+    );
   }
 }
