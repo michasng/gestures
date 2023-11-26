@@ -31,7 +31,7 @@ class Gesture implements Comparable<Gesture> {
 
   factory Gesture.fromJson(Map<String, dynamic> json) {
     return Gesture(
-      id: json['id'],
+      id: json['id'] as String,
       synonyms: (json['synonyms'] as List?)
           ?.map((synonymJson) => synonymJson as String)
           .toList(),

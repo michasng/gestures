@@ -88,7 +88,7 @@ class Package implements Comparable<Package> {
 
   const Package({
     required this.id,
-    required gestures,
+    required List<Gesture> gestures,
   }) : _gestures = gestures;
 
   String get title => id;
@@ -123,10 +123,12 @@ class Package implements Comparable<Package> {
 
   factory Package.fromJson(Map<String, dynamic> json) {
     return Package(
-      id: json['id'],
+      id: json['id'] as String,
       gestures: (json['gestures'] as List)
           .map(
-            (gestureJson) => Gesture.fromJson(gestureJson),
+            (gestureJson) => Gesture.fromJson(
+              gestureJson as Map<String, dynamic>,
+            ),
           )
           .toList(),
     );

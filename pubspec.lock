@@ -516,10 +516,10 @@ packages:
     dependency: "direct main"
     description:
       name: micha_core
-      sha256: "3a446c9bb0f8988e57821b4467dda9f0dce0ea78c0b1dca5b30b4afef99511a7"
+      sha256: "06c19258e44cc94f02e7768f9bbc5741cf9b011533ef73a555f32ea781cdb58d"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.2"
+    version: "0.3.3"
   mime:
     dependency: transitive
     description:

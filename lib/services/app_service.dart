@@ -21,7 +21,7 @@ class AppService {
     final bytes = await ref.getData();
     if (bytes == null) throw Exception('Cached app content not available.');
     final json = jsonDecode(utf8.decode(bytes));
-    return AppContent.fromJson(json);
+    return AppContent.fromJson(json as Map<String, dynamic>);
   }
 
   Future<AppContent> _loadLiveAppContent(BuildContext context) async {

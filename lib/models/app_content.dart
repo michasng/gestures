@@ -16,7 +16,11 @@ class AppContent {
   factory AppContent.fromJson(Map<String, dynamic> json) {
     return AppContent(
       packages: (json['packages'] as List)
-          .map((packageJson) => Package.fromJson(packageJson))
+          .map(
+            (packageJson) => Package.fromJson(
+              packageJson as Map<String, dynamic>,
+            ),
+          )
           .toList(),
     );
   }
