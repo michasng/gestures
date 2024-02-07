@@ -42,7 +42,7 @@ class _GesturePlayerState extends State<GesturePlayer> {
       return;
     }
 
-    if (!context.mounted) return;
+    if (!mounted) return;
     final videoPlayerController =
         VideoPlayerController.networkUrl(Uri.parse(url));
     setState(() {
@@ -57,7 +57,7 @@ class _GesturePlayerState extends State<GesturePlayer> {
   }
 
   void _showSnackbar(String message) {
-    if (!context.mounted) return;
+    if (!mounted) return;
     final scaffoldMessenger = ScaffoldMessenger.of(context);
     scaffoldMessenger.showSnackBar(
       SnackBar(

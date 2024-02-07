@@ -45,7 +45,7 @@ class _LoginFormState extends State<LoginForm> {
         email: _email!.trim(),
         password: _password!.trim(),
       );
-      if (context.mounted) const PrefaceRoute().go(context);
+      if (mounted) const PrefaceRoute().go(context);
     } on FirebaseAuthException catch (e) {
       setState(() {
         _errorMessage = FirebaseAuthError.byCode(e.code)?.message ?? e.code;
