@@ -43,8 +43,9 @@ class GestureRoute extends GoRouteData {
 
   void _goToPageDelta(BuildContext context, int delta) async {
     final gestures = await _search(context);
-    final currentIndex =
-        gestures.indexWhere((gesture) => gesture.id == gestureId);
+    final currentIndex = gestures.indexWhere(
+      (gesture) => gesture.package.id == packageId && gesture.id == gestureId,
+    );
     final newIndex = (currentIndex + delta) % gestures.length;
     final newGesture = gestures[newIndex];
     if (!context.mounted) return;
