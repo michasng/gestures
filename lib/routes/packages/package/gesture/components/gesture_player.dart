@@ -16,6 +16,7 @@ class GesturePlayer extends StatefulWidget {
 }
 
 class _GesturePlayerState extends State<GesturePlayer> {
+  VideoPlayerController? _videoPlayerController;
   ChewieController? _chewieController;
 
   @override
@@ -42,10 +43,12 @@ class _GesturePlayerState extends State<GesturePlayer> {
     }
 
     if (!context.mounted) return;
+    final videoPlayerController =
+        VideoPlayerController.networkUrl(Uri.parse(url));
     setState(() {
-      final controller = VideoPlayerController.networkUrl(Uri.parse(url));
+      _videoPlayerController = videoPlayerController;
       _chewieController = ChewieController(
-        videoPlayerController: controller,
+        videoPlayerController: videoPlayerController,
         autoPlay: true,
         showControlsOnInitialize: false,
         errorBuilder: _errorBuilder,
@@ -68,6 +71,7 @@ class _GesturePlayerState extends State<GesturePlayer> {
     // prevent building inside of a build-cycle
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _chewieController?.pause();
+      _videoPlayerController?.pause();
     });
     super.deactivate();
   }
@@ -75,6 +79,7 @@ class _GesturePlayerState extends State<GesturePlayer> {
   @override
   void dispose() {
     _chewieController?.dispose();
+    _videoPlayerController?.dispose();
     super.dispose();
   }
 
