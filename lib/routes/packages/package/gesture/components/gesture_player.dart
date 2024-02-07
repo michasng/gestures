@@ -44,7 +44,7 @@ class _GesturePlayerState extends State<GesturePlayer> {
 
     if (!mounted) return;
     final videoPlayerController =
-        VideoPlayerController.networkUrl(Uri.parse(url));
+        VideoPlayerController.networkUrl(Uri.parse('https://github.com/video-dev/hls.js/issues/2528'));
     setState(() {
       _videoPlayerController = videoPlayerController;
       _chewieController = ChewieController(
@@ -70,7 +70,6 @@ class _GesturePlayerState extends State<GesturePlayer> {
   void deactivate() {
     // prevent building inside of a build-cycle
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _chewieController?.pause();
       _videoPlayerController?.pause();
     });
     super.deactivate();
