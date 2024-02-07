@@ -16,6 +16,8 @@ class GesturePlayer extends StatefulWidget {
 }
 
 class _GesturePlayerState extends State<GesturePlayer> {
+  static final _logger = createLogger(GesturePlayer);
+
   VideoPlayerController? _videoPlayerController;
   ChewieController? _chewieController;
 
@@ -44,16 +46,22 @@ class _GesturePlayerState extends State<GesturePlayer> {
 
     if (!mounted) return;
     final videoPlayerController =
-        VideoPlayerController.networkUrl(Uri.parse('https://github.com/video-dev/hls.js/issues/2528'));
+        VideoPlayerController.networkUrl(Uri.parse(url));
     setState(() {
       _videoPlayerController = videoPlayerController;
       _chewieController = ChewieController(
         videoPlayerController: videoPlayerController,
-        autoPlay: true,
         showControlsOnInitialize: false,
         errorBuilder: _errorBuilder,
       );
     });
+
+    try {
+      await videoPlayerController.initialize();
+      await videoPlayerController.play();
+    } catch (e) {
+      _logger.severe('Video failed to initialize or play.', e);
+    }
   }
 
   void _showSnackbar(String message) {

@@ -10,6 +10,7 @@ import 'package:gestures/theme.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:micha_core/micha_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +22,7 @@ void main() async {
 
   GoogleFonts.config.allowRuntimeFetching = false;
   usePathUrlStrategy();
+  initLogging();
   runApp(const App());
 }
 
