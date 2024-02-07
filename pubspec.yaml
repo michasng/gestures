@@ -3,25 +3,25 @@ description: A video dictionary for sign language.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.4
 environment:
-  sdk: ">=3.2.0 <4.0.0"
-  flutter: "^3.16.0"
+  sdk: ">=3.2.6 <4.0.0"
+  flutter: "^3.16.9"
 dependencies:
   flutter:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-  http: ^1.1.0
+  http: ^1.2.0
   google_fonts: ^6.1.0
-  chewie: ^1.5.0 # adds a widget to play videos with controls
+  chewie: ^1.7.4 # adds a widget to play videos with controls
   video_player: ^2.6.1 # used for lower-level access with chewie
-  get_it: ^7.6.0 # dependency injection, basically provider without the need for context
-  firebase_core: ^2.14.0
-  firebase_auth: ^4.6.3
-  firebase_storage: ^11.2.3
-  go_router: ^12.1.0
+  get_it: ^7.6.7 # dependency injection, basically provider without the need for context
+  firebase_core: ^2.25.4
+  firebase_auth: ^4.17.4
+  firebase_storage: ^11.6.5
+  go_router: ^13.1.0
   universal_html: ^2.2.4
-  micha_core: ^0.3.3
-  package_info_plus: ^4.2.0
+  micha_core: ^0.5.1
+  package_info_plus: ^5.0.1
   collection: ^1.18.0
 dev_dependencies:
   flutter_test:
