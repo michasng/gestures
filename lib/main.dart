@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
@@ -15,6 +16,7 @@ import 'package:micha_core/micha_core.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  FirebaseAuth.instance.setLanguageCode('de');
 
   GetIt.I.registerSingleton<PermissionService>(PermissionService());
   GetIt.I.registerSingleton<AppService>(AppService());
@@ -39,9 +41,7 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    _router = GoRouter(
-      routes: $appRoutes,
-    );
+    _router = GoRouter(routes: $appRoutes);
   }
 
   @override
