@@ -45,8 +45,9 @@ class _GesturePlayerState extends State<GesturePlayer> {
     }
 
     if (!mounted) return;
-    final videoPlayerController =
-        VideoPlayerController.networkUrl(Uri.parse(url));
+    final videoPlayerController = VideoPlayerController.networkUrl(
+      Uri.parse(url),
+    );
     setState(() {
       _videoPlayerController = videoPlayerController;
       _chewieController = ChewieController(
@@ -67,11 +68,7 @@ class _GesturePlayerState extends State<GesturePlayer> {
   void _showSnackbar(String message) {
     if (!mounted) return;
     final scaffoldMessenger = ScaffoldMessenger.of(context);
-    scaffoldMessenger.showSnackBar(
-      SnackBar(
-        content: Text(message),
-      ),
-    );
+    scaffoldMessenger.showSnackBar(SnackBar(content: Text(message)));
   }
 
   @override
@@ -94,17 +91,15 @@ class _GesturePlayerState extends State<GesturePlayer> {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        spacing: 16,
         children: [
           const Icon(Icons.error_outline, size: 48),
           const ThemedText.headlineSmall(
             'Ein Fehler ist aufgetreten:',
             textAlign: TextAlign.center,
           ),
-          Text(
-            errorMessage,
-            textAlign: TextAlign.center,
-          ),
-        ].separated(const Gap()),
+          Text(errorMessage, textAlign: TextAlign.center),
+        ],
       ),
     );
   }
@@ -113,8 +108,6 @@ class _GesturePlayerState extends State<GesturePlayer> {
   Widget build(BuildContext context) {
     if (_chewieController == null) return const Spinner(size: 128);
 
-    return Chewie(
-      controller: _chewieController!,
-    );
+    return Chewie(controller: _chewieController!);
   }
 }

@@ -60,6 +60,7 @@ class _LoginFormState extends State<LoginForm> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
+        spacing: 16,
         children: [
           const ThemedText.headlineSmall('Anmelden'),
           TextFormField(
@@ -72,9 +73,7 @@ class _LoginFormState extends State<LoginForm> {
               return null;
             },
             onSaved: (value) => _email = value,
-            decoration: const InputDecoration(
-              labelText: 'E-Mail Adresse',
-            ),
+            decoration: const InputDecoration(labelText: 'E-Mail Adresse'),
           ),
           SecretTextFormField(
             focusNode: _passwordFocus,
@@ -85,23 +84,13 @@ class _LoginFormState extends State<LoginForm> {
               return null;
             },
             onSaved: (value) => _password = value,
-            decoration: const InputDecoration(
-              labelText: 'Passwort',
-            ),
+            decoration: const InputDecoration(labelText: 'Passwort'),
           ),
           if (_errorMessage != null)
-            Row(
-              children: [
-                const Spacer(),
-                ErrorText(_errorMessage!),
-              ],
-            ),
+            Row(children: [const Spacer(), ErrorText(_errorMessage!)]),
           const Row(
-            children: [
-              PrivacyPolicyLink(),
-              Gap(),
-              SiteNoticeLink(),
-            ],
+            spacing: 16,
+            children: [PrivacyPolicyLink(), SiteNoticeLink()],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -113,10 +102,7 @@ class _LoginFormState extends State<LoginForm> {
                 child: const Text('Neues Konto erstellen'),
               ),
               const Spacer(),
-              if (_isSubmitting) ...[
-                const Gap(),
-                const Spinner(size: 24),
-              ],
+              if (_isSubmitting) ...[const Gap(), const Spinner(size: 24)],
               const Gap(),
               FilledButton(
                 onPressed: _isSubmitting ? null : _submit,
@@ -124,7 +110,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ],
           ),
-        ].separated(const Gap()),
+        ],
       ),
     );
   }

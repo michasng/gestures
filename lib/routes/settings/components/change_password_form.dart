@@ -73,6 +73,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
+        spacing: 16,
         children: [
           const ThemedText.headlineSmall('Passwort ändern'),
           SecretTextFormField(
@@ -87,9 +88,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
               return null;
             },
             onSaved: (value) => _newPassword = value,
-            decoration: const InputDecoration(
-              labelText: 'neues Passwort',
-            ),
+            decoration: const InputDecoration(labelText: 'neues Passwort'),
           ),
           SecretTextFormField(
             focusNode: _confirmNewPasswordFocus,
@@ -117,17 +116,10 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
               return null;
             },
             onSaved: (value) => _oldPassword = value,
-            decoration: const InputDecoration(
-              labelText: 'altes Passwort',
-            ),
+            decoration: const InputDecoration(labelText: 'altes Passwort'),
           ),
           if (_errorMessage != null)
-            Row(
-              children: [
-                const Spacer(),
-                ErrorText(_errorMessage!),
-              ],
-            ),
+            Row(children: [const Spacer(), ErrorText(_errorMessage!)]),
           Row(
             children: [
               const Spacer(),
@@ -139,7 +131,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
               ),
             ],
           ),
-        ].separated(const Gap()),
+        ],
       ),
     );
   }

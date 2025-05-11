@@ -62,6 +62,7 @@ class _RegisterFormState extends State<RegisterForm> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
+        spacing: 16,
         children: [
           const ThemedText.headlineSmall('Registrieren'),
           TextFormField(
@@ -74,9 +75,7 @@ class _RegisterFormState extends State<RegisterForm> {
               return null;
             },
             onSaved: (value) => _email = value,
-            decoration: const InputDecoration(
-              labelText: 'E-Mail Adresse',
-            ),
+            decoration: const InputDecoration(labelText: 'E-Mail Adresse'),
           ),
           SecretTextFormField(
             controller: _passwordController,
@@ -88,9 +87,7 @@ class _RegisterFormState extends State<RegisterForm> {
               return null;
             },
             onSaved: (value) => _password = value,
-            decoration: const InputDecoration(
-              labelText: 'Passwort',
-            ),
+            decoration: const InputDecoration(labelText: 'Passwort'),
           ),
           SecretTextFormField(
             focusNode: _confirmPasswordFocus,
@@ -102,23 +99,13 @@ class _RegisterFormState extends State<RegisterForm> {
               }
               return null;
             },
-            decoration: const InputDecoration(
-              labelText: 'Passwort bestätigen',
-            ),
+            decoration: const InputDecoration(labelText: 'Passwort bestätigen'),
           ),
           if (_errorMessage != null)
-            Row(
-              children: [
-                const Spacer(),
-                ErrorText(_errorMessage!),
-              ],
-            ),
+            Row(children: [const Spacer(), ErrorText(_errorMessage!)]),
           const Row(
-            children: [
-              PrivacyPolicyLink(),
-              Gap(),
-              SiteNoticeLink(),
-            ],
+            spacing: 16,
+            children: [PrivacyPolicyLink(), SiteNoticeLink()],
           ),
           Row(
             children: [
@@ -129,10 +116,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 child: const Text('Bereits registriert?'),
               ),
               const Spacer(),
-              if (_isSubmitting) ...[
-                const Gap(),
-                const Spinner(size: 24),
-              ],
+              if (_isSubmitting) ...[const Gap(), const Spinner(size: 24)],
               const Gap(),
               FilledButton(
                 onPressed: _isSubmitting ? null : _submit,
@@ -140,7 +124,7 @@ class _RegisterFormState extends State<RegisterForm> {
               ),
             ],
           ),
-        ].separated(const Gap()),
+        ],
       ),
     );
   }
