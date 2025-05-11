@@ -13,7 +13,7 @@ jobs:
       - name: Get Flutter
         uses: subosito/flutter-action@main
         with:
-          flutter-version: "3.16.9"
+          flutter-version: "3.29.3"
       - run: flutter pub get
       - run: dart run build_runner build
       - run: flutter build web

@@ -5,9 +5,7 @@ import 'package:micha_core/micha_core.dart';
 // DRW corporate design
 const _primaryColor = Color(0xffa60430);
 const _accentColor = Color(0xffedd7d5);
-// final _surfaceColor = Color(0xfff0f0ed);
-// final _surfaceColor2 = Color(0xffe1e1dd);
-const _backgroundColor = Colors.white;
+const _surfaceColor = Colors.white;
 
 // not defined in corporate design
 const _onLightColor = Color(0xff4d4d4d);
@@ -23,10 +21,8 @@ final theme = ThemeData.from(
     onSecondary: _onLightColor,
     error: _primaryColor,
     onError: _onDarkColor,
-    background: _backgroundColor,
-    onBackground: _onLightColor,
-    // using backgroundColor as surfaceColor, because of the BG image
-    surface: _backgroundColor.withAlpha(216),
+    // reduced opacity to show the background image behind cards
+    surface: _surfaceColor.withAlpha(216),
     onSurface: _onLightColor,
   ),
 ).copyWith(
