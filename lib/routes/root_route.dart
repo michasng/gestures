@@ -5,6 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:gestures/routes/auth/auth_route.dart';
 import 'package:gestures/routes/auth/login/login_route.dart';
 import 'package:gestures/routes/auth/register/register_route.dart';
+import 'package:gestures/routes/auth/reset_password/reset_password_route.dart';
+import 'package:gestures/routes/auth/reset_password_sent/reset_password_sent_route.dart';
 import 'package:gestures/routes/packages/package/gesture/gesture_route.dart';
 import 'package:gestures/routes/packages/package/package_route.dart';
 import 'package:gestures/routes/packages/packages_route.dart';
@@ -22,39 +24,25 @@ part 'root_route.g.dart';
     TypedGoRoute<AuthRoute>(
       path: 'auth',
       routes: [
-        TypedGoRoute<LoginRoute>(
-          path: 'login',
-        ),
-        TypedGoRoute<RegisterRoute>(
-          path: 'register',
-        ),
+        TypedGoRoute<LoginRoute>(path: 'login'),
+        TypedGoRoute<RegisterRoute>(path: 'register'),
+        TypedGoRoute<ResetPasswordRoute>(path: 'reset-password'),
+        TypedGoRoute<ResetPasswordSentRoute>(path: 'reset-password-sent'),
       ],
     ),
     TypedGoRoute<PackagesRoute>(
       path: 'packages',
       routes: [
-        TypedGoRoute<SearchAllRoute>(
-          path: 'search-all',
-        ),
+        TypedGoRoute<SearchAllRoute>(path: 'search-all'),
         TypedGoRoute<PackageRoute>(
           path: ':packageId',
-          routes: [
-            TypedGoRoute<GestureRoute>(
-              path: 'gestures/:gestureId',
-            ),
-          ],
+          routes: [TypedGoRoute<GestureRoute>(path: 'gestures/:gestureId')],
         ),
       ],
     ),
-    TypedGoRoute<PrefaceRoute>(
-      path: 'preface',
-    ),
-    TypedGoRoute<SettingsRoute>(
-      path: 'settings',
-    ),
-    TypedGoRoute<SiteNoticeRoute>(
-      path: 'site-notice',
-    ),
+    TypedGoRoute<PrefaceRoute>(path: 'preface'),
+    TypedGoRoute<SettingsRoute>(path: 'settings'),
+    TypedGoRoute<SiteNoticeRoute>(path: 'site-notice'),
   ],
 )
 class RootRoute extends GoRouteData {
