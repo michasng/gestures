@@ -4,7 +4,6 @@ import 'package:gestures/components/text/error_text.dart';
 import 'package:gestures/firebase_auth_error.dart';
 import 'package:gestures/routes/auth/login/login_route.dart';
 import 'package:gestures/routes/auth/reset_password_sent/reset_password_sent_route.dart';
-import 'package:gestures/routes/root_route.dart';
 import 'package:micha_core/micha_core.dart';
 
 class ResetPasswordForm extends StatefulWidget {

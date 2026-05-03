@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/routes/root_route.dart';
 import 'package:gestures/routes/site_notice/site_notice_route.dart';
 import 'package:micha_core/micha_core.dart';
 

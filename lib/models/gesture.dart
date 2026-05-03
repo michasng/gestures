@@ -5,10 +5,7 @@ class Gesture implements Comparable<Gesture> {
   final String id;
   final List<String>? synonyms;
 
-  const Gesture({
-    required this.id,
-    this.synonyms,
-  });
+  const Gesture({required this.id, this.synonyms});
 
   String get title => id;
 
@@ -23,10 +20,7 @@ class Gesture implements Comparable<Gesture> {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      if (synonyms != null) 'synonyms': synonyms,
-    };
+    return {'id': id, if (synonyms != null) 'synonyms': synonyms};
   }
 
   factory Gesture.fromJson(Map<String, dynamic> json) {

@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:micha_core/micha_core.dart';
 
 class AppTitle extends StatelessWidget {
-  const AppTitle({
-    super.key,
-  });
+  const AppTitle({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +11,7 @@ class AppTitle extends StatelessWidget {
     return FittedBox(
       child: ThemedText.headlineSmall(
         'Ursberger Gebärden',
-        style: TextStyle(
-          color: theme.appBarTheme.titleTextStyle?.color,
-        ),
+        style: TextStyle(color: theme.appBarTheme.titleTextStyle?.color),
       ),
     );
   }

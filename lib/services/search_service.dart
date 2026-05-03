@@ -11,8 +11,9 @@ class SearchService {
   ) {
     return gestures.where(
       (gesture) =>
-          gesture.searchTerms
-              .indexWhere((term) => isMatch(_toSearchString(term))) !=
+          gesture.searchTerms.indexWhere(
+            (term) => isMatch(_toSearchString(term)),
+          ) !=
           -1,
     );
   }

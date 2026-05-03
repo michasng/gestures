@@ -21,10 +21,7 @@ class ScreenBody extends StatelessWidget {
           child: SelectionArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ...children,
-                const Gap() * 4,
-              ],
+              children: [...children, const Gap() * 4],
             ),
           ),
         ),

@@ -28,13 +28,8 @@ class GestureView extends StatelessWidget {
         if (mode == AspectRatioMode.portrait) {
           return Column(
             children: [
-              AspectRatio(
-                aspectRatio: 1,
-                child: playerChild,
-              ),
-              Expanded(
-                child: controlsChild,
-              ),
+              AspectRatio(aspectRatio: 1, child: playerChild),
+              Expanded(child: controlsChild),
             ],
           );
         }
@@ -42,25 +37,16 @@ class GestureView extends StatelessWidget {
         if (mode == AspectRatioMode.landscape) {
           return Row(
             children: [
-              AspectRatio(
-                aspectRatio: 1,
-                child: playerChild,
-              ),
-              Expanded(
-                child: controlsChild,
-              ),
+              AspectRatio(aspectRatio: 1, child: playerChild),
+              Expanded(child: controlsChild),
             ],
           );
         }
 
         return Column(
           children: [
-            Expanded(
-              child: playerChild,
-            ),
-            Expanded(
-              child: controlsChild,
-            ),
+            Expanded(child: playerChild),
+            Expanded(child: controlsChild),
           ],
         );
       },

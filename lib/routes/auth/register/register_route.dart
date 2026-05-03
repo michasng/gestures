@@ -4,9 +4,10 @@ import 'package:gestures/components/branding/logo.dart';
 import 'package:gestures/components/centered_card.dart';
 import 'package:gestures/components/text/app_title.dart';
 import 'package:gestures/routes/auth/register/components/register_form.dart';
+import 'package:gestures/routes/root_route.dart';
 import 'package:go_router/go_router.dart';
 
-class RegisterRoute extends GoRouteData {
+class RegisterRoute extends GoRouteData with $RegisterRoute {
   const RegisterRoute();
 
   @override
@@ -20,10 +21,7 @@ class RegisterRoute extends GoRouteData {
         body: const Column(
           children: [
             Spacer(),
-            CenteredCard(
-              width: 400,
-              child: RegisterForm(),
-            ),
+            CenteredCard(width: 400, child: RegisterForm()),
             Spacer(),
             Logo(height: 100),
           ],

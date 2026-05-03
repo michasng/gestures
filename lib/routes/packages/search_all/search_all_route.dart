@@ -8,12 +8,10 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:micha_core/micha_core.dart';
 
-class SearchAllRoute extends GoRouteData {
+class SearchAllRoute extends GoRouteData with $SearchAllRoute {
   final String? initialSearchKey;
 
-  const SearchAllRoute({
-    this.initialSearchKey,
-  });
+  const SearchAllRoute({this.initialSearchKey});
 
   Future<List<DistinctGesture>> _load(BuildContext context) async {
     return await GetIt.I<AppService>().getAllGestures(context);
@@ -36,9 +34,7 @@ class SearchAllRoute extends GoRouteData {
   Widget build(BuildContext context, GoRouterState state) {
     return Scaffold(
       appBar: AppBar(
-        title: const FittedBox(
-          child: Text('Alle Gebärden durchsuchen'),
-        ),
+        title: const FittedBox(child: Text('Alle Gebärden durchsuchen')),
       ),
       body: AsyncBuilder(
         createFuture: (context) => _load(context),
@@ -46,11 +42,8 @@ class SearchAllRoute extends GoRouteData {
           gestures: gestures,
           initialSearchKey: initialSearchKey,
           showPackageTitles: true,
-          onTapGesture: (gesture, searchKey) => _navigateToGesture(
-            context,
-            gesture,
-            searchKey,
-          ),
+          onTapGesture: (gesture, searchKey) =>
+              _navigateToGesture(context, gesture, searchKey),
         ),
       ),
     );

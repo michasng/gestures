@@ -10,8 +10,9 @@ import 'package:gestures/models/package.dart';
 import 'package:universal_html/html.dart' as html;
 
 class AppService {
-  static final _gestureIdRegex =
-      RegExp(r'^Gebärden\/(?<packageId>.*)\/(?<gestureId>.*)\.mp4$');
+  static final _gestureIdRegex = RegExp(
+    r'^Gebärden\/(?<packageId>.*)\/(?<gestureId>.*)\.mp4$',
+  );
 
   Future<AppContent>? _loadFuture;
 
@@ -38,10 +39,7 @@ class AppService {
     final List<Package> packages = [];
     for (final packageRef in rootItems.prefixes) {
       packages.add(
-        await _mapPackageRef(
-          packageRef: packageRef,
-          allSynonyms: allSynonyms,
-        ),
+        await _mapPackageRef(packageRef: packageRef, allSynonyms: allSynonyms),
       );
     }
     packages.sort();
@@ -51,8 +49,9 @@ class AppService {
   Future<Map<String, List<String>>> _loadAllSynonymsFromAssets(
     BuildContext context,
   ) async {
-    final text =
-        await DefaultAssetBundle.of(context).loadString('assets/synonyms.json');
+    final text = await DefaultAssetBundle.of(
+      context,
+    ).loadString('assets/synonyms.json');
     return (jsonDecode(text) as Map).map(
       (key, value) => MapEntry(
         key as String,
@@ -66,21 +65,17 @@ class AppService {
     required Map<String, List<String>> allSynonyms,
   }) async {
     final packageItems = await packageRef.listAll();
-    final videoFiles =
-        packageItems.items.where((itemRef) => itemRef.name.endsWith('.mp4'));
+    final videoFiles = packageItems.items.where(
+      (itemRef) => itemRef.name.endsWith('.mp4'),
+    );
     final gestures = videoFiles
         .map(
-          (gestureRef) => _mapGestureRef(
-            gestureRef: gestureRef,
-            allSynonyms: allSynonyms,
-          ),
+          (gestureRef) =>
+              _mapGestureRef(gestureRef: gestureRef, allSynonyms: allSynonyms),
         )
         .toList();
     gestures.sort();
-    return Package(
-      id: packageRef.name,
-      gestures: gestures,
-    );
+    return Package(id: packageRef.name, gestures: gestures);
   }
 
   Gesture _mapGestureRef({

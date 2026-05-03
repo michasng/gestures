@@ -5,7 +5,7 @@ import 'package:gestures/routes/auth/login/login_route.dart';
 import 'package:gestures/routes/root_route.dart';
 import 'package:go_router/go_router.dart';
 
-class AuthRoute extends GoRouteData {
+class AuthRoute extends GoRouteData with $AuthRoute {
   const AuthRoute();
 
   @override

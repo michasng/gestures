@@ -9,7 +9,7 @@ import 'package:gestures/services/search_service.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
-class GestureRoute extends GoRouteData {
+class GestureRoute extends GoRouteData with $GestureRoute {
   final String packageId;
   final String gestureId;
   final String? searchKey;
@@ -59,9 +59,7 @@ class GestureRoute extends GoRouteData {
 
   void _navigateBack(BuildContext context) {
     if (searchingAll) {
-      SearchAllRoute(
-        initialSearchKey: searchKey,
-      ).go(context);
+      SearchAllRoute(initialSearchKey: searchKey).go(context);
     } else {
       PackageRoute(
         packageId: packageId,
@@ -78,9 +76,7 @@ class GestureRoute extends GoRouteData {
           icon: const Icon(Icons.arrow_back),
           onPressed: () => _navigateBack(context),
         ),
-        title: FittedBox(
-          child: Text(gestureId),
-        ),
+        title: FittedBox(child: Text(gestureId)),
       ),
       body: AsyncGestureView(
         key: ValueKey('$packageId, $gestureId'),

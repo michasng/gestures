@@ -6,16 +6,13 @@ import 'package:gestures/routes/root_route.dart';
 import 'package:go_router/go_router.dart';
 import 'package:micha_core/micha_core.dart';
 
-class PrefaceRoute extends GoRouteData {
+class PrefaceRoute extends GoRouteData with $PrefaceRoute {
   const PrefaceRoute();
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return Scaffold(
-      appBar: AppBar(
-        title: const AppTitle(),
-        automaticallyImplyLeading: false,
-      ),
+      appBar: AppBar(title: const AppTitle(), automaticallyImplyLeading: false),
       body: ScreenBody(
         children: [
           const ThemedText.titleLarge('Vorwort'),

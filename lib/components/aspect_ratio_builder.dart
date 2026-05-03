@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 
-enum AspectRatioMode {
-  portrait,
-  landscape,
-  squarish;
-}
+enum AspectRatioMode { portrait, landscape, squarish }
 
-typedef AspectRatioBuilderCallback = Widget Function(
-  BuildContext context,
-  AspectRatioMode mode,
-);
+typedef AspectRatioBuilderCallback =
+    Widget Function(BuildContext context, AspectRatioMode mode);
 
 class AspectRatioBuilder extends StatelessWidget {
   final AspectRatioBuilderCallback builder;

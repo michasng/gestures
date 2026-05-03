@@ -42,9 +42,7 @@ class _SecretTextFormFieldState extends State<SecretTextFormField> {
       decoration: decoration.copyWith(
         suffixIcon: IconButton(
           onPressed: () => setState(() => _obscured = !_obscured),
-          icon: Icon(
-            _obscured ? Icons.visibility : Icons.visibility_off,
-          ),
+          icon: Icon(_obscured ? Icons.visibility : Icons.visibility_off),
         ),
       ),
     );

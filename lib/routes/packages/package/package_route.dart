@@ -9,14 +9,11 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:micha_core/micha_core.dart';
 
-class PackageRoute extends GoRouteData {
+class PackageRoute extends GoRouteData with $PackageRoute {
   final String packageId;
   final String? initialSearchKey;
 
-  const PackageRoute({
-    required this.packageId,
-    this.initialSearchKey,
-  });
+  const PackageRoute({required this.packageId, this.initialSearchKey});
 
   Future<Package> _load(BuildContext context) async {
     return await GetIt.I<AppService>().getPackage(
@@ -41,22 +38,15 @@ class PackageRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return Scaffold(
-      appBar: AppBar(
-        title: FittedBox(
-          child: Text(packageId),
-        ),
-      ),
+      appBar: AppBar(title: FittedBox(child: Text(packageId))),
       body: AsyncBuilder(
         createFuture: (context) => _load(context),
         builder: (context, package) => SearchableGestureList(
           gestures: package.gestures,
           initialSearchKey: initialSearchKey,
           showPackageTitles: false,
-          onTapGesture: (gesture, searchKey) => _navigateToGesture(
-            context,
-            gesture,
-            searchKey,
-          ),
+          onTapGesture: (gesture, searchKey) =>
+              _navigateToGesture(context, gesture, searchKey),
         ),
       ),
     );

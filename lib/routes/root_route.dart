@@ -45,7 +45,7 @@ part 'root_route.g.dart';
     TypedGoRoute<SiteNoticeRoute>(path: 'site-notice'),
   ],
 )
-class RootRoute extends GoRouteData {
+class RootRoute extends GoRouteData with $RootRoute {
   const RootRoute();
 
   @override

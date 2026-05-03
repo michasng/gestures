@@ -26,9 +26,7 @@ class CarouselControls extends StatelessWidget {
           disabledColor: Colors.transparent,
         ),
         Flexible(
-          child: FittedBox(
-            child: ThemedText.headlineSmall(gesture.title),
-          ),
+          child: FittedBox(child: ThemedText.headlineSmall(gesture.title)),
         ),
         IconButton(
           onPressed: onNext,

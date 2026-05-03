@@ -8,7 +8,7 @@ import 'package:gestures/routes/root_route.dart';
 import 'package:gestures/routes/settings/components/change_password_form.dart';
 import 'package:go_router/go_router.dart';
 
-class SettingsRoute extends GoRouteData {
+class SettingsRoute extends GoRouteData with $SettingsRoute {
   const SettingsRoute();
 
   @override
@@ -34,10 +34,7 @@ class SettingsRoute extends GoRouteData {
           Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.all(16),
-            child: const SizedBox(
-              width: 400,
-              child: ChangePasswordForm(),
-            ),
+            child: const SizedBox(width: 400, child: ChangePasswordForm()),
           ),
         ],
       ),

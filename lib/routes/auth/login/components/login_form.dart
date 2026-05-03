@@ -8,7 +8,6 @@ import 'package:gestures/firebase_auth_error.dart';
 import 'package:gestures/routes/auth/register/register_route.dart';
 import 'package:gestures/routes/auth/reset_password/reset_password_route.dart';
 import 'package:gestures/routes/preface/preface_route.dart';
-import 'package:gestures/routes/root_route.dart';
 import 'package:micha_core/micha_core.dart';
 
 class LoginForm extends StatefulWidget {

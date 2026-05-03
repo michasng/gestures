@@ -4,11 +4,7 @@ class CenteredCard extends StatelessWidget {
   final double width;
   final Widget child;
 
-  const CenteredCard({
-    super.key,
-    required this.width,
-    required this.child,
-  });
+  const CenteredCard({super.key, required this.width, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +14,7 @@ class CenteredCard extends StatelessWidget {
       child: SizedBox(
         width: width,
         child: Card(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: child,
-          ),
+          child: Padding(padding: const EdgeInsets.all(16), child: child),
         ),
       ),
     );

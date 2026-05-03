@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:gestures/components/text/links/privacy_policy_link.dart';
 import 'package:gestures/routes/auth/login/login_route.dart';
 import 'package:gestures/routes/preface/preface_route.dart';
-import 'package:gestures/routes/root_route.dart';
 import 'package:gestures/routes/settings/settings_route.dart';
 import 'package:gestures/routes/site_notice/site_notice_route.dart';
 import 'package:gestures/services/app_service.dart';

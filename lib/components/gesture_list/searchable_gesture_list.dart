@@ -57,9 +57,7 @@ class SearchableGestureListState extends State<SearchableGestureList> {
           padding: const EdgeInsets.all(16),
           child: TextField(
             autofocus: false,
-            decoration: const InputDecoration(
-              labelText: 'Suche',
-            ),
+            decoration: const InputDecoration(labelText: 'Suche'),
             onChanged: _search,
           ),
         ),

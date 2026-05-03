@@ -7,7 +7,6 @@ import 'package:gestures/components/text/links/site_notice_link.dart';
 import 'package:gestures/firebase_auth_error.dart';
 import 'package:gestures/routes/auth/login/login_route.dart';
 import 'package:gestures/routes/preface/preface_route.dart';
-import 'package:gestures/routes/root_route.dart';
 import 'package:micha_core/micha_core.dart';
 
 class RegisterForm extends StatefulWidget {

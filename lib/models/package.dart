@@ -86,10 +86,8 @@ class Package implements Comparable<Package> {
   final String id;
   final List<Gesture> _gestures;
 
-  const Package({
-    required this.id,
-    required List<Gesture> gestures,
-  }) : _gestures = gestures;
+  const Package({required this.id, required List<Gesture> gestures})
+    : _gestures = gestures;
 
   String get title => id;
 
@@ -98,12 +96,7 @@ class Package implements Comparable<Package> {
   }
 
   List<DistinctGesture> get gestures => _gestures
-      .map(
-        (gesture) => DistinctGesture(
-          package: this,
-          gesture: gesture,
-        ),
-      )
+      .map((gesture) => DistinctGesture(package: this, gesture: gesture))
       .toList();
 
   @override
@@ -126,9 +119,8 @@ class Package implements Comparable<Package> {
       id: json['id'] as String,
       gestures: (json['gestures'] as List)
           .map(
-            (gestureJson) => Gesture.fromJson(
-              gestureJson as Map<String, dynamic>,
-            ),
+            (gestureJson) =>
+                Gesture.fromJson(gestureJson as Map<String, dynamic>),
           )
           .toList(),
     );

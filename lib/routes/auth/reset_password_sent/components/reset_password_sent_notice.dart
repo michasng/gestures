@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gestures/routes/auth/login/login_route.dart';
-import 'package:gestures/routes/root_route.dart';
 import 'package:micha_core/micha_core.dart';
 
 class ResetPasswordSentNotice extends StatelessWidget {

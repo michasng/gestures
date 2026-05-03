@@ -4,9 +4,10 @@ import 'package:gestures/components/branding/logo.dart';
 import 'package:gestures/components/centered_card.dart';
 import 'package:gestures/components/text/app_title.dart';
 import 'package:gestures/routes/auth/reset_password/components/reset_password_form.dart';
+import 'package:gestures/routes/root_route.dart';
 import 'package:go_router/go_router.dart';
 
-class ResetPasswordRoute extends GoRouteData {
+class ResetPasswordRoute extends GoRouteData with $ResetPasswordRoute {
   const ResetPasswordRoute();
 
   @override

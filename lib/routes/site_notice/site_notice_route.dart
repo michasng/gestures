@@ -7,7 +7,7 @@ import 'package:gestures/routes/root_route.dart';
 import 'package:go_router/go_router.dart';
 import 'package:micha_core/micha_core.dart';
 
-class SiteNoticeRoute extends GoRouteData {
+class SiteNoticeRoute extends GoRouteData with $SiteNoticeRoute {
   const SiteNoticeRoute();
 
   @override

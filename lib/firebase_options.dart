@@ -69,7 +69,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '792547535206',
     projectId: 'ursberger-gebaerden',
     storageBucket: 'ursberger-gebaerden.appspot.com',
-    iosClientId: '792547535206-uhnjhn4b4o5rkqreo3fl2g4d9umha8rs.apps.googleusercontent.com',
+    iosClientId:
+        '792547535206-uhnjhn4b4o5rkqreo3fl2g4d9umha8rs.apps.googleusercontent.com',
     iosBundleId: 'com.example.gestures',
   );
 }

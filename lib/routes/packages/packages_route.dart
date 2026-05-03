@@ -11,7 +11,7 @@ import 'package:gestures/routes/root_route.dart';
 import 'package:go_router/go_router.dart';
 import 'package:micha_core/micha_core.dart';
 
-class PackagesRoute extends GoRouteData {
+class PackagesRoute extends GoRouteData with $PackagesRoute {
   const PackagesRoute();
 
   @override
@@ -29,10 +29,7 @@ class PackagesRoute extends GoRouteData {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: const AppTitle(),
-          actions: [
-            const MainMenuButton(),
-            const Gap() / 2,
-          ],
+          actions: [const MainMenuButton(), const Gap() / 2],
         ),
         body: const AsyncPackageList(),
       ),

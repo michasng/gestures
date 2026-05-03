@@ -8,16 +8,14 @@ import 'package:micha_core/micha_core.dart';
 class PackageList extends StatelessWidget {
   final List<Package> packages;
 
-  const PackageList({
-    super.key,
-    required this.packages,
-  });
+  const PackageList({super.key, required this.packages});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final allGesturesCount =
-        packages.map((package) => package.gestures.length).sum;
+    final allGesturesCount = packages
+        .map((package) => package.gestures.length)
+        .sum;
 
     return ListView(
       children: [
