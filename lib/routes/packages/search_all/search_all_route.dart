@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gestures/components/gesture_list/searchable_gesture_list.dart';
 import 'package:gestures/models/distinct_gesture.dart';
+import 'package:gestures/routes/packages/components/gesture_list/searchable_gesture_list.dart';
 import 'package:gestures/routes/packages/package/gesture/gesture_route.dart';
 import 'package:gestures/routes/root_route.dart';
 import 'package:gestures/services/app_service.dart';
