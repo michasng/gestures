@@ -43,26 +43,31 @@ class _GesturePlayerState extends State<GesturePlayer> {
       _showSnackbar(error.toString());
       return;
     }
-
     if (!mounted) return;
+
     final videoPlayerController = VideoPlayerController.networkUrl(
       Uri.parse(url),
     );
+
+    videoPlayerController.addListener(() async {
+      final videoPlayerValue = videoPlayerController.value;
+      if (videoPlayerValue.hasError &&
+          videoPlayerValue.errorDescription ==
+              "play() failed because the user didn't interact with the document first.") {
+        _logger.warning('Failed to play automatically.');
+        await videoPlayerController.initialize();
+      }
+    });
+
     setState(() {
       _videoPlayerController = videoPlayerController;
       _chewieController = ChewieController(
         videoPlayerController: videoPlayerController,
         showControlsOnInitialize: false,
+        autoPlay: true,
         errorBuilder: _errorBuilder,
       );
     });
-
-    try {
-      await videoPlayerController.initialize();
-      await videoPlayerController.play();
-    } catch (e) {
-      _logger.severe('Video failed to initialize or play.', e);
-    }
   }
 
   void _showSnackbar(String message) {
