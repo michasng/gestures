@@ -31,7 +31,10 @@ part 'root_route.g.dart';
       ],
     ),
     TypedGoRoute<PackagesRoute>(
-      path: 'packages',
+      // `path: "packages"` conflicted with flutter's WebAssetServer,
+      // breaking direct navigation to `/packages` and its sub-routes:
+      // https://github.com/flutter/flutter/blob/3.41.9/packages/flutter_tools/lib/src/isolated/web_asset_server.dart#L546
+      path: 'packs',
       routes: [
         TypedGoRoute<SearchAllRoute>(path: 'search-all'),
         TypedGoRoute<PackageRoute>(
